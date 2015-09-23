@@ -108,3 +108,4 @@ config:
         pim/dialogform:                 pimui/js/pim-dialogform
         oro/error:                      pimui/js/pim-error
         pim/dropzonejs:                 pimui/lib/dropzonejs/dist/dropzone-amd-module.js
+        pim/tab-selector:               pimui/js/pim-tab-selector.js
