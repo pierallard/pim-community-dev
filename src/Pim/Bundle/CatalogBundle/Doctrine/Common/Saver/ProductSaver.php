@@ -31,9 +31,9 @@ class ProductSaver implements SaverInterface, BulkSaverInterface
     protected $eventDispatcher;
 
     /**
-     * @param ObjectManager                  $om
-     * @param CompletenessManager            $completenessManager
-     * @param EventDispatcherInterface       $eventDispatcher
+     * @param ObjectManager            $om
+     * @param CompletenessManager      $completenessManager
+     * @param EventDispatcherInterface $eventDispatcher
      */
     public function __construct(
         ObjectManager $om,
