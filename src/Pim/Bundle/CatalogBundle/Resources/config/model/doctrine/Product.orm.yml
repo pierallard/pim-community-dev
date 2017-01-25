@@ -13,7 +13,7 @@ Pim\Component\Catalog\Model\Product:
             type: boolean
             column: is_enabled
         rawValues:
-            type: json_array
+            type: native_json
             column: raw_values
         created:
             type: datetime
