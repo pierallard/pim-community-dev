@@ -111,7 +111,7 @@ class ProductRepositorySpec extends ObjectBehavior
         $em->createQueryBuilder()->willReturn($queryBuilder);
         $queryBuilder->select('p')->willReturn($queryBuilder);
         $queryBuilder->select('g.id')->willReturn($queryBuilder);
-        $queryBuilder->from(Argument::type('string'), "p")->willReturn($queryBuilder);
+        $queryBuilder->from(Argument::type('string'), "p", null)->willReturn($queryBuilder);
         $queryBuilder->leftJoin('p.groups', 'g')->willReturn($queryBuilder);
         $queryBuilder->where('p.id = :id')->willReturn($queryBuilder);
         $queryBuilder->setParameters([
@@ -140,7 +140,7 @@ class ProductRepositorySpec extends ObjectBehavior
         $em->createQueryBuilder()->willReturn($queryBuilder);
         $queryBuilder->select('p')->willReturn($queryBuilder);
         $queryBuilder->select('g.id')->willReturn($queryBuilder);
-        $queryBuilder->from(Argument::type('string'), "p")->willReturn($queryBuilder);
+        $queryBuilder->from(Argument::type('string'), "p", null)->willReturn($queryBuilder);
         $queryBuilder->leftJoin('p.groups', 'g')->willReturn($queryBuilder);
         $queryBuilder->where('p.id = :id')->willReturn($queryBuilder);
         $queryBuilder->setParameters([
@@ -165,7 +165,7 @@ class ProductRepositorySpec extends ObjectBehavior
     ) {
         $em->createQueryBuilder()->willReturn($queryBuilder);
         $queryBuilder->select('p')->willReturn($queryBuilder);
-        $queryBuilder->from(Argument::type('string'), "p")->willReturn($queryBuilder);
+        $queryBuilder->from(Argument::type('string'), "p", null)->willReturn($queryBuilder);
         $queryBuilder->leftJoin('p.family', 'f')->willReturn($queryBuilder);
         $queryBuilder->leftJoin('f.attributes', 'a')->willReturn($queryBuilder);
         $queryBuilder->where('p.id = :id')->willReturn($queryBuilder);
@@ -189,7 +189,7 @@ class ProductRepositorySpec extends ObjectBehavior
     {
         $em->createQueryBuilder()->willReturn($queryBuilder);
         $queryBuilder->select('p')->willReturn($queryBuilder);
-        $queryBuilder->from('Pim\Component\Catalog\Model\Product', 'p')->willReturn($queryBuilder);
+        $queryBuilder->from('Pim\Component\Catalog\Model\Product', 'p', null)->willReturn($queryBuilder);
         $queryBuilder->select('COUNT(p.id)')->willReturn($queryBuilder);
 
         $queryBuilder->getQuery()->willReturn($query);
