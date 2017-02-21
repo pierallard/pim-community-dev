@@ -4,6 +4,8 @@ namespace Pim\Bundle\EnrichBundle\Controller;
 
 use Akeneo\Bundle\BatchBundle\Manager\JobExecutionManager;
 use Akeneo\Component\FileStorage\StreamedFileResponse;
+use Doctrine\Common\Persistence\ManagerRegistry;
+use Oro\Bundle\SecurityBundle\SecurityFacade;
 use Pim\Bundle\ConnectorBundle\EventListener\JobExecutionArchivist;
 use Pim\Bundle\EnrichBundle\Doctrine\ORM\Repository\JobExecutionRepository;
 use Pim\Bundle\ImportExportBundle\Event\JobExecutionEvents;
@@ -20,6 +22,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
@@ -52,8 +55,14 @@ class JobTrackerController extends Controller
     /** @var EventSubscriberInterface */
     protected $jobExecutionManager;
 
+    /** @var SecurityFacade */
+    protected $securityFacade;
+
     /** @var JobExecutionRepository */
     protected $jobExecutionRepo;
+
+    /** @var string */
+    protected $showPermissionTemplate;
 
     /**
      * @param EngineInterface          $templating
@@ -63,6 +72,7 @@ class JobTrackerController extends Controller
      * @param JobExecutionArchivist    $archivist
      * @param SerializerInterface      $serializer
      * @param JobExecutionManager      $jobExecutionManager
+     * @param SecurityFacade           $securityFacade
      */
     public function __construct(
         EngineInterface $templating,
@@ -71,7 +81,9 @@ class JobTrackerController extends Controller
         JobExecutionRepository $jobExecutionRepo,
         JobExecutionArchivist $archivist,
         SerializerInterface $serializer,
-        JobExecutionManager $jobExecutionManager
+        JobExecutionManager $jobExecutionManager,
+        SecurityFacade $securityFacade,
+        $showPermissionTemplate
     ) {
         $this->templating = $templating;
         $this->translator = $translator;
@@ -80,6 +92,8 @@ class JobTrackerController extends Controller
         $this->archivist = $archivist;
         $this->serializer = $serializer;
         $this->jobExecutionManager = $jobExecutionManager;
+        $this->securityFacade = $securityFacade;
+        $this->showPermissionTemplate = $showPermissionTemplate;
     }
 
     /**
@@ -101,6 +115,50 @@ class JobTrackerController extends Controller
      */
     public function showAction($id)
     {
+        $jobExecution = $this->jobExecutionRepo->find($id);
+
+        if (null === $jobExecution) {
+            throw new NotFoundHttpException('Akeneo\Component\Batch\Model\JobExecution entity not found');
+        }
+
+        if (!$this->securityFacade->isGranted($this->getShowPermission($jobExecution))) {
+            throw new AccessDeniedException();
+        }
+
+        $this->eventDispatcher->dispatch(JobExecutionEvents::PRE_SHOW, new GenericEvent($jobExecution));
+
+        if ('json' === $request->getRequestFormat()) {
+            $archives = [];
+            foreach ($this->archivist->getArchives($jobExecution) as $archiveName => $files) {
+                $label = $this->translator->transChoice(
+                    sprintf('pim_import_export.download_archive.%s', $archiveName),
+                    count($files)
+                );
+                $archives[$archiveName] = [
+                    'label' => ucfirst($label),
+                    'files' => $files,
+                ];
+            }
+
+            if (!$this->jobExecutionManager->checkRunningStatus($jobExecution)) {
+                $this->jobExecutionManager->markAsFailed($jobExecution);
+            }
+
+            // limit the number of step execution returned to avoid memory overflow
+            $context = [
+                'limit_warnings' => 100,
+                'locale'         => $request->getLocale()
+            ];
+
+            return new JsonResponse(
+                [
+                    'jobExecution' => $this->serializer->normalize($jobExecution, 'standard', $context),
+                    'hasLog'       => file_exists($jobExecution->getLogFile()),
+                    'archives'     => $archives,
+                ]
+            );
+        }
+
         return $this->render(
             'PimEnrichBundle:JobExecution:show.html.twig',
             ['id' => $id]
@@ -120,6 +178,10 @@ class JobTrackerController extends Controller
 
         if (null === $jobExecution) {
             throw new NotFoundHttpException('Akeneo\Component\Batch\Model\JobExecution entity not found');
+        }
+
+        if (!$this->securityFacade->isGranted($this->getShowPermission($jobExecution))) {
+            throw new AccessDeniedException();
         }
 
         $this->eventDispatcher->dispatch(JobExecutionEvents::PRE_DOWNLOAD_LOG, new GenericEvent($jobExecution));
@@ -147,6 +209,10 @@ class JobTrackerController extends Controller
             throw new NotFoundHttpException('Akeneo\Component\Batch\Model\JobExecution entity not found');
         }
 
+        if (!$this->securityFacade->isGranted($this->getShowPermission($jobExecution))) {
+            throw new AccessDeniedException();
+        }
+
         $this->eventDispatcher->dispatch(JobExecutionEvents::PRE_DOWNLOAD_FILES, new GenericEvent($jobExecution));
 
         $stream = $this->archivist->getArchive($jobExecution, $archiver, $key);
@@ -166,5 +232,13 @@ class JobTrackerController extends Controller
     public function render($view, array $parameters = [], Response $response = null)
     {
         return $this->templating->renderResponse($view, $parameters, $response);
+    }
+
+    protected function getShowPermission($jobExecution)
+    {
+        return sprintf(
+            $this->showPermissionTemplate,
+            $jobExecution->getJobInstance()->getType()
+        );
     }
 }
