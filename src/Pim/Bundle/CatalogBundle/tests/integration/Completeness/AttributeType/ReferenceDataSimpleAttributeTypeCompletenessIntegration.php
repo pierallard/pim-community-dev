@@ -3,7 +3,6 @@
 namespace Pim\Bundle\CatalogBundle\tests\integration\Completeness\AttributeType;
 
 use Akeneo\Test\Integration\Configuration;
-use Pim\Bundle\CatalogBundle\tests\integration\Completeness\AbstractCompletenessPerAttributeTypeIntegration;
 use Pim\Component\Catalog\AttributeTypes;
 
 /**
@@ -68,6 +67,7 @@ class ReferenceDataSimpleAttributeTypeCompletenessIntegration extends AbstractCo
             ]
         );
         $this->assertNotComplete($productDataNull);
+        $this->assertMissingAttributeForProduct($productDataNull, ['a_simple_select_reference_data']);
 
         $productDataEmptyString = $this->createProductWithStandardValues(
             $family,
@@ -88,6 +88,7 @@ class ReferenceDataSimpleAttributeTypeCompletenessIntegration extends AbstractCo
 
         $productWithoutValues = $this->createProductWithStandardValues($family, 'product_without_values');
         $this->assertNotComplete($productWithoutValues);
+        $this->assertMissingAttributeForProduct($productWithoutValues, ['a_simple_select_reference_data']);
     }
 
     /**
