@@ -9,7 +9,6 @@
 - PIM-6239: Translate scope with catalog locale
 - GITHUB-5538: User without permissions access to import/export jobs through `Process tracker`
 - GITHUB-3435: Sort order products datagrid `Manage filter` options
-- GITHUB-5538: User without permissions access to import/export jobs through `Process tracker`
 
 ## BC breaks
 
