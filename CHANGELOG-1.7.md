@@ -10,6 +10,7 @@
 - GITHUB-5538: User without permissions access to import/export jobs through `Process tracker`
 - GITHUB-3435: Sort order products datagrid `Manage filter` options
 - GITHUB-5538: User without permissions access to import/export jobs through `Process tracker`
+- PIM-6253: Add missing permissions on entities of the API
 
 ## BC breaks
 
