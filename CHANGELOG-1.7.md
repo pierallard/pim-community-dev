@@ -12,6 +12,7 @@
 - PIM-6250: Fix attribute export.
 - GITHUB-5538: User without permissions access to import/export jobs through `Process tracker`
 - PIM-6253: Add missing permissions on entities of the API
+- PIM-6252: Fix Summernote (WYSIWYG) style
 
 ## BC breaks
 
