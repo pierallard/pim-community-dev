@@ -69,7 +69,7 @@ require(['jquery', 'underscore', 'oro/translator', 'oro/app', 'oro/mediator', 'o
         var initializeContent = function () {
             if (!content) {
                 content = $('.scrollable-container').filter(':parents(.ui-widget)');
-                content.css('overflow', 'auto');
+                //content.css('overflow', 'auto');
             }
         };
 
