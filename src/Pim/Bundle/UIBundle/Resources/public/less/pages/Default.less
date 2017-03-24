@@ -1,6 +1,9 @@
 @import '../base/variables';
 
 .AknDefault {
+  @menuWidth: 80px;
+  @firstColumnWidth: 280px;
+
   &-page {
     width: 100%;
   }
@@ -17,8 +20,31 @@
     text-align: center;
     line-height: 40px;
   }
+
+  &-content {
+    padding-left: @menuWidth;
+    transition: 0.5s padding ease-out;
+  }
+
+  &-page--withFilters &-content {
+    padding-left: @firstColumnWidth + @menuWidth;
+  }
+
+  &-firstColumn {
+    z-index: 999;
+    width: @firstColumnWidth;
+    position: fixed;
+    top: 0;
+    left: @menuWidth - @firstColumnWidth;
+    height: 100%;
+    padding: 10px;
+    transition: 0.5s left ease-out;
+    background: #F9F9FB;
+    border-right: 1px solid #D9DDE2;
+  }
+
+  &-page--withFilters &-firstColumn {
+    left: @menuWidth;
+  }
 }
 
-#main {
-  padding-left: 80px;
-}
