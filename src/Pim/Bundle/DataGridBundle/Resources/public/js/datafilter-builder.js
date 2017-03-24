@@ -36,7 +36,9 @@ function($, _, tools,  mediator, FiltersManager) {
                 var options = methods.combineOptions.call(this);
                 options.collection = this.collection;
                 var filtersList = new FiltersManager(options);
-                this.$el.prepend(filtersList.render().$el);
+                $('.AknDefault-firstColumn').empty()
+                    .prepend(filtersList.render().$el);
+                $('.AknDefault-page').addClass('AknDefault-page--withFilters');
                 mediator.trigger('datagrid_filters:rendered', this.collection);
                 if (this.collection.length === 0) {
                     filtersList.$el.hide();

@@ -33,7 +33,7 @@
             {% endblock %}
         {% endblock %}
     </head>
-    <body class="{% block bodyClass %}{% endblock %}">
+    <body class="AknDefault {% block bodyClass %}{% endblock %}">
     {% placeholder after_body_start %}
     <div id="progressbar" class="AknDefault-progressContainer">
         <h3>
@@ -55,11 +55,13 @@
                     <div class="AknHeader-menus">
                         <div class="AknHeader-leftMenus">
                             {% placeholder header_logo %}
+
                             {% block navbar %}
                                 <div class="nav pull-left top-search shortcuts">
                                     {% placeholder navbar %}
                                 </div>
                             {% endblock navbar %}
+
                             <div id="main-menu">
                                 {% block application_menu %}
                                     {% placeholder application_menu %}
@@ -75,14 +77,20 @@
                     {% placeholder after_navigation %}
                 </header>
             {% endblock header %}
+
             {% block main %}
-                <div id="main" >
+                <div class="AknDefault-firstColumn">
+
+                </div>
+                <div id="main" class="AknDefault-content">
                     {% block right_panel %}
                         {% placeholder right_panel %}
                     {% endblock right_panel %}
+
                     {% block left_panel %}
                         {% placeholder left_panel %}
                     {% endblock left_panel %}
+
                     {% block before_content %}
                     <div class="AknBreadcrumbContainer">
                         <div id="breadcrumb">
@@ -94,6 +102,7 @@
                         {% placeholder pin_button %}
                     </div>
                     {% endblock before_content %}
+
                     <div class="hash-loading-mask"></div>
                     <div id="container" class="scrollable-container">
                         {% block page_container %}
