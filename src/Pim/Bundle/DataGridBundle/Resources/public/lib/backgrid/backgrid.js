@@ -700,7 +700,7 @@ var InputCellEditor = Backgrid.InputCellEditor = CellEditor.extend({
 var Cell = Backgrid.Cell = Backbone.View.extend({
 
   /** @property */
-  tagName: "td",
+  tagName: "div",
 
   /**
      @property {Backgrid.CellFormatter|Object|string} [formatter=new CellFormatter()]
@@ -1560,7 +1560,7 @@ var Columns = Backgrid.Columns = Backbone.Collection.extend({
 var Row = Backgrid.Row = Backbone.View.extend({
 
   /** @property */
-  tagName: "tr",
+  tagName: "div",
   className: 'AknGrid-bodyRow',
 
   requiredOptions: ["columns", "model"],
@@ -1712,7 +1712,7 @@ var EmptyRow = Backgrid.EmptyRow = Backbone.View.extend({
   render: function () {
     this.$el.empty();
 
-    var td = document.createElement("td");
+    var td = document.createElement("div");
     td.setAttribute("colspan", this.columns.length);
     td.textContent = this.emptyText;
 
