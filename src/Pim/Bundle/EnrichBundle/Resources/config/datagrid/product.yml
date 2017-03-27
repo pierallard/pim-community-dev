@@ -14,6 +14,7 @@ datagrid:
                 label:         Label
                 data_name:     productLabel
                 selector:      product_label
+                frontend_type: attribute-as-label
             family:
                 label:         Family
                 data_name:     familyLabel
