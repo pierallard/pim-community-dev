@@ -1,0 +1,47 @@
+@import '../../base/variables';
+
+.AknFilter {
+  @arrowSize: 10px;
+  @arrowTopPosition: 20px;
+  @arrowBorderSize: @arrowSize + 1px;
+
+  .arrow(@size, @top, @color) {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: @size @size @size 0;
+    border-color: transparent @color transparent transparent;
+    position: absolute;
+    right: -1px;
+    top: @top;
+  }
+
+  padding: 10px 20px;
+  cursor: pointer;
+
+  &-label {
+    color: #A1A9B7;
+    text-transform: uppercase;
+    display: block;
+    font-size: @AknFontSizeSmall;
+  }
+
+  &-value {
+    display: block;
+  }
+
+  &.open-filter {
+    &:after {
+      .arrow(@arrowSize, @arrowTopPosition, #ffffff);
+    }
+
+    &:before {
+      .arrow(@arrowBorderSize, @arrowTopPosition - 1px, @AknBorderColor);
+    }
+  }
+
+  .AknFilterBox-disableFilter.disable-filter {
+    display: none;
+  }
+}
