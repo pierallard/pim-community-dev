@@ -5,8 +5,12 @@
   width: 100%;
   border-collapse: collapse;
 
-  &-bodyRow + &-bodyRow {
-    border-top: 1px solid @AknBorderColor;
+  &-bodyRow {
+    display: flex;
+
+    & + &  {
+      border-top: 1px solid @AknBorderColor;
+    }
   }
 
   &-bodyCell,
@@ -101,5 +105,9 @@
 
   &--unclickable &-bodyRow &-bodyCell {
     cursor: default;
+  }
+
+  thead {
+    display: none;
   }
 }
