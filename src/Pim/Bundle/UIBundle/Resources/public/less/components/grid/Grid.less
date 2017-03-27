@@ -1,12 +1,16 @@
 @import '../../base/variables';
 
 .AknGrid {
+  @checkboxCellWidth: 30px;
+
   font-size: @AknDefaultFontSize;
   width: 100%;
   border-collapse: collapse;
 
   &-bodyRow {
     display: flex;
+    flex-wrap: wrap;
+    padding-left: @checkboxCellWidth;
 
     & + &  {
       border-top: 1px solid @AknBorderColor;
@@ -26,13 +30,14 @@
     }
   }
 
-  &-bodyRow:hover &-bodyCell,
-  &-bodyRow--highlight &-bodyCell {
+  &-bodyRow:hover,
+  &-bodyRow--highlight {
     background: @AknDefaultHoverBackground;
   }
 
   &-bodyCell {
     cursor: pointer;
+    color: @AknSlateGrey;
 
     &--full {
       padding: 10px 20px;
@@ -105,6 +110,33 @@
 
   &--unclickable &-bodyRow &-bodyCell {
     cursor: default;
+  }
+
+  .attribute-as-label-cell {
+    order: -2;
+    flex-basis: 100%;
+    color: @AknPurple;
+    font-style: italic;
+  }
+
+  &-bodyCell--checkbox {
+    order: -2;
+    margin-left: -@checkboxCellWidth;
+    position: absolute;
+  }
+
+  &-bodyCell--actions {
+    display: none;
+  }
+
+  .completeness-cell {
+    order: -1;
+    position: absolute;
+    right: 0;
+  }
+
+  &-body {
+    position: relative;
   }
 
   thead {

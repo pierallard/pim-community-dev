@@ -47,7 +47,7 @@ datagrid:
                 type:          twig
                 data_name:     ratio
                 template:      PimDataGridBundle:Property:completeness.html.twig
-                frontend_type: html
+                frontend_type: completeness
                 selector:      product_completeness
             created:
                 label:         Created At

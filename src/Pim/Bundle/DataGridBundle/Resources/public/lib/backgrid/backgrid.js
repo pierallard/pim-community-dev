@@ -2044,7 +2044,9 @@ var Header = Backgrid.Header = Backbone.View.extend({
 var Body = Backgrid.Body = Backbone.View.extend({
 
   /** @property */
-  tagName: "tbody",
+  tagName: 'div',
+
+  className: 'AknGrid-body',
 
   /**
      Initializer.
