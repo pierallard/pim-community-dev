@@ -23,7 +23,7 @@ function($, _, __, AbstractFilter) {
                 '<span class="AknActionButton-caret AknCaret"></span>' +
             '</button>' +
             '<% if (canDisable) { %><a href="<%= nullLink %>" class="AknFilterBox-disableFilter disable-filter"><i class="icon-remove hide-text"><%- _.__("Close") %></i></a><% } %>' +
-            '<div class="filter-criteria dropdown-menu" />'
+            '<div class="filter-criteria dropdown-menu AknDefault-secondColumn" />'
         ),
 
         /**
@@ -247,7 +247,7 @@ function($, _, __, AbstractFilter) {
          * @protected
          */
         _showCriteria: function() {
-            this.$(this.criteriaSelector).show();
+            this.$(this.criteriaSelector).show().animate({'width':'280px'});
             this._focusCriteria();
             this._setButtonPressed(this.$(this.criteriaSelector), true);
             setTimeout(_.bind(function() {
@@ -261,7 +261,9 @@ function($, _, __, AbstractFilter) {
          * @protected
          */
         _hideCriteria: function() {
-            this.$(this.criteriaSelector).hide();
+            this.$(this.criteriaSelector).animate({'width':'0'}, 400, 'swing', function () {
+                $(this).hide();
+            });
             this._setButtonPressed(this.$(this.criteriaSelector), false);
             setTimeout(_.bind(function() {
                 this.popupCriteriaShowed = false;

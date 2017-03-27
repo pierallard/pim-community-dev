@@ -212,7 +212,7 @@ function($, _, __, AbstractFilter) {
          * @protected
          */
         _showCriteria: function() {
-            this.$(this.criteriaSelector).show();
+            this.$(this.criteriaSelector).show().animate({'width':'280px'});
             this._setButtonPressed(this.$(this.criteriaSelector), true);
             setTimeout(_.bind(function() {
                 this.popupCriteriaShowed = true;
@@ -225,7 +225,7 @@ function($, _, __, AbstractFilter) {
          * @protected
          */
         _hideCriteria: function() {
-            this.$(this.criteriaSelector).hide();
+            this.$(this.criteriaSelector).animate({'width':'0'}, 400, 'swing', function () { $(this).hide(); });
             this._setButtonPressed(this.$(this.criteriaSelector), false);
             setTimeout(_.bind(function() {
                 this.popupCriteriaShowed = false;

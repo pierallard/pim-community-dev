@@ -11,6 +11,7 @@
     display: flex;
     flex-wrap: wrap;
     padding-left: @checkboxCellWidth;
+    transition: background 0.1s ease;
 
     & + &  {
       border-top: 1px solid @AknBorderColor;
@@ -22,8 +23,6 @@
     vertical-align: middle;
     line-height: 16px;
     padding: 12px 10px;
-    transition: background 0.1s ease;
-    background: white;
 
     &--tight {
       width: 1px;
@@ -105,7 +104,6 @@
     line-height: 20px;
     padding-top: 6px;
     padding-bottom: 6px;
-    background: white;
   }
 
   &--unclickable &-bodyRow &-bodyCell {

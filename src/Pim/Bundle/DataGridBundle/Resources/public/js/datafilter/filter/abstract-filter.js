@@ -410,7 +410,7 @@ function($, _, Backbone, app) {
          */
         _setButtonPressed: function(element, status) {
             var $element = $(element);
-            var rightOffset = ($(window).width() - ($element.offset().left + $element.outerWidth()));
+            //var rightOffset = ($(window).width() - ($element.offset().left + $element.outerWidth()));
 
             if (status) {
                 element.parent().addClass(this.buttonActiveClass);
@@ -418,13 +418,13 @@ function($, _, Backbone, app) {
                 element.parent().removeClass(this.buttonActiveClass);
             }
 
-            if (rightOffset < 0) {
-                $element.addClass('AknDropdown-menu--right');
-                $element.removeClass('AknDropdown-menu--alignLeft');
-            } else {
-                $element.addClass('AknDropdown-menu--alignLeft');
-                $element.removeClass('AknDropdown-menu--right');
-            }
+            //if (rightOffset < 0) {
+            //    $element.addClass('AknDropdown-menu--right');
+            //    $element.removeClass('AknDropdown-menu--alignLeft');
+            //} else {
+            //    $element.addClass('AknDropdown-menu--alignLeft');
+            //    $element.removeClass('AknDropdown-menu--right');
+            //}
         },
 
         /**
