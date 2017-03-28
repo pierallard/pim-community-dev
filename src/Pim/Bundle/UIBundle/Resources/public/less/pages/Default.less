@@ -40,6 +40,8 @@
     transition: 0.5s left ease-out;
     background: #F9F9FB;
     border-right: 1px solid #D9DDE2;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   &-page--withFilters &-firstColumn {
@@ -57,10 +59,18 @@
     border-top: none;
     border-bottom: none;
     box-shadow: none;
-    //width: @firstColumnWidth;
     width: 0;
+    min-width: 0;
     overflow: hidden;
-    min-width: 0  ;
+  }
+
+  &-secondColumnInner {
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: @firstColumnWidth;
+    position: absolute;
+    right: 0;
+    height: 100%;
   }
 }
 

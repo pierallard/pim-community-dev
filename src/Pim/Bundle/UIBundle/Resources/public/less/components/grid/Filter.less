@@ -4,6 +4,9 @@
   @arrowSize: 10px;
   @arrowTopPosition: 20px;
   @arrowBorderSize: @arrowSize + 1px;
+  @filterHeight: 68px;
+  @paddingTop: 18px;
+  @paddingBottom: 2px;
 
   .arrow(@size, @top, @color) {
     content: '';
@@ -17,14 +20,18 @@
     top: @top;
   }
 
-  padding: 10px 20px;
+  padding: @paddingTop (@paddingTop + @paddingBottom) @paddingBottom;
   cursor: pointer;
+  height: @filterHeight;
+  font-size: @AknFontSizeBig;
+  position: relative;
 
   &-label {
     color: #A1A9B7;
     text-transform: uppercase;
     display: block;
     font-size: @AknFontSizeSmall;
+    line-height: @AknFontSizeSmall;
   }
 
   &-value {
@@ -43,5 +50,68 @@
 
   .AknFilterBox-disableFilter.disable-filter {
     display: none;
+  }
+
+  &--full {
+    border-top: 1px solid @AknBorderColor;
+    border-bottom: 1px solid @AknBorderColor;
+    color: lighten(@AknPurple, 20%);
+    line-height: @filterHeight - 2 * 10px;
+    padding: ((@paddingTop + @paddingBottom) / 2) (@paddingTop + @paddingBottom);
+    font-weight: bold;
+  }
+
+  &-icon {
+    color: lighten(@AknPurple, 10%);
+    position: absolute;
+    right: 28px;
+  }
+
+  &-optgroup {
+    padding: 15px 20px 0;
+  }
+
+  &-optgroupLabel {
+    color: #A1A9B7;
+    text-transform: uppercase;
+    font-size: @AknFontSizeSmall;
+    line-height: 20px;
+  }
+
+  &-option {
+    color: @AknDefaultFontColor;
+    line-height: 28px;
+    font-weight: normal;
+  }
+
+  &-checkbox {
+
+  }
+
+  &-option &-checkbox[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+
+  // Test
+  input[type=checkbox]:after {
+    content: " ";
+    background-color: white;
+    display: inline-block;
+    visibility: visible;
+    height: 20px;
+    width: 20px;
+    border: 1px solid @AknBorderColor;
+    border-radius: 4px;
+  }
+
+  input[type=checkbox]:checked:after {
+    background-color: #5A91C6;
+    color: white;
+    content: "\2714";
+    font-size: 17px;
+    text-align: center;
   }
 }

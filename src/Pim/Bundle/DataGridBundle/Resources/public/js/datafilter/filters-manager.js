@@ -42,7 +42,9 @@ function($, _, Backbone, mediator, MultiselectDecorator) {
          * @property
          */
         addButtonTemplate: _.template(
-            '<select id="add-filter-select" multiple>' +
+            '<div class="AknFilter AknFilter--full add-filter-button">' +
+            '<div class="AknFilter-icon"><i class="icon icon-plus"></i></div>Filters' +
+            '<div class="AknDefault-secondColumn"><div class="AknDefault-secondColumnInner">' +
                 '<%  var groups = [_.__("system_filter_group")];' +
                     '_.each(filters, function(filter) {' +
                         'if (filter.group) {' +
@@ -58,17 +60,45 @@ function($, _, Backbone, mediator, MultiselectDecorator) {
                    '});' +
                 '%>' +
                 '<% _.each(groups, function (group) { %>' +
-                    '<optgroup label="<%= group %>">' +
+                    '<div class="AknFilter-optgroup"><div class="AknFilter-optgroupLabel"><%= group %></div>' +
                         '<% _.each(filters, function (filter, name) { %>' +
                             '<% if (filter.group == group) { %>' +
-                                '<option value="<%= name %>" <% if (filter.enabled) { %>selected<% } %>>' +
+                                '<div class="AknFilter-option">' +
+                                    '<input type="checkbox" class="AknFilter-checkbox" value="<%= name %>" <% if (filter.enabled) { %>checked<% } %>>' +
                                     '<%= filter.label %>' +
-                                '</option>' +
-                                '<% } %>' +
+                                '</div>' +
+                            '<% } %>' +
                         '<% }); %>' +
-                    '</optgroup>' +
+                    '</div>' +
                 '<% }); %>' +
-            '</select>'
+            '</div></div></div>'
+            //'<select id="add-filter-select" multiple>' +
+            //    '<%  var groups = [_.__("system_filter_group")];' +
+            //        '_.each(filters, function(filter) {' +
+            //            'if (filter.group) {' +
+            //                'var key = filter.groupOrder !== null ? filter.groupOrder : "last";' +
+            //                'if (_.isUndefined(groups[key])) {' +
+            //                    'groups[key] = filter.group;' +
+            //                '} else if (!_.contains(groups, filter.group)) {' +
+            //                    'groups.push(filter.group);' +
+            //                '}' +
+            //            '} else {' +
+            //                'filter.group = _.__("system_filter_group");' +
+            //            '} ' +
+            //       '});' +
+            //    '%>' +
+            //    '<% _.each(groups, function (group) { %>' +
+            //        '<optgroup label="<%= group %>">' +
+            //            '<% _.each(filters, function (filter, name) { %>' +
+            //                '<% if (filter.group == group) { %>' +
+            //                    '<option value="<%= name %>" <% if (filter.enabled) { %>selected<% } %>>' +
+            //                        '<%= filter.label %>' +
+            //                    '</option>' +
+            //                    '<% } %>' +
+            //            '<% }); %>' +
+            //        '</optgroup>' +
+            //    '<% }); %>' +
+            //'</select>'
         ),
 
         /**
@@ -101,7 +131,8 @@ function($, _, Backbone, mediator, MultiselectDecorator) {
 
         /** @property */
         events: {
-            'change #add-filter-select': '_onChangeFilterSelect'
+            'change #add-filter-select': '_onChangeFilterSelect',
+            'click .add-filter-button': '_toggleFilters'
         },
 
         /**
@@ -135,6 +166,16 @@ function($, _, Backbone, mediator, MultiselectDecorator) {
                     this.stopListening(filter, "disable", this._onFilterDisabled);
                 }, this);
             }, this);
+        },
+
+        _toggleFilters: function () {
+            if ($('.add-filter-button').hasClass('open-filter')) {
+                $('.add-filter-button').removeClass('open-filter');
+                $('.add-filter-button').find('.AknDefault-secondColumn').animate({'width':0});
+            } else {
+                $('.add-filter-button').addClass('open-filter');
+                $('.add-filter-button').find('.AknDefault-secondColumn').animate({'width':'280px'});
+            }
         },
 
         /**

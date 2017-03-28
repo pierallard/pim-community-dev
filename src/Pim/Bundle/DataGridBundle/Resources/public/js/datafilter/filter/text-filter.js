@@ -22,7 +22,7 @@ function($, _, __, AbstractFilter) {
                 '<span class="AknFilter-value filter-criteria-hint"><%= criteriaHint %></span>' +
             '</button>' +
             '<% if (canDisable) { %><a href="<%= nullLink %>" class="AknFilterBox-disableFilter disable-filter"><i class="icon-remove hide-text"><%- _.__("Close") %></i></a><% } %>' +
-            '<div class="filter-criteria dropdown-menu AknDefault-secondColumn" />'
+            '<div class="filter-criteria dropdown-menu AknDefault-secondColumn"><div class="AknDefault-secondColumnInner"></div></div>'
         ),
 
         /**
@@ -206,7 +206,7 @@ function($, _, __, AbstractFilter) {
                     canDisable: this.canDisable
                 })
             );
-            this._renderCriteria(this.$(this.criteriaSelector));
+            this._renderCriteria(this.$(this.criteriaSelector).find('.AknDefault-secondColumnInner'));
             this._clickOutsideCriteriaCallback = _.bind(function(e) {
                 if (this.popupCriteriaShowed) {
                     this._onClickOutsideCriteria(e);
