@@ -45,6 +45,7 @@ function($, _, Backbone, mediator, MultiselectDecorator) {
             '<div class="AknFilter AknFilter--full add-filter-button">' +
             '<div class="AknFilter-icon"><i class="icon icon-plus"></i></div>Filters' +
             '<div class="AknDefault-secondColumn"><div class="AknDefault-secondColumnInner">' +
+                '<input type="text" class="AknFilter-search search-filters"/>' +
                 '<%  var groups = [_.__("system_filter_group")];' +
                     '_.each(filters, function(filter) {' +
                         'if (filter.group) {' +
@@ -132,7 +133,9 @@ function($, _, Backbone, mediator, MultiselectDecorator) {
         /** @property */
         events: {
             'change #add-filter-select': '_onChangeFilterSelect',
-            'click .add-filter-button': '_toggleFilters'
+            'click .add-filter-button': '_toggleFilters',
+            'keyup .search-filters': '_changeFilters',
+            'keypress .search-filters': '_changeFilters'
         },
 
         /**
@@ -176,6 +179,23 @@ function($, _, Backbone, mediator, MultiselectDecorator) {
                 $('.add-filter-button').addClass('open-filter');
                 $('.add-filter-button').find('.AknDefault-secondColumn').animate({'width':'280px'});
             }
+        },
+
+        _changeFilters: function () {
+            var data = $('.search-filters').val().toLowerCase();
+            $('.AknFilter-option').each(function (i, e) {
+                if ($(e).text().toLowerCase().includes(data)) {
+                    $(e).show();
+                } else {
+                    $(e).hide();
+                }
+            });
+            $('.AknFilter-optgroup').each(function (i, e) {
+                $(e).show();
+                if ($(e).find('.AknFilter-option:visible').length <= 0) {
+                    $(e).hide();
+                }
+            });
         },
 
         /**
