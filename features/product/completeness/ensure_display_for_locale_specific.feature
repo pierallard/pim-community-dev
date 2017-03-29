@@ -26,7 +26,7 @@ Feature: Proper completeness display for locale specific attributes
   @jira https://akeneo.atlassian.net/browse/PIM-4771
   Scenario: Well display completeness for locale specific attributes
     Given I am on the "foo" product page
-    And I open the "Completeness" panel
+    And I visit the "Completeness" column tab
     Then I should see the completeness:
       | channel   | locale | state   | missing_values        | ratio |
       | ecommerce | en_US  | warning | Locale Specific, Name | 33%   |
@@ -41,7 +41,7 @@ Feature: Proper completeness display for locale specific attributes
   @jira https://akeneo.atlassian.net/browse/PIM-4771
   Scenario: Well display completeness for locale specific attributes
     Given I am on the "bar" product page
-    And I open the "Completeness" panel
+    And I visit the "Completeness" column tab
     Then I should see the completeness:
       | channel   | locale | state   | missing_values                          | ratio |
       | ecommerce | en_US  | warning | Name                                    | 50%   |
@@ -56,9 +56,9 @@ Feature: Proper completeness display for locale specific attributes
   @jira https://akeneo.atlassian.net/browse/PIM-5453
   Scenario: Well display completeness missing labels for product locale specific attributes
     Given I am on the "baz" product page
-    When I open the "Completeness" panel
-    And I switch the locale to "fr_FR"
-    And I should see the completeness:
+    When I switch the locale to "fr_FR"
+    And I visit the "Completeness" column tab
+    Then I should see the completeness:
       | locale | channel   | missing_values                                         |
       | fr_FR  | ecommerce | Nom, Description, Imagette, Légende, [locale_specific] |
       | de_DE  | ecommerce | Nom, Description, Imagette, Légende, [locale_specific] |
@@ -68,8 +68,11 @@ Feature: Proper completeness display for locale specific attributes
       | en_US  | ecommerce | Nom, Description, Imagette, Légende, [locale_specific] |
       | en_US  | print     |                                                        |
       | en_US  | tablet    |                                                        |
-    When I switch the locale to "de_DE"
-    And I should see the completeness:
+    When I visit the "Attributes" column tab
+    And I switch the locale to "de_DE"
+    And I visit the "Completeness" column tab
+    And I should see the text "Beschreibung"
+    Then I should see the completeness:
       | locale | channel   | missing_values                                                  |
       | de_DE  | ecommerce | Name, Beschreibung, Miniaturansicht, Legende, [locale_specific] |
       | de_DE  | print     |                                                                 |

@@ -17,4 +17,33 @@
     text-align: center;
     line-height: 40px;
   }
+
+  &-flashContainer {
+    position: fixed;
+    bottom: @AknFlashMessagesPadding;
+    right: @AknFlashMessagesPadding;
+  }
+
+  &-flashList {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    z-index: 899;
+  }
+
+  &-contentWithColumn {
+    display: flex;
+    height: 100%;
+  }
+
+  &-mainContent {
+    padding: 40px;
+    overflow-x: auto;
+    flex-grow: 1;
+  }
+}
+
+/* Temporary block */
+.view {
+  height: 100%;
 }

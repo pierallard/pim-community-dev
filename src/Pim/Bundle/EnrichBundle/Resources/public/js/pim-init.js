@@ -65,7 +65,7 @@ define(
                 if (window.flashMessages) {
                     _.each(window.flashMessages, function (messages, type) {
                         _.each(messages, function (message) {
-                            messenger.notificationFlashMessage(
+                            messenger.notify(
                                 type,
                                 message
                             );
@@ -130,11 +130,11 @@ define(
                                 loadingMask.hide().$el.remove();
                                 var targetUrl = $el.attr('data-redirect-url');
                                 router.redirect(targetUrl, {trigger: true});
-                                messenger.notificationFlashMessage('success', $el.attr('data-success-message'));
+                                messenger.notify('success', $el.attr('data-success-message'));
                             },
                             error: function (xhr) {
                                 loadingMask.hide().$el.remove();
-                                messenger.notificationFlashMessage(
+                                messenger.notify(
                                     'error',
                                     (xhr.responseJSON && xhr.responseJSON.message) ?
                                         xhr.responseJSON.message :

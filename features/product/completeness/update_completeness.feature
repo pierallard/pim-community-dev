@@ -24,19 +24,19 @@ Feature: Display the completeness of a product
 
   Scenario: Successfully update the completeness at product save
     Given I am on the "sneakers" product page
-    When I open the "Completeness" panel
+    When I visit the "Completeness" column tab
     Then I should see the completeness:
       | channel | locale | state   | missing_values         | ratio |
       | mobile  | en_US  | success |                        | 100%  |
       | tablet  | en_US  | warning | Side view              | 89%   |
       | mobile  | fr_FR  | success |                        | 100%  |
       | tablet  | fr_FR  | warning | Description, Side view | 78%   |
-    When I visit the "Attributes" tab
+    When I visit the "Attributes" column tab
     And I visit the "Media" group
     And I attach file "SNKRS-1C-s.png" to "Side view"
     And I save the product
     Then I should be on the product "sneakers" edit page
-    When I open the "Completeness" panel
+    When I visit the "Completeness" column tab
     Then I should see the completeness:
       | channel | locale | state   | missing_values | ratio |
       | mobile  | en_US  | success |                | 100%  |
@@ -52,7 +52,7 @@ Feature: Display the completeness of a product
     And I should see "Family successfully updated"
     And I should not see the text "There are unsaved changes."
     And I am on the "sneakers" product page
-    When I open the "Completeness" panel
+    When I visit the "Completeness" column tab
     Then I should see the completeness:
       | channel | locale | state   | missing_values         | ratio |
       | mobile  | en_US  | success |                        | 100%  |
@@ -60,7 +60,7 @@ Feature: Display the completeness of a product
       | mobile  | fr_FR  | success |                        | 100%  |
       | tablet  | fr_FR  | warning | Description, Side view | 78%   |
     When I am on the "sandals" product page
-    And I open the "Completeness" panel
+    And I visit the "Completeness" column tab
     Then I should see the completeness:
       | channel | locale | state   | missing_values                                    | ratio |
       | mobile  | en_US  | warning | Name, Price, Size                                 | 40%   |

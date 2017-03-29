@@ -88,19 +88,16 @@ extensions:
         targetZone: meta
         position: 100
 
-    pim-job-instance-xlsx-base-import-edit-back-to-grid:
-        module: pim/form/common/back-to-grid
+    pim-job-instance-xlsx-base-import-edit-secondary-actions:
+        module: pim/form/common/secondary-actions
         parent: pim-job-instance-xlsx-base-import-edit
-        targetZone: back
-        aclResourceId: pim_importexport_import_profile_index
-        position: 80
-        config:
-            backUrl: pim_importexport_import_profile_index
+        targetZone: buttons
+        position: 50
 
     pim-job-instance-xlsx-base-import-edit-delete:
         module: pim/job/import/edit/delete
-        parent: pim-job-instance-xlsx-base-import-edit
-        targetZone: buttons
+        parent: pim-job-instance-xlsx-base-import-edit-secondary-actions
+        targetZone: secondary-actions
         aclResourceId: pim_importexport_import_profile_remove
         position: 100
         config:

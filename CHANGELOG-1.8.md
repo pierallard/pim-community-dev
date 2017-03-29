@@ -11,6 +11,12 @@
 - TIP-725: Generalization of the refactoring made in the TIP-724 for all screen containing a simple grid 
 - TIP-734: Menu and index page is now using the new PEF architecture
 
+## UI/UX Refactoring
+
+- PIM-6288: Update flash messages design
+- PIM-6289: Update JSTree design
+- PIM-6294: Update switch design
+
 ## BC breaks
 
 ### Constructors
@@ -21,6 +27,10 @@
 - Change the constructor of `Akeneo\Bundle\BatchBundle\Launcher\SimpleJobLauncher` to add `kernel.logs_dir`
 - Change the constructor of `Pim\Bundle\EnrichBundle\Twig\AttributeExtension` to remove `pim_enrich.attribute_icons`
 - Romved OroNotificationBundle
+
+### Methods
+
+- Remove `attributeIcon` method from `Pim\Bundle\EnrichBundle\Twig\AttributeExtension`
 
 ## Requirements
 

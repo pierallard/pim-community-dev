@@ -5,6 +5,7 @@ namespace Context;
 use Behat\Behat\Context\Step\Then;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Mink\Driver\Selenium2Driver;
+use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ElementNotFoundException;
 use Behat\Mink\Exception\ExpectationException;
 use Behat\MinkExtension\Context\RawMinkContext;
@@ -328,7 +329,7 @@ class AssertionContext extends RawMinkContext
      */
     public function iShouldSeeHistory(TableNode $table)
     {
-        if ($this->getCurrentPage()->find('css', '.panel-container')) {
+        if ($this->getCurrentPage()->find('css', '.history-panel')) {
             $this->iShouldSeeHistoryInPanel($table);
 
             return;
@@ -421,7 +422,9 @@ class AssertionContext extends RawMinkContext
                 );
             }
             if (!$row->hasClass('expanded')) {
-                $row->find('css', '.version-expander')->click();
+                $this->spin(function () use ($row) {
+                    return $row->find('css', '.version-expander');
+                }, sprintf('Can not find the row version expander of %s', json_encode($data)))->click();
             }
             if (isset($data['author'])) {
                 $author = $row->find('css', 'td.author')->getText();
@@ -739,7 +742,11 @@ class AssertionContext extends RawMinkContext
      */
     public function iShouldNotSeeDefaultAvatar()
     {
-        $this->assertSession()->elementAttributeNotContains('css', '.AknTitleContainer-avatar', 'src', 'user-info.png');
+        $this->spin(function () {
+            $image = $this->getCurrentPage()->find('css', '.AknTitleContainer-image');
+
+            return null !== $image && false === strpos($image->getAttribute('src'), 'user-info.png');
+        }, 'Avatar image not found or not default one');
     }
 
     /**
