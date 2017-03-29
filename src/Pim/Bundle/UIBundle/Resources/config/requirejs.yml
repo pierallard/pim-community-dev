@@ -95,3 +95,4 @@ config:
 
         pim/form/system/config/group/loading_message: pimui/js/form/system/group/loading_message
         pim/template/system/group/loading_message: pimui/js/templates/system/group/loading_message.html
+        pim/template/system/flash_message: pimui/js/templates/system/flash_message.html
