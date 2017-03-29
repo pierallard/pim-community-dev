@@ -262,9 +262,9 @@
 {% endmacro %}
 
 {% macro flashMessagesContainer() %}
-    <div id="flash-messages" class="AknBreadcrumbContainer-flashContainer">
+    <div id="flash-messages" class="AknDefault-flashContainer">
         {% block messages %}
-            <div class="flash-messages-holder AknBreadcrumbContainer-flashList"></div>
+            <div class="flash-messages-holder AknDefault-flashList"></div>
             <script type="text/javascript">
                 require(
                     ['jquery', 'oro/messenger'],
