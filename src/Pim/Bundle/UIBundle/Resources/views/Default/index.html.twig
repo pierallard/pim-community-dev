@@ -90,7 +90,6 @@
                                 {% placeholder breadcrumb %}
                             {% endblock breadcrumb %}
                         </div>
-                        {{ elements.flashMessagesContainer() }}
                         {% placeholder pin_button %}
                     </div>
                     {% endblock before_content %}
@@ -107,8 +106,8 @@
             {% endblock main %}
         </div>
     </div>
+    {{ elements.flashMessagesContainer() }}
     {% placeholder before_body_end %}
-
     </body>
     </html>
 {% else %}
