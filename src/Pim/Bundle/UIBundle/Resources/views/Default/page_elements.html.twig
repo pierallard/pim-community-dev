@@ -265,20 +265,11 @@
     <div id="flash-messages" class="AknBreadcrumbContainer-flashContainer">
         {% block messages %}
             <div class="flash-messages-holder AknBreadcrumbContainer-flashList"></div>
-            <script type="text/template" id="message-item-template">
-                <div class="AknFlash alert <% if (type) {  %><%= 'alert-' + type + ' AknFlash--' + type %><% } %> fade in top-messages">
-                    <button type="button" class="AknFlash-closeButton close" data-dismiss="alert">&times;</button>
-                    <div class="message"><%= message %></div>
-                </div>
-            </script>
             <script type="text/javascript">
                 require(
                     ['jquery', 'oro/messenger'],
                     function($, messenger) {
-                        messenger.setup({
-                            container: '#flash-messages .flash-messages-holder',
-                            template: _.template($.trim($('#message-item-template').html()))
-                        });
+                        messenger.setup();
                         {% if app.session.flashbag.peekAll|length > 0 %}
                             $(function() {
                                 {% for type, messages in app.session.flashbag.all %}
