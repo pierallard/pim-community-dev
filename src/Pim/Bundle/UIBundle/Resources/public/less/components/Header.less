@@ -3,19 +3,27 @@
 .AknHeader {
   display: flex;
   flex-direction: column;
+  background: white;
+  border-right: 1px solid @AknBorderColor;
+  width: @AknMainMenuWidth;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
 
   &-menus {
-    background: @AknPurple;
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     z-index: 900;
     position: relative;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.065);
   }
 
   &-leftMenus {
     display: flex;
+    flex-direction: column;
   }
 
   &-logo {
@@ -27,14 +35,44 @@
     vertical-align: middle;
   }
 
+  // @deprecated
+  &-pinbar {
+    display: none;
+  }
+
+  // @deprecated
+  &-pinbarButton {
+    display: none;
+  }
+
+  // @deprecated
+  &-pinbarLink {
+    display: none;
+  }
+
+  // @deprecated
+  &-pinList {
+    display: none;
+  }
+
+  // @deprecated
+  &-pinClose {
+    display: none;
+  }
+
+  // @deprecated
+  &-pinLink {
+    display: none;
+  }
+
   &-userMenu {
     display: flex;
-    height: @AknMainMenuHeight;
+    flex-direction: column;
     line-height: @AknMainMenuHeight;
   }
 
   &-userLink {
-    color: white;
+    color: @AknDefaultFontColor;
     padding: 20px;
 
     &:hover,
