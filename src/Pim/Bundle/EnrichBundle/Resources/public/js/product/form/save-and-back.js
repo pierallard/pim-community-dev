@@ -11,6 +11,7 @@ define(
     [
         'jquery',
         'underscore',
+        'oro/translator',
         'oro/mediator',
         'pim/form',
         'oro/navigation',
@@ -20,6 +21,7 @@ define(
     function (
         $,
         _,
+        __,
         mediator,
         BaseForm,
         Navigation,
@@ -44,18 +46,18 @@ define(
                 this.parent.getExtension('save')
                     .save({silent: true})
                     .done(function () {
-                        messenger.addMessage(
+                        messenger.enqueueMessage(
                             'success',
-                            _.__('pim_enrich.entity.product.info.update_successful'),
-                            {hashNavEnabled: true}
+                            __('pim_enrich.entity.product.info.update_successful')
                         );
+
                         var navigation = Navigation.getInstance();
                         navigation.setLocation(Routing.generate('pim_enrich_product_index'));
                     }.bind(this))
                     .fail(function () {
-                        messenger.notificationFlashMessage(
+                        messenger.notify(
                             'error',
-                            _.__('pim_enrich.entity.product.info.update_failed')
+                            __('pim_enrich.entity.product.info.update_failed')
                         );
                     });
             }

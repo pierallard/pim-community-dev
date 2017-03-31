@@ -68,7 +68,7 @@ define(
              */
             showFlashMessage: function (message, labels) {
                 var flash = __(message, { 'fields': labels.join(', ') });
-                messenger.notificationFlashMessage('error', flash);
+                messenger.notify('error', flash);
             },
 
             /**

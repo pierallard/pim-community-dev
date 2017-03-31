@@ -61,7 +61,7 @@ define([
                     }.bind(this),
                     success: function() {
                         var messageText = __('flash.' + this.getEntityHint() + '.removed');
-                        messenger.notificationFlashMessage('success', messageText);
+                        messenger.notify('success', messageText);
 
                         mediator.trigger('datagrid:doRefresh:' + this.gridName);
                     }.bind(this)

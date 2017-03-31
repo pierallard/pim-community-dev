@@ -59,7 +59,7 @@ define(
                         );
                     });
 
-                    messenger.notificationFlashMessage(
+                    messenger.notify(
                         'error',
                         __('pim_enrich.entity.product.info.field_not_ready', {'fields': fieldLabels.join(', ')})
                     );
