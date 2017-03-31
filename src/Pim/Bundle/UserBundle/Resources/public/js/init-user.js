@@ -10,7 +10,7 @@ define(['jquery', 'underscore', 'oro/translator', 'oro/app', 'oro/mediator', 'or
          * ============================================================ */
         return function () {
             // function initFlashMessages() {
-            //     messenger.setup();
+            //     messenger.showQueuedMessages();
             // }
 
             // $.get(el.attr('href'), function (data) {
@@ -23,9 +23,9 @@ define(['jquery', 'underscore', 'oro/translator', 'oro/app', 'oro/mediator', 'or
             //     var el = $(this);
 
             //     $.get(el.attr('href'), function (data) {
-            //         el.prev().text(data);
+            //         el.closest('.AknFieldContainer').find('.AknTextField').text(data);
             //         var messageText = el.attr('data-message') + ' <strong>' + data + '</strong>';
-            //         messenger.notificationFlashMessage('success', messageText);
+            //         messenger.notify('success', messageText);
             //     });
 
             //     return false;
