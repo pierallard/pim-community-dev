@@ -57,7 +57,7 @@ define(
                         router.redirect(response.redirectUrl);
                     }.bind(this))
                     .fail(function () {
-                        messenger.notificationFlashMessage('error', __('pim_enrich.form.job_instance.fail.launch'));
+                        messenger.notify('error', __('pim_enrich.form.job_instance.fail.launch'));
                     });
                 } else {
                     $.post(this.getUrl(), {method: 'POST'}).
@@ -65,7 +65,7 @@ define(
                             router.redirect(response.redirectUrl);
                         })
                         .fail(function () {
-                            messenger.notificationFlashMessage('error', __('pim_enrich.form.job_instance.fail.launch'));
+                            messenger.notify('error', __('pim_enrich.form.job_instance.fail.launch'));
                         });
                 }
 
