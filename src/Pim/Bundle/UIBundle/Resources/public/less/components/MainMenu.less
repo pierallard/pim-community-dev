@@ -7,8 +7,6 @@
   flex-direction: column;
 
   &-item {
-    font-size: @AknFontSizeBig;
-    height: @AknMainMenuWidth;
     border-left: @borderWidth solid white;
     border-right: @borderWidth solid white;
     opacity: 0.5;
@@ -22,10 +20,18 @@
   }
 
   &-link {
-    line-height: @AknMainMenuWidth;
     color: @AknDefaultFontColor;
-    display: block;
     text-align: center;
+    height: @AknMainMenuWidth;
+    font-size: @AknFontSizeSmall;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &-itemImage {
+    // TODO Ask @yulldesign to refactor for 20x height
+    height: 20px;
   }
 
   &-item--active,
