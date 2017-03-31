@@ -134,7 +134,7 @@ define(
                             },
                             error: function (xhr) {
                                 loadingMask.hide().$el.remove();
-                                messenger.notificationFlashMessage(
+                                messenger.notify(
                                     'error',
                                     (xhr.responseJSON && xhr.responseJSON.message) ?
                                         xhr.responseJSON.message :
