@@ -91,7 +91,7 @@ interface FamilyInterface extends TranslatableInterface, ReferableInterface, Ver
     public function setAttributeAsLabel(AttributeInterface $attributeAsLabel);
 
     /**
-     * @return AttributeInterface
+     * @return AttributeInterface|null
      */
     public function getAttributeAsLabel();
 
