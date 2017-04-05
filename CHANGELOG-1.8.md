@@ -3,6 +3,7 @@
 ## Functional improvements
 
 - TIP-718: Update group types form
+- PIM-6291: Adds attribute used as the main picture in the UI for each family (attribute_as_image)
 
 ## Technical improvements
 
