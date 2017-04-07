@@ -288,7 +288,7 @@ define(function (require) {
         afterRequest: function() {
             var message;
             while (message = flashMessages.shift()) {
-                messenger.notificationFlashMessage.apply(messenger, message);
+                messenger.notify.apply(messenger, message);
             }
         },
 
