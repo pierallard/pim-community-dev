@@ -8,10 +8,10 @@ function($, _, tools,  mediator, FiltersManager) {
         filterModuleName = 'oro/datafilter/{{type}}-filter',
         filterTypes = {
             string:      'choice',
-            choice:      'select',
+            choice:      'anotherone',
             selectrow:   'select-row',
             multichoice: 'multiselect',
-            boolean:     'select'
+            boolean:     'anotherone'
         },
         methods = {
             initBuilder: function () {
