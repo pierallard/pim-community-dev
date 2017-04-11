@@ -7,10 +7,9 @@ function($, _, tools,  mediator, FiltersManager) {
     var initialized = false,
         filterModuleName = 'oro/datafilter/{{type}}-filter',
         filterTypes = {
-            string:      'choice',
-            choice:      'anotherone',
-            selectrow:   'select-row',
-            boolean:     'anotherone'
+            string:  'choice',
+            choice:  'select',
+            boolean: 'select'
         },
         methods = {
             initBuilder: function () {

@@ -1,6 +1,6 @@
 define(
-    ['jquery', 'underscore', 'oro/mediator', 'oro/datafilter/anotherone-filter', 'pim/user-context', 'pim/datagrid/state'],
-    function ($, _, mediator, AnotheroneFilter, UserContext, DatagridState) {
+    ['jquery', 'underscore', 'oro/mediator', 'oro/datafilter/select-filter', 'pim/user-context', 'pim/datagrid/state'],
+    function ($, _, mediator, SelectFilter, UserContext, DatagridState) {
         'use strict';
 
         /**
@@ -14,7 +14,7 @@ define(
          * @class   oro.datafilter.ScopeFilter
          * @extends oro.datafilter.SelectFilter
          */
-        return AnotheroneFilter.extend({
+        return SelectFilter.extend({
             canDisable: false,
 
             populateDefault: false,
@@ -24,7 +24,7 @@ define(
             initialize: function() {
                 this.label = '<i class="icon-eye-open" title="' + this.label + '"></i>';
 
-                AnotheroneFilter.prototype.initialize.apply(this, arguments);
+                SelectFilter.prototype.initialize.apply(this, arguments);
                 this.catalogScope = UserContext.get('catalogScope');
 
                 mediator.once('datagrid_filters:rendered', this.resetValue.bind(this));
@@ -76,7 +76,7 @@ define(
 
                 UserContext.set('catalogScope', newValue.value);
 
-                return AnotheroneFilter.prototype._onValueUpdated.apply(this, arguments);
+                return SelectFilter.prototype._onValueUpdated.apply(this, arguments);
             },
 
             /**
@@ -88,7 +88,7 @@ define(
              * comes from a change of the select element, not from a view/url for example.
              */
             _onSelectChange: function() {
-                AnotheroneFilter.prototype._onSelectChange.apply(this, arguments);
+                SelectFilter.prototype._onSelectChange.apply(this, arguments);
 
                 var value = this._formatRawValue(this._readDOMValue());
                 DatagridState.set('product-grid', 'scope', value.value);
