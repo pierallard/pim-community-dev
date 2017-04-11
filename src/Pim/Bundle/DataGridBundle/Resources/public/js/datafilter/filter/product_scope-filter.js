@@ -1,6 +1,6 @@
 define(
-    ['jquery', 'underscore', 'oro/mediator', 'oro/datafilter/select-filter', 'pim/user-context', 'pim/datagrid/state'],
-    function ($, _, mediator, SelectFilter, UserContext, DatagridState) {
+    ['jquery', 'underscore', 'oro/mediator', 'oro/datafilter/anotherone-filter', 'pim/user-context', 'pim/datagrid/state'],
+    function ($, _, mediator, AnotheroneFilter, UserContext, DatagridState) {
         'use strict';
 
         /**
@@ -14,17 +14,17 @@ define(
          * @class   oro.datafilter.ScopeFilter
          * @extends oro.datafilter.SelectFilter
          */
-        return SelectFilter.extend({
-            /**
-             * @override
-             * @property {Boolean}
-             * @see Oro.Filter.SelectFilter
-             */
-            contextSearch: false,
+        return AnotheroneFilter.extend({
+            canDisable: false,
+
+            populateDefault: false,
+
             catalogScope: null,
 
             initialize: function() {
-                SelectFilter.prototype.initialize.apply(this, arguments);
+                this.label = '<i class="icon-eye-open" title="' + this.label + '"></i>';
+
+                AnotheroneFilter.prototype.initialize.apply(this, arguments);
                 this.catalogScope = UserContext.get('catalogScope');
 
                 mediator.once('datagrid_filters:rendered', this.resetValue.bind(this));
@@ -51,8 +51,6 @@ define(
                 var $filterChoices = $grid.find('#add-filter-select');
                 $filterChoices.find('option[value="scope"]').remove();
                 $filterChoices.multiselect('refresh');
-
-                this.selectWidget.multiselect('refresh');
             },
 
             /**
@@ -64,23 +62,8 @@ define(
                     scope = this.catalogScope;
                 }
 
-                this.setValue({value: scope});
+                this.setValue({ value: scope });
                 UserContext.set('catalogScope', scope);
-                this.selectWidget.multiselect('refresh');
-            },
-
-            /**
-             * @inheritDoc
-             */
-            disable: function () {
-                return this;
-            },
-
-            /**
-             * @inheritDoc
-             */
-            hide: function () {
-                return this;
             },
 
             /**
@@ -93,7 +76,7 @@ define(
 
                 UserContext.set('catalogScope', newValue.value);
 
-                return SelectFilter.prototype._onValueUpdated.apply(this, arguments);
+                return AnotheroneFilter.prototype._onValueUpdated.apply(this, arguments);
             },
 
             /**
@@ -105,29 +88,11 @@ define(
              * comes from a change of the select element, not from a view/url for example.
              */
             _onSelectChange: function() {
-                SelectFilter.prototype._onSelectChange.apply(this, arguments);
+                AnotheroneFilter.prototype._onSelectChange.apply(this, arguments);
 
                 var value = this._formatRawValue(this._readDOMValue());
                 DatagridState.set('product-grid', 'scope', value.value);
-            },
-
-            /**
-             * Filter template
-             *
-             * @override
-             * @property
-             * @see Oro.Filter.SelectFilter
-             */
-            template: _.template(
-                '<div class="AknActionButton filter-select filter-criteria-selector scope-filter">' +
-                    '<i class="icon-eye-open" title="<%= label %>"></i>' +
-                    '<select>' +
-                        '<% _.each(options, function (option) { %>' +
-                            '<option value="<%= option.value %>"><%= option.label %></option>' +
-                        '<% }); %>' +
-                    '</select>' +
-                '</div>'
-            )
+            }
         });
     }
 );

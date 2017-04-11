@@ -41,7 +41,7 @@ function(
             '<div class="AknFilterChoice">' +
                 '<select class="select2">' +
                     '<% _.each(options, function (option) { %>' +
-                        '<option value="<%= option.value %>"<% if (option.value == emptyValue.type) { %> selected="selected"<% } %>><%= option.label %></option>' +
+                        '<option value="<%= option.value %>"<% if (option.value == selectedChoice.value) { %> selected="selected"<% } %>><%= option.label %></option>' +
                     '<% }); %>' +
                 '</select>' +
             '</div>'
@@ -168,9 +168,10 @@ function(
                 options.unshift({value: ' ', label: this.placeholder});
             }
 
+            var selectedChoice = this.emptyValue.value;
             $(el).append(this.popupCriteriaTemplate({
                 options: options,
-                emptyValue: this.emptyValue
+                selectedChoice: selectedChoice
             }));
             return this;
         },
@@ -263,7 +264,16 @@ function(
          */
         _showCriteria: function() {
             this.$(this.selectors.criteria).show();
-            this.$(this.selectors.criteria).find(this.selectors.input).select2('open');
+            var select2 = this.$(this.selectors.criteria).find(this.selectors.input);
+            select2.select2('open');
+            var currentValue = this.getValue();
+            var currentChoice = _.find(this.choices, function (choice) {
+                return choice.value === currentValue.value;
+            });
+            if (currentChoice) {
+                select2.select2('data', { value: currentChoice.value, text: currentChoice.label })
+            }
+
             this._setButtonPressed(this.$(this.selectors.criteria), true);
             setTimeout(_.bind(function() {
                 this.popupCriteriaShowed = true;

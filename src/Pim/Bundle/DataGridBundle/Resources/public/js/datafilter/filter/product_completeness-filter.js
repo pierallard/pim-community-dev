@@ -1,6 +1,6 @@
 define(
-    ['underscore', 'oro/datafilter/select-filter'],
-    function (_, SelectFilter) {
+    ['underscore', 'oro/datafilter/anotherone-filter'],
+    function (_, AnotheroneFilter) {
         'use strict';
 
         /**
@@ -12,8 +12,8 @@ define(
          *
          * @export  oro/datafilter/product_completeness-filter
          * @class   oro.datafilter.ProductCompletenessFilter
-         * @extends oro.datafilter.SelectFilter
+         * @extends oro.datafilter.AnotheroneFilter
          */
-        return SelectFilter.extend({});
+        return AnotheroneFilter.extend({});
     }
 );

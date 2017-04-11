@@ -10,7 +10,6 @@ function($, _, tools,  mediator, FiltersManager) {
             string:      'choice',
             choice:      'anotherone',
             selectrow:   'select-row',
-            multichoice: 'multiselect',
             boolean:     'anotherone'
         },
         methods = {
