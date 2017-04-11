@@ -127,15 +127,25 @@ function(
             this._renderCriteria(this.$(this.selectors.criteria));
             this._updateDOMValue();
 
-            initSelect2.init(this.$(this.selectors.input).parent(), {
-                multiple: false,
-                width: '290px',
-                minimumInputLength: 0
-            });
+            initSelect2.init(this.$(this.selectors.input).parent(), this._getSelect2Options());
 
             $('body').on('click', this._clickOutsideCriteriaCallback.bind(this));
 
             return this;
+        },
+
+        /**
+         * Returns the options for select2 init
+         *
+         * @returns {Object}
+         */
+        _getSelect2Options: function() {
+            var result = { };
+            if (this.choices.length <= 10) {
+                result['dropdownCssClass'] = 'select2--withoutSearch';
+            }
+
+            return result;
         },
 
         /**

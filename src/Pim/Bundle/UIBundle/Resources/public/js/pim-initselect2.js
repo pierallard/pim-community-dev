@@ -19,23 +19,20 @@ define(
             },
             init: function ($target, options) {
                 var self = this;
+                var extendedOptions = self.initOptions(options);
 
                 $target.find('input.select2:not(.select2-offscreen)').each(function () {
-                    var options = self.initOptions(options);
-
                     var $el = $(this);
                     var value = _.map(_.compact($el.val().split(',')), $.trim);
                     var tags  = _.map(_.compact($el.attr('data-tags').split(',')), $.trim);
 
-                    $el.select2($.extend(true, options, {
+                    $el.select2($.extend(true, extendedOptions, {
                         tags: _.union(tags, value).sort(),
                         tokenSeparators: [',', ' ']
                     }));
                 });
 
                 $target.find('select.select2:not(.select2-offscreen)').each(function () {
-                    var options = self.initOptions(options);
-
                     var $el = $(this);
                     var $empty = $el.children('[value=""]');
 
@@ -44,7 +41,7 @@ define(
                         $empty.html('');
                     }
 
-                    $el.select2($.extend(true, options, {
+                    $el.select2($.extend(true, extendedOptions, {
                         allowClear: true
                     }));
                 });
