@@ -82,7 +82,7 @@ class ChoiceFilter extends AbstractFilter
         $metadata['populateDefault'] = $formView->vars['populate_default'];
 
         if ($fieldView->vars['multiple']) {
-            $metadata[FilterUtility::TYPE_KEY] = 'multichoice';
+            $metadata[FilterUtility::TYPE_KEY] = 'select2-choice';
         }
         return $metadata;
     }

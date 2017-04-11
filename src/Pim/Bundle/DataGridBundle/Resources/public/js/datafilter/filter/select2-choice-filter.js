@@ -177,9 +177,12 @@ define(
             },
 
             _onClickOutsideCriteria: function(e) {
-                var elem = this.$(this.criteriaSelector);
+                var clickOnCriteria = $(e.target).closest(this.criteriaSelector).length;
+                var clickOnSelect2 = $(e.target).closest('.select2-drop').length;
+                var clickOnBody = e.target == $('body').get(0);
+                var isSelect2open = $(this.criteriaSector).find('.select2-dropdown-open').length;
 
-                if (e.target != $('body').get(0) && e.target !== elem.get(0) && !elem.has(e.target).length) {
+                if (!(clickOnCriteria || clickOnSelect2 || (clickOnBody && isSelect2open))) {
                     this._hideCriteria();
                     this.setValue(this._formatRawValue(this._readDOMValue()));
                     e.stopPropagation();
