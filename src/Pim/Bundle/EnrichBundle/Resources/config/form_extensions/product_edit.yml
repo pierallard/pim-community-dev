@@ -38,14 +38,16 @@ extensions:
     pim-product-edit-form-download-pdf:
         module: pim/product-edit-form/download-pdf
         parent: pim-product-edit-form
-        targetZone: buttons
+        targetZone: secondary-buttons
         aclResourceId: pim_pdf_generator_product_download
         position: 90
+
+        #TODO
 
     pim-product-edit-form-delete:
         module: pim/product-edit-form/delete
         parent: pim-product-edit-form
-        targetZone: buttons
+        targetZone: secondary-buttons
         aclResourceId: pim_enrich_product_remove
         position: 100
         config:
@@ -75,11 +77,11 @@ extensions:
         targetZone: buttons
         position: 0
 
-    pim-product-edit-form-save-and-back:
-        module: pim/product-edit-form/save-and-back
-        parent: pim-product-edit-form
-        targetZone: buttons
-        position: 0
+#    pim-product-edit-form-save-and-back:
+#        module: pim/product-edit-form/save-and-back
+#        parent: pim-product-edit-form
+#        targetZone: buttons
+#        position: 0
 
     pim-product-edit-form-state:
         module: pim/form/common/state

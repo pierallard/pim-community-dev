@@ -11,9 +11,6 @@ define(
     ['pim/form', 'pim/user-context', 'pim/i18n'],
     function (BaseForm, UserContext, i18n) {
         return BaseForm.extend({
-            tagName: 'h1',
-            className: 'AknTitleContainer-title',
-
             /**
              * {@inheritdoc}
              */
