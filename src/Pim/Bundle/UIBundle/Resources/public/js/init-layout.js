@@ -160,7 +160,7 @@ require(['jquery', 'underscore', 'oro/translator', 'oro/app', 'oro/mediator', 'o
                     type: 'DELETE',
                     success: function () {
                         el.trigger('removesuccess');
-                        messenger.addMessage(
+                        messenger.enqueueMessage(
                             'success',
                             el.data('success-message'),
                             {'hashNavEnabled': Navigation.isEnabled()}
@@ -181,10 +181,11 @@ require(['jquery', 'underscore', 'oro/translator', 'oro/app', 'oro/mediator', 'o
                             navigation.loadingMask.hide();
                         }
 
-                        messenger.notificationMessage(
+                        messenger.notify(
                             'error',
                             el.data('error-message') ||
-                                __('Unexpected error occured. Please contact system administrator.')
+                                __('Unexpected error occurred. Please contact system administrator.'),
+                            { flash: false }
                         );
                     }
                 });

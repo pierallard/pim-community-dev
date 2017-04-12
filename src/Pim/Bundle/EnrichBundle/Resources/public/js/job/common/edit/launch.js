@@ -60,7 +60,7 @@ define(
                         Navigation.getInstance().setLocation(response.redirectUrl);
                     })
                     .fail(function () {
-                        messenger.notificationFlashMessage('error', __('pim_enrich.form.job_instance.fail.launch'));
+                        messenger.notify('error', __('pim_enrich.form.job_instance.fail.launch'));
                     });
             },
 

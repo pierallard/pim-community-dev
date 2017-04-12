@@ -9,7 +9,7 @@ function ($, _, __, app, mediator, messenger) {
      * ============================================================ */
     $(function () {
         function initFlashMessages() {
-            messenger.setup();
+            messenger.showQueuedMessages();
         }
 
         $(document).on('click', '#btn-apigen', function () {
@@ -18,7 +18,7 @@ function ($, _, __, app, mediator, messenger) {
             $.get(el.attr('href'), function (data) {
                 el.closest('.AknFieldContainer').find('.AknTextField').text(data);
                 var messageText = el.attr('data-message') + ' <strong>' + data + '</strong>';
-                messenger.notificationFlashMessage('success', messageText);
+                messenger.notify('success', messageText);
             });
 
             return false;

@@ -17,4 +17,17 @@
     text-align: center;
     line-height: 40px;
   }
+
+  &-flashContainer {
+    position: fixed;
+    bottom: @AknFlashMessagesPadding;
+    right: @AknFlashMessagesPadding;
+  }
+
+  &-flashList {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    z-index: 899;
+  }
 }

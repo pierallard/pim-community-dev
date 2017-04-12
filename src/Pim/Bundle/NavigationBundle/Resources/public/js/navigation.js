@@ -288,7 +288,7 @@ define(function (require) {
         afterRequest: function() {
             var message;
             while (message = flashMessages.shift()) {
-                messenger.notificationFlashMessage.apply(messenger, message);
+                messenger.notify.apply(messenger, message);
             }
         },
 
@@ -491,7 +491,7 @@ define(function (require) {
         },
 
         showMessage: function(message) {
-            messenger.notificationFlashMessage('error', message);
+            messenger.notify('error', message);
         },
 
         /**
@@ -511,7 +511,7 @@ define(function (require) {
             for (var type in messages) {
                 if (messages.hasOwnProperty(type)) {
                     for (var i = 0; i < messages[type].length; i++) {
-                        messenger.notificationFlashMessage(type, messages[type][i]);
+                        messenger.notify(type, messages[type][i]);
                     }
                 }
             }
