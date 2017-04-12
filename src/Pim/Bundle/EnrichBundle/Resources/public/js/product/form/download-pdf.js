@@ -24,7 +24,7 @@ define(
     ) {
         return BaseForm.extend({
             tagName: 'a',
-            className: 'AknButton AknButton--grey AknButton--withIcon AknTitleContainer-rightButton btn-download',
+            className: 'AknDropdown-menuLink btn-download',
             template: _.template(template),
 
             configure: function () {

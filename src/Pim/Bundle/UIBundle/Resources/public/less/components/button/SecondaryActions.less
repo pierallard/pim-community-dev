@@ -1,0 +1,22 @@
+@import '../../base/variables';
+
+.AknSecondaryActions {
+  &-button {
+    height: 32px;
+    width: 32px;
+    position: relative;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s ease-in;
+
+    // TODO Temporary to have an icon. Change src/Pim/Bundle/EnrichBundle/Resources/public/templates/product/secondary-actions.html
+    text-align: center;
+    font-size: 40px;
+    line-height: 8px;
+    color: darken(#A1A9B7, 20%);
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
