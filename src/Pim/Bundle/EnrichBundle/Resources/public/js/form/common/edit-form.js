@@ -33,6 +33,10 @@ define(
         return BaseForm.extend({
             template: _.template(template),
 
+            events: {
+                'click .AknDefault-firstColumnButton': '_toggleColumn'
+            },
+
             /**
              * {@inheritdoc}
              */
@@ -81,6 +85,10 @@ define(
                 FetcherRegistry.clearAll();
                 FieldManager.clearFields();
                 this.render();
+            },
+
+            _toggleColumn: function (e) {
+                $(this.$el).toggleClass('collapsed');
             }
         });
     }
