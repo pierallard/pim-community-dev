@@ -9,6 +9,10 @@
 - TIP-711: Rework job execution reporting page with the new PEF architecture
 - TIP-724: Refactoring of the 'Settings/Association types' index screen using 'pim/common/grid'
 
+## UI/UX Refactoring
+
+- PIM-6288: Update flash messages design
+
 ## BC breaks
 
 ### Constructors
