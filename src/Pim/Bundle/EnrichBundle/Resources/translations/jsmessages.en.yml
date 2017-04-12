@@ -394,6 +394,9 @@ pim_enrich:
             mass_edit:
                 select_attributes: Select attributes
                 select: Select
+            channel: Channel
+            locale: Locale
+
         association_type:
             tab:
                 properties:

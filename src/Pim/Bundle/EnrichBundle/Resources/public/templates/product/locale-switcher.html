@@ -1,8 +1,9 @@
 <a class="AknActionButton" data-toggle="dropdown" href="#">
-    <%= i18n.getFlag(currentLocale.code, false) %> <%- currentLocale.language %>
+    <%= label %>: <%= i18n.getFlag(currentLocale.code, false) %> <span class="AknActionButton-strong"><%- currentLocale.language %></span>
     <span class="AknActionButton-caret AknCaret"></span>
 </a>
 <ul class="AknDropdown-menu">
+    <li class="AknDropdown-menuTitle"><%= label %></li>
     <% _.each(locales, function (locale) { %>
         <li><a class="AknDropdown-menuLink" data-locale="<%- locale.code %>"><%= i18n.getFlag(locale.code, false) %> <%- locale.language %></a></li>
     <% }); %>

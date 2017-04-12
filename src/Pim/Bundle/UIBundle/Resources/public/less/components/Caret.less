@@ -1,23 +1,21 @@
 @import '../base/variables';
 
 .AknCaret {
-  @defaultSize: 4px;
+  @defaultSize: 16px;
   @bigSize: 5px;
 
   display: inline-block;
-  width: 0;
-  height: 0;
-  border-top: @defaultSize solid @AknDefaultFontColor;
-  border-right: @defaultSize solid transparent;
-  border-left: @defaultSize solid transparent;
-  content: "";
-  margin-bottom: 2px;
+  width: @defaultSize;
+  height: @defaultSize;
+  background: url("../../images/icon-down.svg") no-repeat center 6px;
+  background-size: @defaultSize - 1px;
 
   &--inverse {
-    border-top-color: white;
+    // TODO
   }
 
   &--big {
+    // TODO to remove ?
     border-top-width: @bigSize;
     border-right-width: @bigSize;
     border-left-width: @bigSize;

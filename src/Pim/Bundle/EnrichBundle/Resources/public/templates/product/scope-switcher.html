@@ -1,8 +1,9 @@
 <a class="AknActionButton" data-toggle="dropdown" href="#">
-    <%- currentScope %>
+    <%= label %>: <span class="AknActionButton-strong"><%- currentScope %></span>
     <span class="AknActionButton-caret AknCaret"></span>
 </a>
 <ul class="AknDropdown-menu">
+    <li class="AknDropdown-menuTitle"><%= label %></li>
     <% _.each(channels, function (scope) { %>
         <li>
             <a class="AknDropdown-menuLink"

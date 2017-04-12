@@ -10,12 +10,13 @@
 define(
     [
         'underscore',
+        'oro/translator',
         'pim/form',
         'text!pim/template/product/locale-switcher',
         'pim/fetcher-registry',
         'pim/i18n'
     ],
-    function (_, BaseForm, template, FetcherRegistry, i18n) {
+    function (_, __, BaseForm, template, FetcherRegistry, i18n) {
         return BaseForm.extend({
             template: _.template(template),
             className: 'AknDropdown AknButtonList-item locale-switcher',
@@ -32,6 +33,7 @@ define(
                             this.template({
                                 locales: locales,
                                 currentLocale: _.findWhere(locales, {code: params.localeCode}),
+                                label: __('pim_enrich.form.product.locale'),
                                 i18n: i18n
                             })
                         );

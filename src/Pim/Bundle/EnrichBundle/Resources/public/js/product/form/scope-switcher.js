@@ -10,13 +10,14 @@
 define(
     [
         'underscore',
+        'oro/translator',
         'pim/form',
         'text!pim/template/product/scope-switcher',
         'pim/fetcher-registry',
         'pim/user-context',
         'pim/i18n'
     ],
-    function (_, BaseForm, template, FetcherRegistry, UserContext, i18n) {
+    function (_, __, BaseForm, template, FetcherRegistry, UserContext, i18n) {
         return BaseForm.extend({
             template: _.template(template),
             className: 'AknDropdown AknButtonList-item scope-switcher',
@@ -45,6 +46,7 @@ define(
                                     scope.code
                                 ),
                                 catalogLocale: UserContext.get('catalogLocale'),
+                                label: _.__('pim_enrich.form.product.channel'),
                                 i18n: i18n
                             })
                         );
