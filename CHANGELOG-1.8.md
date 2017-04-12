@@ -13,6 +13,7 @@
 ## UI/UX Refactoring
 
 - PIM-6288: Update flash messages design
+- PIM-6289: Update JSTree design
 
 ## BC breaks
 
