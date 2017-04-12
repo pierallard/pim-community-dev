@@ -1,37 +1,23 @@
 @import '../base/variables';
 
 .AknBell {
-  &-link {
-    height: @AknMainMenuHeight;
-    width: @AknMainMenuHeight;
-    line-height: @AknMainMenuHeight;
-    color: white;
-    text-align: center;
-    display: block;
-    position: relative;
+  width: @AknDefaultButtonSize;
+  height: @AknDefaultButtonSize;
 
-    &:hover,
-    &:focus {
-      color: white;
-    }
-  }
-
-  &-icon {
-    font-size: @AknBigIconFontSize;
-    line-height: @AknMainMenuHeight;
-  }
-
-  &-countContainer {
-    width: @AknMainMenuHeight;
-    position: absolute;
-    top: -8px;
-    right: -8px;
-  }
+  border: 1px solid @AknBorderColor;
+  border-radius: 100px;
+  position: relative;
+  background: url("../../images/icon-notification.svg") no-repeat center center;
+  background-size: 14px;
 
   &-count {
     background: @AknRed;
-    padding: 0 2px;
-    border-radius: 2px;
+    border-radius: 100px;
+    height: 11px;
+    width: 11px;
+    position: absolute;
+    right: 0;
+    top: 0;
 
     &--hidden {
       display: none;

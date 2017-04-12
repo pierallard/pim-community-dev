@@ -83,6 +83,11 @@ define(
                     }.bind(this))
                     .fail(this.fail.bind(this))
                     .always(this.hideLoadingMask.bind(this));
+            },
+
+            // TODO Remove this
+            render: function () {
+                this.$el.remove();
             }
         });
     }

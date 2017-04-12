@@ -44,12 +44,14 @@ define(
              */
             render: function () {
                 var buttons = this.model.get('buttons');
-                this.$el.html(this.template({
-                    primaryButton: _.first(buttons),
-                    secondaryButtons: buttons.slice(1)
-                }));
-                this.delegateEvents();
-
+                if (!_.isEmpty(buttons)) {
+                    this.$el.html(this.template({
+                        primaryButton: _.first(buttons),
+                        secondaryButtons: buttons.slice(1)
+                    }));
+                    this.delegateEvents();
+                }
+                
                 return this;
             },
 
