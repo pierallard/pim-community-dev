@@ -21,7 +21,7 @@ define(
     function ($, _, mediator, BaseForm, template, FetcherRegistry, UserContext, i18n) {
         return BaseForm.extend({
             tagName: 'span',
-            className: 'AknTitleContainer-metaItem',
+            className: 'AknDefault-columnBlock',
             template: _.template(template),
             configure: function () {
                 this.listenTo(this.getRoot(), 'pim_enrich:form:entity:post_update', this.render);

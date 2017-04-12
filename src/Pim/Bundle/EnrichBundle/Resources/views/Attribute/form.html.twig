@@ -37,8 +37,14 @@
 
         {% set left %}
             {% if form.vars.value.id %}
-                <span class="AknTitleContainer-metaItem">{{ 'Last update'|trans }}: {{ updated ? updated.loggedAt|datetime_presenter : 'N/A'|trans }} {{ 'by'|trans }} {{ updated ? updated.author : 'N/A'|trans }}</span>
-                <span class="AknTitleContainer-metaItem">{{ 'Created'|trans }}: {{ created ? created.loggedAt|datetime_presenter : 'N/A'|trans }} {{ 'by'|trans }} {{ created ? created.author : 'N/A'|trans }}</span>
+                <span class="AknDefault-columnBlock">
+                    <div class="AknDefault-title">{{ 'Last update'|trans }}</div>
+                    {{ updated ? updated.loggedAt|datetime_presenter : 'N/A'|trans }} {{ 'by'|trans }} {{ updated ? updated.author : 'N/A'|trans }}
+                </span>
+                <span class="AknDefault-columnBlock">
+                    <div class="AknDefault-title">{{ 'Created'|trans }}</div>
+                    {{ created ? created.loggedAt|datetime_presenter : 'N/A'|trans }} {{ 'by'|trans }} {{ created ? created.author : 'N/A'|trans }}
+                </span>
             {% endif %}
         {% endset %}
 

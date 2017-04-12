@@ -18,7 +18,7 @@ define(
     function (_, __, BaseForm, mediator, formTemplate) {
         return BaseForm.extend({
             tagName: 'span',
-            className: 'AknTitleContainer-metaItem',
+            className: 'AknDefault-columnBlock',
             template: _.template(formTemplate),
 
             /**

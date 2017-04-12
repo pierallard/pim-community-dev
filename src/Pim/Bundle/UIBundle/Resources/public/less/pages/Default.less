@@ -30,4 +30,52 @@
     flex-direction: column-reverse;
     z-index: 899;
   }
+
+  &-firstColumn {
+    position: fixed;
+    left: 0;
+    width: 280px;
+    height: ~"calc(100% - 110px)"; // TODO To remove
+    background: #f9f9fb;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 11px;
+    border-right: 1px solid #d2d7dc;
+  }
+
+  &-firstColumnTop {
+    padding: 20px;
+  }
+
+  &-firstColumnBottom {
+    border-top: 1px solid #d2d7dc;
+    padding: 20px;
+  }
+
+  &-columnBlock:not(:empty) {
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    line-height: 16px;
+    color: #001b39;
+    font-size: 12px;
+  }
+
+  &-columnBlock &-title {
+    font-size: 11px;
+  }
+
+  &-mainContent {
+    padding: 40px 40px 40px 280px + 40px;
+  }
+
+  &-title {
+    color: #a2abb9;
+    text-transform: uppercase;
+  }
+
+  &-title + &-columnBlock {
+    margin-top: 24px;
+  }
 }

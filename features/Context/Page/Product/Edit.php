@@ -60,7 +60,7 @@ class Edit extends ProductEditForm
                 ],
                 'Copy actions'            => ['css' => '.copy-actions'],
                 'Comment threads'         => ['css' => '.comment-threads'],
-                'Meta zone'               => ['css' => '.AknTitleContainer-metaItem'],
+                'Meta zone'               => ['css' => '.AknDefault-columnBlock'],
                 'Modal'                   => ['css' => '.modal'],
                 'Progress bar'            => ['css' => '.progress-bar'],
                 'Save'                    => ['css' => '.save'],
@@ -601,7 +601,7 @@ class Edit extends ProductEditForm
     public function changeFamily($family)
     {
         $changeLink = $this->spin(function () {
-            return $this->getElement('Meta zone')->find('css', '.AknTitleContainer-metaItem .change-family');
+            return $this->getElement('Meta zone')->find('css', '.AknDefault-columnBlock .change-family');
         }, 'Cannot find the Change Family button element');
 
         $changeLink->click();
@@ -630,7 +630,7 @@ class Edit extends ProductEditForm
         return $this->spin(function () use ($family) {
             return $this
                 ->getElement('Meta zone')
-                ->find('css', '.AknTitleContainer-metaItem .product-family');
+                ->find('css', '.AknDefault-columnBlock .product-family');
         }, 'Cannot find Product Family element')->getHTML();
     }
 
