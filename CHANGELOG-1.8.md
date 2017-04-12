@@ -11,6 +11,10 @@
 - TIP-725: Generalization of the refactoring made in the TIP-724 for all screen containing a simple grid 
 - TIP-734: Menu and index page is now using the new PEF architecture
 
+## UI/UX Refactoring
+
+- PIM-6288: Update flash messages design
+
 ## BC breaks
 
 ### Constructors
