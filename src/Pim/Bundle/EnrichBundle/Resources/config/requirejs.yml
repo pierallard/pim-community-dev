@@ -457,6 +457,8 @@ config:
         pim/form/common/delete:                              pimenrich/js/form/common/delete
         pim/form/common/back-to-grid:                        pimenrich/js/form/common/back-to-grid
         pim/form/common/form-tabs:                           pimenrich/js/form/common/form-tabs
+        pim/form/common/column-tabs:                         pimenrich/js/form/common/column-tabs
+        pim/form/common/column-navigation:                   pimenrich/js/form/common/column-navigation
         pim/form/common/save-form:                           pimenrich/js/form/common/save-form
         pim/form/common/save-buttons:                        pimenrich/js/form/common/save-buttons
         pim/form/common/state:                               pimenrich/js/form/common/state
@@ -521,6 +523,8 @@ config:
         # TODO It's not the right place because it's not forcément in a form.
         pim/template/form/column:                                 pimenrich/templates/form/column.html
         pim/template/form/form-tabs:                              pimenrich/templates/form/form-tabs.html
+        pim/template/form/column-tabs:                            pimenrich/templates/form/column-tabs.html
+        pim/template/form/column-navigation:                      pimenrich/templates/form/column-navigation.html
         pim/template/form/state:                                  pimenrich/templates/form/state.html
         pim/template/form/meta/created:                           pimenrich/templates/form/meta/created.html
         pim/template/form/meta/updated:                           pimenrich/templates/form/meta/updated.html

@@ -55,8 +55,29 @@
   }
 
   &-value {
-    color: #001b39;
+    color: #11324D;
     font-size: 12px;
+  }
+
+  &-navigationLink {
+    font-size: 14px;
+    padding: 8px 0;
+    color: #11324D;
+    cursor: pointer;
+    opacity: 0.85;
+    transition: opacity 0.2s ease-in;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &--active {
+      color: #9452BA;
+    }
+
+    &:nth-child(1) {
+      margin-top: 12px;
+    }
   }
 
   &-collapseButton {
@@ -94,4 +115,6 @@
     right: (@littleWidth - @iconSize) / 2;
     background: url("../../images/icon-panelOpen.svg") no-repeat 0 100%;
   }
+
+
 }
