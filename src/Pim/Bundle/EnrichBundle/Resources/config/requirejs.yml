@@ -470,6 +470,7 @@ config:
         pim/form/common/index/index:                         pimenrich/js/form/common/index/index
         pim/form/common/index/grid:                          pimenrich/js/form/common/index/grid
         pim/form/common/index/create-button:                 pimenrich/js/form/common/index/create-button
+        pim/form/common/column:                              pimenrich/js/form/common/column
 
         # Fields
         pim/field:                  pimenrich/js/product/field/field
@@ -517,6 +518,8 @@ config:
         pim/template/form/properties/general:                     pimenrich/templates/form/properties/general.html
         pim/template/form/properties/input:                       pimenrich/templates/form/properties/input.html
         pim/template/form/back-to-grid:                           pimenrich/templates/form/back-to-grid.html
+        # TODO It's not the right place because it's not forcément in a form.
+        pim/template/form/column:                                 pimenrich/templates/form/column.html
         pim/template/form/form-tabs:                              pimenrich/templates/form/form-tabs.html
         pim/template/form/state:                                  pimenrich/templates/form/state.html
         pim/template/form/meta/created:                           pimenrich/templates/form/meta/created.html

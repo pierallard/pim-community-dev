@@ -17,7 +17,7 @@ define(
     function (_, __, BaseForm, formTemplate) {
         return BaseForm.extend({
             tagName: 'span',
-            className: 'AknDefault-columnBlock',
+            className: 'AknColumn-block',
             template: _.template(formTemplate),
 
             /**

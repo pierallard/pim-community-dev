@@ -62,21 +62,21 @@
 
         {% set meta %}
             {% if form.vars.value.id %}
-                <span class="AknDefault-columnBlock">
-                    <div class="AknDefault-title">{{ 'Created'|trans }}</div>
-                    {{ form.vars.value.createdAt ? form.vars.value.createdAt|datetime_presenter : 'N/A' }}
+                <span class="AknColumn-block">
+                    <div class="AknColumn-title">{{ 'Created'|trans }}</div>
+                    <div class="AknColumn-value">{{ form.vars.value.createdAt ? form.vars.value.createdAt|datetime_presenter : 'N/A' }}</div>
                 </span>
-                <span class="AknDefault-columnBlock">
-                    <div class="AknDefault-title">{{ 'Updated'|trans }}</div>
-                    {{ form.vars.value.updatedAt ? form.vars.value.updatedAt|datetime_presenter : 'N/A' }}
+                <span class="AknColumn-block">
+                    <div class="AknColumn-title">{{ 'Updated'|trans }}</div>
+                    <div class="AknColumn-value">{{ form.vars.value.updatedAt ? form.vars.value.updatedAt|datetime_presenter : 'N/A' }}</div>
                 </span>
-                <span class="AknDefault-columnBlock">
-                    <div class="AknDefault-title">{{ 'Last logged in'|trans }}</div>
-                    {{ form.vars.value.lastLogin ? form.vars.value.lastLogin|datetime_presenter : 'N/A' }}
+                <span class="AknColumn-block">
+                    <div class="AknColumn-title">{{ 'Last logged in'|trans }}</div>
+                    <div class="AknColumn-value">{{ form.vars.value.lastLogin ? form.vars.value.lastLogin|datetime_presenter : 'N/A' }}</div>
                 </span>
-                <span class="AknDefault-columnBlock">
-                    <div class="AknDefault-title">{{ 'Login count'|trans }}</div>
-                    {{ form.vars.value.loginCount|default(0) }}
+                <span class="AknColumn-block">
+                    <div class="AknColumn-title">{{ 'Login count'|trans }}</div>
+                    <div class="AknColumn-value">{{ form.vars.value.loginCount|default(0) }}</div>
                 </span>
             {% endif %}
         {% endset %}

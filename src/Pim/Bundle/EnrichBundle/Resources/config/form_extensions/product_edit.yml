@@ -2,6 +2,10 @@ extensions:
     pim-product-edit-form:
         module: pim/form/common/edit-form
 
+    pim-product-edit-form-column:
+        module: pimenrich/js/form/common/column
+        parent: pim-product-edit-form
+
     pim-product-edit-form-cache-invalidator:
         module: pim/cache-invalidator
         parent: pim-product-edit-form
@@ -91,7 +95,7 @@ extensions:
 
     pim-product-edit-form-family:
         module: pim/product-edit-form/meta/family
-        parent: pim-product-edit-form
+        parent: pim-product-edit-form-column
         targetZone: meta
         position: 80
 
@@ -104,7 +108,7 @@ extensions:
 
     pim-product-edit-form-created:
         module: pim/form/common/meta/created
-        parent: pim-product-edit-form
+        parent: pim-product-edit-form-column
         targetZone: meta
         position: 90
         config:
@@ -113,7 +117,7 @@ extensions:
 
     pim-product-edit-form-updated:
         module: pim/form/common/meta/updated
-        parent: pim-product-edit-form
+        parent: pim-product-edit-form-column
         targetZone: meta
         position: 100
         config:
@@ -122,7 +126,7 @@ extensions:
 
     pim-product-edit-form-groups:
         module: pim/product-edit-form/meta/groups
-        parent: pim-product-edit-form
+        parent: pim-product-edit-form-column
         targetZone: meta
         position: 110
 

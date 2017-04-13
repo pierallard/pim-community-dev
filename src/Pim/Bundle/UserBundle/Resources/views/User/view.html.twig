@@ -62,8 +62,8 @@
 
 {% block stats %}
     {{ parent() }}
-    <span class="AknDefault-columnBlock">{{ 'Last logged in'|trans }}: {{ entity.lastLogin ? entity.lastLogin|datetime_presenter : 'N/A' }}</span>
-    <span class="AknDefault-columnBlock">{{ 'Login count'|trans }}: {{ entity.loginCount|default(0) }}</span>
+    <span class="AknColumn-block">{{ 'Last logged in'|trans }}: {{ entity.lastLogin ? entity.lastLogin|datetime_presenter : 'N/A' }}</span>
+    <span class="AknColumn-block">{{ 'Login count'|trans }}: {{ entity.loginCount|default(0) }}</span>
 {% endblock stats %}
 
 {% block backButton %}

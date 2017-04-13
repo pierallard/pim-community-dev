@@ -13,13 +13,13 @@
         {% set meta %}
             {% block stats %}
                 {% if breadcrumbs.entity.createdAt is defined and breadcrumbs.entity.updatedAt is defined %}
-                    <span class="AknDefault-columnBlock">
-                        <div class="AknDefault-title">{{ 'Created'|trans }}</div>
-                        {{ breadcrumbs.entity.createdAt ? breadcrumbs.entity.createdAt|datetime_presenter : 'N/A' }}
+                    <span class="AknColumn-block">
+                        <div class="AknColumn-title">{{ 'Created'|trans }}</div>
+                        <div class="AknColumn-value">{{ breadcrumbs.entity.createdAt ? breadcrumbs.entity.createdAt|datetime_presenter : 'N/A' }}</div>
                     </span>
-                    <span class="AknDefault-columnBlock">
-                        <div class="AknDefault-title">{{ 'Updated'|trans }}</div>
-                        {{ breadcrumbs.entity.updatedAt ? breadcrumbs.entity.updatedAt|datetime_presenter : 'N/A' }}
+                    <span class="AknColumn-block">
+                        <div class="AknColumn-title">{{ 'Updated'|trans }}</div>
+                        <div class="AknColumn-value">{{ breadcrumbs.entity.updatedAt ? breadcrumbs.entity.updatedAt|datetime_presenter : 'N/A' }}</div>
                     </span>
                 {% endif %}
             {% endblock stats %}

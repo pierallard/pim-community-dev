@@ -43,7 +43,7 @@ define(
     ) {
         var FormView = BaseForm.extend({
             tagName: 'span',
-            className: 'AknDefault-columnBlock product-groups',
+            className: 'AknColumn-block product-groups',
             template: _.template(formTemplate),
             modalTemplate: _.template(modalTemplate),
             events: {

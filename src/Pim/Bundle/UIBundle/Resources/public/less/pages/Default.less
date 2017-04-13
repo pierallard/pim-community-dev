@@ -1,8 +1,6 @@
 @import '../base/variables';
 
 .AknDefault {
-  @timing: 0.3s;
-
   &-page {
     width: 100%;
   }
@@ -33,112 +31,18 @@
     z-index: 899;
   }
 
-  &-firstColumn {
-    position: fixed;
-    left: 0;
-    width: 280px;
-    height: ~"calc(100% - 110px)"; // TODO To remove
-    background: #f9f9fb;
+  &-contentWithColumn {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-size: 11px;
-    border-right: 1px solid #d2d7dc;
-    transition: left @timing ease-in-out;
-  }
-
-  &-firstColumnTop {
-    padding: 20px;
-  }
-
-  &-firstColumnBottom {
-    border-top: 1px solid #d2d7dc;
-    padding: 20px;
-    transition: padding-right @timing ease-in-out;
-  }
-
-  &-columnBlock:not(:empty) {
-    height: 64px;
-    display: flex;
-    flex-direction: column;
-    line-height: 16px;
-    color: #001b39;
-    font-size: 12px;
-  }
-
-  &-columnBlock &-title {
-    font-size: 11px;
+    height: 100%;
   }
 
   &-mainContent {
-    padding: 40px 40px 40px 280px + 40px;
-    transition: padding-left @timing ease-in-out;
-  }
-
-  &-title {
-    color: #a2abb9;
-    text-transform: uppercase;
-  }
-
-  &-title + &-columnBlock {
-    margin-top: 24px;
-  }
-
-  &-firstColumnButtonContainer {
-    border-top: 1px solid #d2d7dc;
-    padding-top: 20px;
-    height: 20px + 24px;
-    transition: margin-left @timing ease-in-out;
-  }
-
-  &-firstColumnButton {
-    height: 24px;
-    width: 24px;
-    background: url("../../images/icon-panelClose.svg") no-repeat center center;
-    background-size: 24px;
-    cursor: pointer;
-    opacity: 0.5;
-    position: absolute;
-    right: 280px - 24px - 20px;
-    transition: right @timing ease-in-out;
-    transform: rotateY(0deg);
-
-    &:hover {
-      opacity: 1;
-    }
+    padding: 40px;
+    overflow-x: auto;
+    flex-grow: 1;
   }
 }
 
-// TODO Set a real BEM class
-#product-edit-form {
-  &.collapsed {
-    .AknDefault-firstColumn {
-      left: ~"calc(40px - 280px)";
-    }
-    .AknDefault-firstColumnButton {
-      right: (40px - 24px) / 2;
-      transform: rotateY(180deg);
-      animation-name: mirror;
-      animation-duration: 0.3s;
-    }
-    .AknDefault-firstColumnBottom {
-      padding-right: 5px;
-    }
-    .AknDefault-firstColumnButtonContainer {
-      margin-left: 280px - 3 * 5px - 2 * 20px;
-    }
-    .AknDefault-mainContent {
-      padding-left: 40px;
-    }
-  }
-}
-
-
-@keyframes mirror {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(180deg);
-  }
+.scrollable-container {
+  overflow: hidden !important;
 }

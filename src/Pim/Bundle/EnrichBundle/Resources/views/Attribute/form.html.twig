@@ -37,13 +37,13 @@
 
         {% set left %}
             {% if form.vars.value.id %}
-                <span class="AknDefault-columnBlock">
-                    <div class="AknDefault-title">{{ 'Last update'|trans }}</div>
-                    {{ updated ? updated.loggedAt|datetime_presenter : 'N/A'|trans }} {{ 'by'|trans }} {{ updated ? updated.author : 'N/A'|trans }}
+                <span class="AknColumn-block">
+                    <div class="AknColumn-title">{{ 'Last update'|trans }}</div>
+                    <div class="AknColumn-value">{{ updated ? updated.loggedAt|datetime_presenter : 'N/A'|trans }} {{ 'by'|trans }} {{ updated ? updated.author : 'N/A'|trans }}</div>
                 </span>
-                <span class="AknDefault-columnBlock">
-                    <div class="AknDefault-title">{{ 'Created'|trans }}</div>
-                    {{ created ? created.loggedAt|datetime_presenter : 'N/A'|trans }} {{ 'by'|trans }} {{ created ? created.author : 'N/A'|trans }}
+                <span class="AknColumn-block">
+                    <div class="AknColumn-title">{{ 'Created'|trans }}</div>
+                    <div class="AknColumn-value">{{ created ? created.loggedAt|datetime_presenter : 'N/A'|trans }} {{ 'by'|trans }} {{ created ? created.author : 'N/A'|trans }}</div>
                 </span>
             {% endif %}
         {% endset %}

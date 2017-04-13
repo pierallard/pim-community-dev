@@ -33,8 +33,10 @@ define(
         return BaseForm.extend({
             template: _.template(template),
 
+            className: 'AknDefault-contentWithColumn',
+
             events: {
-                'click .AknDefault-firstColumnButton': '_toggleColumn'
+                'click .AknColumn-innerButton': '_toggleColumn'
             },
 
             /**
@@ -88,7 +90,7 @@ define(
             },
 
             _toggleColumn: function (e) {
-                $(this.$el).toggleClass('collapsed');
+                $(this.$el).find('.AknColumn').toggleClass('AknColumn--collapsed');
             }
         });
     }
