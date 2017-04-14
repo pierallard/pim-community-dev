@@ -22,15 +22,22 @@ define(
     function ($, _, Backbone, BaseForm, formTemplate, UserContext, Routing, TreeAssociate, mediator) {
         return BaseForm.extend({
             template: _.template(formTemplate),
+
             className: 'tab-pane active',
+
             id: 'product-categories',
+
             treeLinkSelector: 'tree-link-',
+
             treeHasItemClass: 'tree-has-item',
+
             events: {
                 'click .nav-tabs li': 'changeTree',
                 'change #hidden-tree-input': 'updateModel'
             },
+
             treeAssociate: null,
+
             cache: {},
 
             initialize: function () {
@@ -58,6 +65,9 @@ define(
                         categoriesCount[id] = 0;
                     });
 
+                    this.state.set('currentTree', _.first(trees).code);
+                    this.state.set('currentTreeId', _.first(trees).id);
+
                     this.$el.html(
                         this.template({
                             product: this.getFormData(),
@@ -73,9 +83,9 @@ define(
                         list_categories: 'pim_enrich_product_listcategories',
                         children:        'pim_enrich_categorytree_children'
                     });
+
                     this.delegateEvents();
-                    this.state.set('currentTree', _.first(trees).code);
-                    this.state.set('currentTreeId', _.first(trees).id);
+
                     this.initCategoryCount(trees);
                 }.bind(this));
 
@@ -108,9 +118,12 @@ define(
                 this.state.set('currentTreeId', event.currentTarget.dataset.treeId);
                 this.treeAssociate.switchTree(event.currentTarget.dataset.treeId);
                 $(event.currentTarget)
-                    .addClass('AknVerticalNavtab-item--active')
-                    .siblings('.AknVerticalNavtab-item')
-                    .removeClass('AknVerticalNavtab-item--active');
+                    .find('.AknDropdown-menuLink').addClass('AknDropdown-menuLink--active').end()
+                    .siblings('[data-tree]')
+                    .each(function (i, link) {
+                        $(link).find('.AknDropdown-menuLink').removeClass('AknDropdown-menuLink--active')
+                    }).end();
+                this.$el.find('.current-category:first').html($(event.currentTarget).find('.tree-label').text());
             },
 
             updateModel: function (event) {
@@ -170,7 +183,14 @@ define(
              * @param {integer} categoryCount
              */
             updateCategoryBadge: function (rootTreeCode, categoryCount) {
-                this.$('li[data-tree=' + rootTreeCode +  ']').find('.AknBadge').html(categoryCount);
+                var badge = this.$('li[data-tree=' + rootTreeCode +  ']').find('.AknBadge');
+                badge.html(categoryCount);
+
+                if (categoryCount > 0) {
+                    badge.addClass('AknBadge--enabled').removeClass('AknBadge--grey');
+                } else {
+                    badge.removeClass('AknBadge--enabled').addClass('AknBadge--grey');
+                }
             },
 
             /**
