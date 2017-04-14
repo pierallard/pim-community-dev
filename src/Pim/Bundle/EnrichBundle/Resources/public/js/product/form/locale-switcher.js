@@ -27,7 +27,8 @@ define(
                 this.getDisplayedLocales()
                     .done(function (locales) {
                         var params = { localeCode: _.first(locales).code };
-                        this.trigger('pim_enrich:form:locale_switcher:pre_render', params);
+                        // TODO There is remaining events to catch
+                        this.getRoot().trigger('pim_enrich:form:locale_switcher:pre_render', params);
 
                         this.$el.html(
                             this.template({
@@ -58,7 +59,8 @@ define(
              * @param {Object} event
              */
             changeLocale: function (event) {
-                this.trigger('pim_enrich:form:locale_switcher:change', {
+                // TODO There is remaining events to catch
+                this.getRoot().trigger('pim_enrich:form:locale_switcher:change', {
                     localeCode: event.currentTarget.dataset.locale
                 });
 

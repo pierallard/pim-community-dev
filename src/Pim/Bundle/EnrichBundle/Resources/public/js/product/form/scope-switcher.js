@@ -33,7 +33,7 @@ define(
                     .fetchAll()
                     .then(function (channels) {
                         var params = { scopeCode: channels[0].code };
-                        this.trigger('pim_enrich:form:scope_switcher:pre_render', params);
+                        this.getRoot().trigger('pim_enrich:form:scope_switcher:pre_render', params);
 
                         var scope = _.findWhere(channels, { code: params.scopeCode });
 
@@ -64,7 +64,7 @@ define(
              * @param {Event} event
              */
             changeScope: function (event) {
-                this.trigger('pim_enrich:form:scope_switcher:change', {
+                this.getRoot().trigger('pim_enrich:form:scope_switcher:change', {
                     scopeCode: event.currentTarget.dataset.scope
                 });
 
