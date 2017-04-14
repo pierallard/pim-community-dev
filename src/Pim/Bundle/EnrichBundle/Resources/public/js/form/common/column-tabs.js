@@ -16,8 +16,9 @@ define(
     ],
     function ($, _, FormTabs, template) {
         return FormTabs.extend({
-            template: _.template(template),
+            className: '',
 
+            template: _.template(template),
 
             configure: function () {
                 this.listenTo(this.getRoot(), 'column-tab:select-tab', this.selectTab);

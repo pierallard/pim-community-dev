@@ -35,10 +35,6 @@ define(
 
             className: 'AknDefault-contentWithColumn',
 
-            events: {
-                'click .AknColumn-innerButton': '_toggleColumn'
-            },
-
             /**
              * {@inheritdoc}
              */
@@ -81,16 +77,12 @@ define(
             },
 
             /**
-             * Clear the cached informations
+             * Clear the cached information
              */
             clearCache: function () {
                 FetcherRegistry.clearAll();
                 FieldManager.clearFields();
                 this.render();
-            },
-
-            _toggleColumn: function (e) {
-                $(this.$el).find('.AknColumn').toggleClass('AknColumn--collapsed');
             }
         });
     }

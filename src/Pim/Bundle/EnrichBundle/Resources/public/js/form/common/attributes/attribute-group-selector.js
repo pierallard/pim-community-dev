@@ -20,6 +20,8 @@ define(
     ],
     function ($, _, GroupSelectorForm, AttributeGroupManager, template, UserContext, i18n, toFillFieldProvider) {
         return GroupSelectorForm.extend({
+            className: 'AknDropdown AknButtonList-item nav nav-tabs group-selector',
+
             template: _.template(template),
 
             /**

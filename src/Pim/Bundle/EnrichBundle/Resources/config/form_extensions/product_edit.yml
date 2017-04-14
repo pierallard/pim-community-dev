@@ -173,13 +173,13 @@ extensions:
     pim-product-edit-form-attribute-group-selector:
         module: pim/form/common/attributes/attribute-group-selector
         parent: pim-product-edit-form-attributes
-        targetZone: sidebar
+        targetZone: selectors
         position: 100
 
     pim-product-edit-form-add-attribute:
         module: pim/product/add-select/attribute
         parent: pim-product-edit-form-attributes
-        targetZone: other-actions
+        targetZone: selectors
         position: 90
 
     pim-product-edit-form-copy:
