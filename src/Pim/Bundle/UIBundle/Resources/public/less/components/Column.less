@@ -7,31 +7,33 @@
   @padding: 20px;
   @littleWidth: 40px;
   @transition: ease-in-out;
+  @scrollbarWidth: 16px;
 
   flex-basis: @width;
   position: relative;
   overflow: hidden;
   transition: flex-basis @timing @transition;
   order: -1;
+  background: #f9f9fb;
+  border-right: 1px solid #d2d7dc;
 
   &-inner {
     width: @width;
-    height: 100%;
-    background: #f9f9fb;
+    height: ~"calc(100% - 20px - 24px - 20px)";
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     font-size: 11px;
-    border-right: 1px solid #d2d7dc;
     position: absolute;
     right: 0;
-    padding-bottom: @padding + @iconSize + @padding;
+    overflow-x: auto;
+    transition: right @timing @transition;
   }
 
   &-innerTop,
   &-innerBottom {
     padding: @padding;
-    transition: padding-right @timing @transition;
+    transition: margin-right @timing @transition;
   }
 
   &-innerTop {
@@ -82,19 +84,19 @@
 
   &-collapseButton {
     height: @iconSize + @padding;
-    width: @width - 2 * @padding;
-    background: url("../../images/icon-panelClose.svg") no-repeat 0 100%;
+    width: @width;
+    background: url("../../images/icon-panelClose.svg") no-repeat 20px 100%;
     background-size: @iconSize;
     cursor: pointer;
     opacity: 0.8;
     position: absolute;
     bottom: @padding;
-    right: @padding;
+    right: 0;
     border-top: 1px solid #d2d7dc;
     transition:
       opacity 0.2s @transition,
       width @timing @transition,
-      right @timing @transition;
+      background-position-x @timing @transition;
 
     &:hover {
       opacity: 1;
@@ -105,16 +107,18 @@
     flex-basis: @littleWidth;
   }
 
+  &--collapsed &-inner {
+    right: -@scrollbarWidth;
+  }
+
   &--collapsed &-innerTop,
   &--collapsed &-innerBottom {
     margin-right: @littleWidth;
   }
 
   &--collapsed &-collapseButton {
-    width: @iconSize;
-    right: (@littleWidth - @iconSize) / 2;
-    background: url("../../images/icon-panelOpen.svg") no-repeat 0 100%;
+    width: @littleWidth;
+    background-position-x: (@littleWidth - @iconSize) / 2;
+    background-image: url("../../images/icon-panelOpen.svg");
   }
-
-
 }
