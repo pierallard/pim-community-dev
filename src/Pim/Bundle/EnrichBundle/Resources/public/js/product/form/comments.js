@@ -26,8 +26,6 @@ define(
         return BaseForm.extend({
             template: _.template(template),
 
-            className: 'panel-pane',
-
             comments: [],
 
             events: {
@@ -38,12 +36,18 @@ define(
                 'click .comment-thread .cancel-comment, .comment-create .cancel-comment': 'cancelComment'
             },
 
+            /**
+             * {@inheritdoc}
+             */
             initialize: function () {
                 this.comment = new Backbone.Model();
 
                 BaseForm.prototype.initialize.apply(this, arguments);
             },
 
+            /**
+             * {@inheritdoc}
+             */
             configure: function () {
                 this.trigger('tab:register', {
                     code: this.code,
@@ -53,6 +57,9 @@ define(
                 return BaseForm.prototype.configure.apply(this, arguments);
             },
 
+            /**
+             * {@inheritdoc}
+             */
             render: function () {
                 if (!this.configured || this.code !== this.getParent().getCurrentTab()) {
                     return this;
@@ -73,6 +80,11 @@ define(
                 return this;
             },
 
+            /**
+             * Load the data from the back
+             *
+             * @returns {Promise}
+             */
             loadData: function () {
                 return $.get(
                     Routing.generate(
@@ -84,6 +96,12 @@ define(
                 );
             },
 
+            /**
+             * When the user press key in a textarea, this method will display/hide the button if there is/there is not
+             * text inside.
+             *
+             * @param event
+             */
             toggleButtons: function (event) {
                 var $element = $(event.currentTarget).parents('.comment-thread, .comment-create');
                 if ($element.find('textarea').val()) {
@@ -95,6 +113,11 @@ define(
                 }
             },
 
+            /**
+             * Removes the comment in the textarea the hide buttons
+             *
+             * @param event
+             */
             cancelComment: function (event) {
                 var $element = $(event.currentTarget).parents('.comment-thread, .comment-create');
                 $element.find('textarea').val('');
@@ -102,6 +125,9 @@ define(
                 $element.find('.AknButtonList').addClass('AknButtonList--hide');
             },
 
+            /**
+             * Saves the comment to backend
+             */
             saveComment: function () {
                 $.ajax({
                     type: 'POST',
@@ -116,6 +142,11 @@ define(
                 });
             },
 
+            /**
+             * This methods will display a confirmation message before comment deletion.
+             *
+             * @param event
+             */
             removeComment: function (event) {
                 Dialog.confirm(
                     __('confirmation.remove.comment'),
@@ -124,6 +155,11 @@ define(
                 );
             },
 
+            /**
+             * Removes the comment from the backend.
+             *
+             * @param event
+             */
             doRemove: function (event) {
                 $.ajax({
                     url: Routing.generate('pim_comment_comment_delete', { id: event.currentTarget.dataset.commentId }),
@@ -138,6 +174,11 @@ define(
                 });
             },
 
+            /**
+             * Saves the comment to the backend
+             *
+             * @param event
+             */
             saveReply: function (event) {
                 var $thread = $(event.currentTarget).parents('.comment-thread');
 
