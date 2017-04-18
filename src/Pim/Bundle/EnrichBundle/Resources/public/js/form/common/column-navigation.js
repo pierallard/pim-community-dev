@@ -10,10 +10,11 @@ define(
     [
         'jquery',
         'underscore',
+        'oro/translator',
         'pim/form',
         'text!pim/template/form/column-navigation'
     ],
-    function ($, _, BaseForm, template) {
+    function ($, _, __, BaseForm, template) {
         return BaseForm.extend({
             tabs: [],
 
@@ -22,7 +23,8 @@ define(
             currentTab: null,
 
             events: {
-                'click .AknColumn-navigationLink': 'selectTab'
+                'click .AknColumn-navigationLink': 'selectTab',
+                'click .AknDropdown-menuLink': 'selectTab'
             },
 
             /**
@@ -44,7 +46,8 @@ define(
                     .empty()
                     .html(this.template({
                         tabs: this.tabs,
-                        currentTab: this.currentTab
+                        currentTab: this.currentTab,
+                        title: __('pim_enrich.entity.product.navigation')
                     }));
             },
 

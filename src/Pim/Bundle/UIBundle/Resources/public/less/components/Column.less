@@ -77,10 +77,20 @@
     &--active {
       color: #9452BA;
     }
+  }
 
-    &:nth-child(1) {
-      margin-top: 12px;
-    }
+  &-title + &-navigationLink {
+    margin-top: 12px;
+  }
+
+  &-navigation {
+    position: fixed;
+    margin-top: -10px;
+    left: -@littleWidth;
+    opacity: 0;
+    transition:
+      opacity @timing @transition,
+      left @timing @transition;
   }
 
   &-collapseButton {
@@ -106,6 +116,11 @@
 
   &--collapsed {
     flex-basis: @littleWidth;
+  }
+
+  &--collapsed &-navigation {
+    left: 3px;
+    opacity: 1;
   }
 
   &--collapsed &-inner {

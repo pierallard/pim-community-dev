@@ -27,7 +27,9 @@ define(
              * {@inheritdoc}
              */
             render: function () {
-                this.$el.html(this.template());
+                this.$el.html(this.template({
+                    labelInfos: __('pim_enrich.entity.product.infos')
+                }));
 
                 this.renderExtensions();
 
