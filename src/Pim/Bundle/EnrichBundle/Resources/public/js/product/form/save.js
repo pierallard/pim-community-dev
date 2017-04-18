@@ -35,8 +35,15 @@ define(
         FetcherRegistry
     ) {
         return BaseSave.extend({
+            className: 'AknButton AknButton--apply AknButtonList-item save',
+
             updateSuccessMessage: __('pim_enrich.entity.product.info.update_successful'),
+
             updateFailureMessage: __('pim_enrich.entity.product.info.update_failed'),
+
+            events: {
+                'click .save': 'save'
+            },
 
             /**
              * {@inheritdoc}
@@ -85,9 +92,11 @@ define(
                     .always(this.hideLoadingMask.bind(this));
             },
 
-            // TODO Remove this
+            /**
+             * {@inheritdoc}
+             */
             render: function () {
-                this.$el.remove();
+                this.$el.html(this.label);
             }
         });
     }

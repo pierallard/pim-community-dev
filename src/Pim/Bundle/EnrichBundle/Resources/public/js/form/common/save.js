@@ -28,8 +28,11 @@ define(
     ) {
         return BaseForm.extend({
             loadingMask: null,
+
             updateFailureMessage: __('pim_enrich.entity.info.update_failed'),
+
             updateSuccessMessage: __('pim_enrich.entity.info.update_successful'),
+
             label: __('pim_enrich.entity.save.label'),
 
             /**

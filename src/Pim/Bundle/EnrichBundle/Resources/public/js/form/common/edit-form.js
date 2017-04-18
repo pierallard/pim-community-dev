@@ -47,7 +47,10 @@ define(
                 }
 
                 this.onExtensions('save-buttons:register-button', function (button) {
-                    this.getExtension('save-buttons').trigger('save-buttons:add-button', button);
+                    var saveButtonExtension = this.getExtension('save-buttons');
+                    if (undefined !== saveButtonExtension) {
+                        saveButtonExtension.trigger('save-buttons:add-button', button);
+                    }
                 }.bind(this));
 
                 return BaseForm.prototype.configure.apply(this, arguments);
