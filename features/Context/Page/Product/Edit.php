@@ -647,24 +647,6 @@ class Edit extends ProductEditForm
     }
 
     /**
-     * @return NodeElement
-     */
-    public function getSaveAndBackButton()
-    {
-        $submit = $this->spin(function () {
-            return $this->find('css', '.AknSeveralActionsButton.AknSeveralActionsButton--apply');
-        }, 'Submit button not found');
-
-        $submit->find('css', '.AknSeveralActionsButton-caretContainer')->click();
-
-        $dropdownMenu = $submit->find('css', '.AknSeveralActionsButton-menu');
-
-        return $this->spin(function () use ($dropdownMenu) {
-            return $dropdownMenu->find('css', '.save-product-and-back');
-        }, '"Save and back" button not found');
-    }
-
-    /**
      * Get the caret of the product switcher to provide click
      *
      * @return NodeElement

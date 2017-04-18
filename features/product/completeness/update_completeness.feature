@@ -31,7 +31,7 @@ Feature: Display the completeness of a product
       | tablet  | en_US  | warning | Side view              | 89%   |
       | mobile  | fr_FR  | success |                        | 100%  |
       | tablet  | fr_FR  | warning | Description, Side view | 78%   |
-    When I visit the "Attributes" tab
+    When I visit the "Attributes" column tab
     And I visit the "Media" group
     And I attach file "SNKRS-1C-s.png" to "Side view"
     And I save the product
@@ -46,7 +46,7 @@ Feature: Display the completeness of a product
 
   Scenario: Update completeness when family requirements change
     Given I am on the "sneakers" family page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I switch the attribute "rating" requirement in channel "mobile"
     And I save the family
     And I should see "Family successfully updated"

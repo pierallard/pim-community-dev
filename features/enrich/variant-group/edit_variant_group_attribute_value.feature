@@ -43,7 +43,7 @@ Feature: Editing attribute values of a variant group also updates products
       | multi_select_local_specific  | Multi                 | Multi                 | pim_catalog_multiselect  | marketing |                    | 1           | fr_FR,en_US       |
     And I am logged in as "Julia"
     And I am on the "caterpillar_boots" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
 
   Scenario: Change a pim_catalog_boolean attribute of a variant group
     When I add available attributes Handmade
@@ -122,7 +122,7 @@ Feature: Editing attribute values of a variant group also updates products
       | blue  |
       | green |
     When I am on the "caterpillar_boots" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I visit the "Marketing" group
     And I add available attributes Simple
     And I switch the scope to "mobile"

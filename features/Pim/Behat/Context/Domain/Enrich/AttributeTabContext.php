@@ -88,13 +88,17 @@ class AttributeTabContext extends PimContext
      * @param string $fieldName
      * @param mixed  $not
      *
+     * @return bool
+     * 
+     * @throws TimeoutException
+     *
      * @Then /^the ([^"]*) field should (not )?be highlighted$/
      */
     public function theFieldShouldBeHighlighted($fieldName, $not = null)
     {
         $field = $this->getCurrentPage()->findField($fieldName);
         try {
-            $badge = $this->spin(function () use ($field) {
+            $this->spin(function () use ($field) {
                 return $field->getParent()->getParent()->find('css', '.AknBadge--highlight:not(.AknBadge--hidden)');
             }, 'Cannot find the badge element');
         } catch (TimeoutException $e) {

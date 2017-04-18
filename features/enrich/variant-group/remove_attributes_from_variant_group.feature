@@ -13,7 +13,7 @@ Feature: Remove an attribute from a variant group
 
   Scenario: Successfully remove an attribute from a variant group
     Given I am on the "caterpillar_boots" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     When I add available attribute Comment
     And I visit the "Other" group
     Then I should see the Comment field
@@ -23,7 +23,7 @@ Feature: Remove an attribute from a variant group
     Then I should see the Comment field
     And the field Comment should be disabled
     When I am on the "caterpillar_boots" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I remove the "Comment" attribute
     And I confirm the deletion
     Then I should see the flash message "Attribute successfully removed from the variant group"
@@ -32,7 +32,7 @@ Feature: Remove an attribute from a variant group
   @jira https://akeneo.atlassian.net/browse/PIM-3697
   Scenario: Successfully remove an attribute from a variant group and ensure the field is enabled back
     Given I am on the "caterpillar_boots" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     When I add available attribute Comment
     And I save the variant group
     And I visit the "Other" group
@@ -42,7 +42,7 @@ Feature: Remove an attribute from a variant group
     Then the field Comment should be disabled
     And I should see that Comment is inherited from variant group attribute
     When I am on the "caterpillar_boots" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I remove the "Comment" attribute
     And I confirm the deletion
     And I save the variant group

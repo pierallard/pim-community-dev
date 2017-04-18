@@ -10,7 +10,7 @@ Feature: Define the attribute requirement
 
   @javascript
   Scenario: Successfully display the attribute requirements
-    Given I visit the "Attributes" tab
+    Given I visit the "Attributes" column tab
     Then attribute "name" should be required in channels mobile and tablet
     And attribute "lace_color" should not be required in channels mobile and tablet
     And attribute "side_view" should be required in channel tablet
@@ -18,22 +18,22 @@ Feature: Define the attribute requirement
 
   @javascript
   Scenario: Successfully make an attribute required for a channel
-    Given I visit the "Attributes" tab
+    Given I visit the "Attributes" column tab
     And I switch the attribute "rating" requirement in channel "mobile"
     And I save the family
     And I should see the flash message "Family successfully updated"
     And I should not see the text "There are unsaved changes."
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     Then attribute "rating" should be required in channels mobile and tablet
 
   @javascript
   Scenario: Successfully make an attribute optional for a channel
-    Given I visit the "Attributes" tab
+    Given I visit the "Attributes" column tab
     And I switch the attribute "description" requirement in channel "tablet"
     And I save the family
     And I should see the flash message "Family successfully updated"
     And I should not see the text "There are unsaved changes."
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     Then attribute "description" should not be required in channels mobile and tablet
 
   @javascript
@@ -49,7 +49,7 @@ Feature: Define the attribute requirement
       | mobile  | en_US  | success |                                                    | 100%  |
       | tablet  | en_US  | warning | Description, Weather conditions, Rating, Side view | 56%   |
     And I am on the "Boots" family page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I switch the attribute "rating" requirement in channel "mobile"
     And I save the family
     And I should see the flash message "Family successfully updated"

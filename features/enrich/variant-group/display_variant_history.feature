@@ -34,7 +34,7 @@ Feature: Display the variant group history
       | Axis | Size              |
     And I press the "Save" button in the popin
     And I am on the "converse_sneakers" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I add available attributes Name and Length
     And I change the "Name" to "Ultra boots"
     And I change the "Length" to "5"

@@ -13,7 +13,7 @@ Feature: Execute an import with scopable or localizable data
 
   Scenario: Avoid data loss when importing variant group localizable/scopable values
     Given I am on the "SANDAL" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I add available attributes Description
     And I change the Description for scope tablet and locale en_US to "original description tablet"
     And I change the Description for scope print and locale en_US to "original description print"
@@ -29,7 +29,7 @@ Feature: Execute an import with scopable or localizable data
     And I launch the import job
     And I wait for the "variant_group_import" job to finish
     And I am on the "SANDAL" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     Then the field Description for locale "en_US" and scope "tablet" should contain "new description tablet"
     And the field Description for locale "en_US" and scope "print" should contain "original description print"
 
@@ -49,7 +49,7 @@ Feature: Execute an import with scopable or localizable data
     And I launch the import job
     And I wait for the "variant_group_import" job to finish
     And I am on the "HIGH_HEEL" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I expand the "Description" attribute
     And I switch the scope to "tablet"
     Then the field Description should contain "just a description for the tablet"

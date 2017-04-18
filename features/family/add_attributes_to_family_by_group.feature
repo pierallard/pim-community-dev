@@ -11,13 +11,13 @@ Feature: Add attributes by attribute groups to a family
   @javascript
   Scenario: Successfully list available attribute groups
     Given I am on the "Sandals" family page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     Then I should see available attribute group "Product information, Marketing, Sizes, Colors, Media and Other"
 
   @javascript
   Scenario: Successfully add attributes by attribute groups to a family
     Given I am on the "Sandals" family page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I add attributes by group "Media, Product information and Marketing"
     Then I should see attributes "Price, Rate of sale and Rating" in group "Marketing"
     And I should see attributes "SKU, Name, Manufacturer, Weather conditions and Description" in group "Product information"

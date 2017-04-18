@@ -8,7 +8,7 @@ Feature: Execute an import with template values
     Given the "apparel" catalog configuration
     And I am logged in as "Julia"
     And I am on the "tshirts" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I add available attributes Name and Description
     And I fill in the following information:
       | Name | The T-Shirt |
@@ -27,7 +27,7 @@ Feature: Execute an import with template values
     And I launch the import job
     And I wait for the "variant_group_import" job to finish
     When I am on the "tshirts" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     Then I should see "Description"
     When I am on the "hoodies" variant group page
     Then I should not see "Description"
@@ -44,7 +44,7 @@ Feature: Execute an import with template values
     And I launch the import job
     And I wait for the "variant_group_import" job to finish
     When I am on the "tshirts" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     Then I should see "Description"
     When I visit the "Media" group
     Then I should see "Legend"

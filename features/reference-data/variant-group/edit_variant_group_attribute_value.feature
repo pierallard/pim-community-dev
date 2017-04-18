@@ -31,7 +31,7 @@ Feature: Editing attribute values of a variant group also updates products with 
       | technical_description | Technical description | pim_catalog_file | media | txt                |
     And I am logged in as "Julia"
     And I am on the "caterpillar_boots" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
 
   Scenario: Change a pim_reference_data_simpleselect attribute of a variant group
     Given the following reference data:

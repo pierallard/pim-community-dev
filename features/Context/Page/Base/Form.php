@@ -179,9 +179,13 @@ class Form extends Base
      */
     public function visitGroup($group)
     {
-        $this->spin(function () {
-            return $this->find('css', $this->elements['Attribute group selector']['css']);
-        }, 'Could not find attribute group selector')->click();
+        try {
+            $this->spin(function () {
+                return $this->find('css', $this->elements['Attribute group selector']['css']);
+            }, 'Could not find attribute group selector')->click();
+        } catch (TimeoutException $e) {
+            // There is no attribute group selector.
+        }
 
         $this->spin(function () use ($group) {
             $group = $this->findGroup($group);

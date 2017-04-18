@@ -26,14 +26,14 @@ Feature: Edit attributes of a variant group
 
   Scenario: Successfully display attributes of a variant group
     Given I am on the "tshirts" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     Then I should see the Name and Description fields
     When I visit the "Additional information" group
     Then I should see the Manufacturer field
 
   Scenario: Successfully edit a simple attribute of a variant group
     Given I am on the "tshirts" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     When I visit the "Additional information" group
     And I fill in the following information:
       | Manufacturer | Lacoste |
@@ -43,7 +43,7 @@ Feature: Edit attributes of a variant group
 
   Scenario: Successfully edit a localizable attribute of a variant group
     Given I am on the "tshirts" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I change the Nom for scope ecommerce and locale fr_FR to "French name"
     And I save the variant group
     And I change the Name for scope ecommerce and locale en_US to "English name"
@@ -57,7 +57,7 @@ Feature: Edit attributes of a variant group
 
   Scenario: Successfully edit a localizable and scopable attribute of a variant group
     Given I am on the "tshirts" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I change the Beschreibung for scope ecommerce and locale de_DE to "German ecommerce description"
     And I change the Beschreibung for scope print and locale de_DE to "German print description"
     And I save the variant group
@@ -77,12 +77,12 @@ Feature: Edit attributes of a variant group
 
   Scenario: Display a message when variant group has no attributes
     Given I am on the "jackets" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I switch the scope to "tablet"
     And I switch the locale to "fr_FR"
     Then I should see the text "This localizable field is not available for locale 'fr_FR' and channel 'tablet'"
     When I am on the "sweaters" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     Then I should see the text "This variant group has no attributes yet"
 
   Scenario: Successfully save localized image attributes on variant group
@@ -91,14 +91,14 @@ Feature: Edit attributes of a variant group
       | sweaters | localizable_image | %fixtures%/akeneo.jpg  | en_US  |       |
       | sweaters | localizable_image | %fixtures%/akeneo2.jpg | en_GB  |       |
     And I am on the "sweaters" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     When I switch the locale to "en_US"
     Then I should see the text "akeneo.jpg"
     When I switch the locale to "en_GB"
     Then I should see the text "akeneo2.jpg"
     And I save the variant group
     And I reload the page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     When I switch the locale to "en_US"
     Then I should see the text "akeneo.jpg"
     When I switch the locale to "en_GB"

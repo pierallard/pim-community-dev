@@ -16,7 +16,7 @@ Feature: Upload and import variant groups with media
     Then I should see "Created 1"
     And I should see "Processed 1"
     When I am on the "caterpillar_boots" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     Then the field Name should contain "Very nice boots"
     When I visit the "Media" group
     Then I should see "akeneo.jpg"

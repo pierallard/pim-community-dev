@@ -221,17 +221,17 @@ Feature: Edit common attributes of many products at once
   @jira https://akeneo.atlassian.net/browse/PIM-6022
   Scenario: Successfully mass edit product values preventing Shell Command Injection
     Given I am on the "boots" family page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I add available attributes Comment
     And I save the family
     And I should not see the text "There are unsaved changes."
     And I am on the "sneakers" family page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I add available attributes Comment
     And I save the family
     And I should not see the text "There are unsaved changes."
     And I am on the "sandals" family page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I add available attributes Comment
     And I save the family
     And I should not see the text "There are unsaved changes."

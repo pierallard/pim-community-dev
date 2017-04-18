@@ -18,7 +18,7 @@ define(
         template
     ) {
         return BaseForm.extend({
-            className: 'AknSecondaryActions AknDropdown AknButtonList-item',
+            className: 'AknSecondaryActions AknDropdown AknButtonList-item secondary-actions',
 
             template: _.template(template),
 

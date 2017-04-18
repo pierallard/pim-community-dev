@@ -2,8 +2,8 @@
 
 namespace Pim\Behat\Decorator\Field;
 
-use Behat\Mink\Element\NodeElement;
 use Context\Spin\SpinCapableTrait;
+use Context\Spin\TimeoutException;
 use Pim\Behat\Decorator\ElementDecorator;
 
 class MultiSelectDecorator extends ElementDecorator
@@ -14,6 +14,9 @@ class MultiSelectDecorator extends ElementDecorator
      * Set the given value to the multi select
      *
      * @param string $value
+     *
+     * @throws TimeoutException
+     * @throws \Exception
      */
     public function setValue($value)
     {

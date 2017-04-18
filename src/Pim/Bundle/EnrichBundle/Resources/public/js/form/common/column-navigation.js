@@ -63,6 +63,9 @@ define(
                     label: event.label
                 });
 
+                console.log('Register tab ' + event.code);
+                console.log('Current tab : ' + event.currentTab);
+
                 this.currentTab = event.currentTab;
 
                 this.render();

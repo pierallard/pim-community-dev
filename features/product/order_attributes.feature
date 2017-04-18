@@ -10,7 +10,7 @@ Feature: Order attributes
 
   Scenario: Successfully update an attribute position
     Given I am on the "info" attribute group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     Then the attribute "SKU" should be in position 1
     And the attribute "Name" should be in position 2
     And the attribute "Manufacturer" should be in position 3
@@ -19,7 +19,7 @@ Feature: Order attributes
     And the attribute "Length" should be in position 6
     And I change the attribute "Description" position to 2
     When I am on the "info" attribute group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     Then the attribute "SKU" should be in position 1
     And the attribute "Description" should be in position 2
     And the attribute "Name" should be in position 3
@@ -38,7 +38,7 @@ Feature: Order attributes
     And the attribute "Description" should be in position 4
     And the attribute "Length" should be in position 5
     When I am on the "info" attribute group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I change the attribute "Description" position to 2
     And I am on the "boot-001" product page
     Then the attribute "SKU" should be in position 1

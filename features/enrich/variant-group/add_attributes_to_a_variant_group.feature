@@ -13,7 +13,7 @@ Feature: Add attributes to a variant group
       | code   | label-en_US | unique | group     | type             |
       | unique | Unique      | 1      | marketing | pim_catalog_text |
     Given I am on the "caterpillar_boots" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     Then I should see available attribute Name in group "Product information"
     And I should see available attribute Price in group "Marketing"
     And I should see available attribute Comment in group "Other"
@@ -24,7 +24,7 @@ Feature: Add attributes to a variant group
 
   Scenario: Add some available attributes to a variant group
     Given I am on the "caterpillar_boots" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     When I add available attributes Name, Price and Comment
     And I visit the "Product information" group
     Then I should see the Name field
@@ -41,7 +41,7 @@ Feature: Add attributes to a variant group
       | boot | caterpillar_boots | foo        | black | 39   |
     And I am on the "caterpillar_boots" variant group page
     Then the english Name of "boot" should be "foo"
-    When I visit the "Attributes" tab
+    When I visit the "Attributes" column tab
     And I add available attribute Name
     When I save the variant group
     And I should see the flash message "Variant group successfully updated"
@@ -53,7 +53,7 @@ Feature: Add attributes to a variant group
       | sku  | groups            | color | size |
       | boot | caterpillar_boots | black | 39   |
     And I am on the "caterpillar_boots" variant group page
-    When I visit the "Attributes" tab
+    When I visit the "Attributes" column tab
     And I add available attribute Name
     And I fill in the following information:
      | Name | bar |
@@ -67,7 +67,7 @@ Feature: Add attributes to a variant group
       | sku  | groups            | color | size |
       | boot | caterpillar_boots | black | 39   |
     And I am on the "caterpillar_boots" variant group page
-    When I visit the "Attributes" tab
+    When I visit the "Attributes" column tab
     And I add available attributes Name, Description
     And I save the variant group
     Then I am on the attributes page
@@ -79,7 +79,7 @@ Feature: Add attributes to a variant group
 
   Scenario: The price attribute should be visible once added
     Given I am on the "caterpillar_boots" variant group page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     When I add available attributes Price
     And I should see "EUR, USD" currencies on the Price price field
 

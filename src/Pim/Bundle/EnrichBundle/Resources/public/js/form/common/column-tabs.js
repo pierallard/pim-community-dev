@@ -33,11 +33,11 @@ define(
              * {@inheritdoc}
              */
             registerTab: function (event) {
-                event.currentTab = this.getCurrentTab();
-
-                this.getRoot().trigger('column-tab:register', event);
-
                 FormTabs.prototype.registerTab.apply(this, arguments);
+
+                this.ensureDefault();
+                event.currentTab = this.getCurrentTab();
+                this.getRoot().trigger('column-tab:register', event);
             }
         });
     }

@@ -33,7 +33,7 @@ Feature: Display the attribute group history
       | 1       | code        | Technical          |
       | 2       | label-en_US | My technical group |
 
-    When I visit the "Attributes" tab
+    When I visit the "Attributes" column tab
     And I add available attributes Description
     Then I should see the flash message "Attributes successfully added to the attribute group"
     When I visit the "History" tab
@@ -44,7 +44,7 @@ Feature: Display the attribute group history
       | 2       | label-en_US | My technical group |
       | 3       | attributes  | description        |
 
-    When I visit the "Attributes" tab
+    When I visit the "Attributes" column tab
     And I remove the "Description" attribute
     And I confirm the deletion
     Then I should see the flash message "Attribute successfully removed from the attribute group"

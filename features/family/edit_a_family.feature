@@ -80,7 +80,7 @@ Feature: Edit a family
     And I save the role
     Then I should not see the text "There are unsaved changes."
     When I am on the "sneakers" family page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     Then attribute "name" should be required in channels mobile and tablet
     When I switch the attribute "name" requirement in channel "tablet"
     Then attribute "name" should be required in channels mobile and tablet
@@ -93,7 +93,7 @@ Feature: Edit a family
     And I save the role
     Then I should not see the text "There are unsaved changes."
     When I am on the "sneakers" family page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     Then I should see attributes "SKU, Name, Manufacturer, Weather conditions, Description" in group "Product information"
     And I remove the "manufacturer" attribute
     Then I should see attributes "SKU, Name, Manufacturer, Weather conditions, Description" in group "Product information"
@@ -106,6 +106,6 @@ Feature: Edit a family
     And I save the role
     Then I should not see the text "There are unsaved changes."
     When I am on the "sneakers" family page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     Then I should not see an "Available attributes" element
     And I should not see an "Available groups" element

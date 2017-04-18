@@ -75,10 +75,10 @@ define(
                 this.listenTo(this.getRoot(), 'pim_enrich:form:entity:post_fetch', this.render);
                 this.listenTo(this.getRoot(), 'pim_enrich:form:add-attribute:after', this.render);
                 this.listenTo(this.getRoot(), 'pim_enrich:form:show_attribute', this.showAttribute);
-                this.listenTo(this.getRoot(), 'pim_enrich:form:locale_switcher:change', function (event) {
-                    this.setLocale(event.localeCode);
-                }.bind(this));
-                this.listenTo(this.getRoot(), 'pim_enrich:form:locale_switcher:pre_render', this.initLocale);
+                // this.listenTo(this.getRoot(), 'pim_enrich:form:locale_switcher:change', function (event) {
+                //     this.setLocale(event.localeCode);
+                // }.bind(this));
+                // this.listenTo(this.getRoot(), 'pim_enrich:form:locale_switcher:pre_render', this.initLocale);
                 this.listenTo(this.getRoot(), 'pim_enrich:form:scope_switcher:change', function (event) {
                     this.setScope(event.scopeCode);
                 }.bind(this));
@@ -92,6 +92,10 @@ define(
                 this.onExtensions('copy:copy-fields:after', this.render.bind(this));
                 this.onExtensions('copy:select:after', this.render.bind(this));
                 this.onExtensions('copy:context:change', this.render.bind(this));
+                this.onExtensions('pim_enrich:form:locale_switcher:change', function (event) {
+                    this.setLocale(event.localeCode);
+                }.bind(this));
+                this.onExtensions('pim_enrich:form:locale_switcher:pre_render', this.initLocale);
 
                 return BaseForm.prototype.configure.apply(this, arguments);
             },

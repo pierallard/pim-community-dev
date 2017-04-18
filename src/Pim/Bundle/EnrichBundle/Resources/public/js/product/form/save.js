@@ -42,7 +42,7 @@ define(
             updateFailureMessage: __('pim_enrich.entity.product.info.update_failed'),
 
             events: {
-                'click .save': 'save'
+                'click': 'save'
             },
 
             /**

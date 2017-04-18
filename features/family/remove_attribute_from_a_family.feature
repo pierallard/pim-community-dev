@@ -21,7 +21,7 @@ Feature: Remove attribute from a family
 
   Scenario: Successfully remove an attribute from a family and display it as removable from product
     Given I am on the "Bags" family page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     When I remove the "manufacturer" attribute
     And I save the family
     And I should not see the text "There are unsaved changes."
@@ -33,7 +33,7 @@ Feature: Remove attribute from a family
   @skip
   Scenario: Successfully update product completeness when removing a required attribute from a family
     Given I am on the "Bags" family page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I switch the attribute "manufacturer" requirement in channel "ecommerce"
     And I switch the attribute "manufacturer" requirement in channel "mobile"
     And I save the family
@@ -48,7 +48,7 @@ Feature: Remove attribute from a family
       | mobile     | English (United States) | disabled | none            | none  |
       | mobile     | French (France)         | warning  | 1 missing value | 50%   |
     When I am on the "Bags" family page
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I remove the "manufacturer" attribute
     And I save the family
     Then I should not see the text "There are unsaved changes."

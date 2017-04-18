@@ -1438,6 +1438,17 @@ class WebUser extends RawMinkContext
      */
     public function iPressTheButton($button)
     {
+        // TODO Change all the 'I press the "Save" button'
+        if ('Save' === $button) {
+            $this->iSave();
+
+            return;
+        } else if ('Delete' === $button) {
+            $this->spin(function () {
+                return $this->getCurrentPage()->find('css', '.secondary-actions');
+            }, 'Nop')->click();
+        }
+
         $this->spin(function () use ($button) {
             $this->getCurrentPage()->pressButton($button, true);
 
@@ -1561,18 +1572,6 @@ class WebUser extends RawMinkContext
         $this
             ->getCurrentPage()
             ->getDropdownButtonItem($item, $button)
-            ->click();
-        $this->wait();
-    }
-
-    /**
-     * @When /^I save and back to the grid$/
-     */
-    public function iSaveAndBackToTheGrid()
-    {
-        $this
-            ->getCurrentPage()
-            ->getSaveAndBackButton()
             ->click();
         $this->wait();
     }

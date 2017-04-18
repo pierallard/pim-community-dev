@@ -40,7 +40,7 @@ Feature: Edit a variant group
       | sneakers | description | Great sneakers        | en_US  | mobile |
       | sneakers | description | Really great sneakers | en_US  | tablet |
       | sneakers | description | Grandes espadrilles   | fr_FR  | mobile |
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     When I add available attributes Description
     And I visit the "Products" tab
     And I save the variant group

@@ -11,7 +11,7 @@ Feature: purge versions
     When I visit the "Properties" tab
     And I change the "English (United States)" to "My heels"
     And I press the "Save" button
-    And I visit the "Attributes" tab
+    And I visit the "Attributes" column tab
     And I add available attributes Weather conditions
     And I press the "Save" button
     Then I should not see the text "There are unsaved changes."

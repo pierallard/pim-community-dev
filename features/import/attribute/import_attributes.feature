@@ -334,7 +334,7 @@ Feature: Import attributes
       Then I should see "read lines 2"
       And I should see "created 2"
       When I am on the "Boots" family page
-      And I visit the "Attributes" tab
+      And I visit the "Attributes" column tab
       Then I should see available attribute [new_name] in group "Other"
       And I should see available attribute [new_description] in group "Other"
 
@@ -356,6 +356,6 @@ Feature: Import attributes
       Then I should see "read lines 2"
       And I should see "created 2"
       When I am on the "Boots" family page
-      And I visit the "Attributes" tab
+      And I visit the "Attributes" column tab
       Then I should see available attribute [new_name] in group "Other"
       And I should see available attribute [new_description] in group "Other"
