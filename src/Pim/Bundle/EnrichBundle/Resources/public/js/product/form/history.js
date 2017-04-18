@@ -13,7 +13,7 @@ define(
         'underscore',
         'backbone',
         'pim/form',
-        'text!pim/template/product/panel/history',
+        'text!pim/template/product/history',
         'routing',
         'oro/mediator',
         'pim/fetcher-registry',
@@ -24,21 +24,24 @@ define(
     function ($, _, Backbone, BaseForm, template, Routing, mediator, FetcherRegistry, UserContext, i18n) {
         return BaseForm.extend({
             template: _.template(template),
-            className: 'panel-pane history-panel',
+
+            className: 'history-panel',
+
             loading: false,
+
             versions: [],
+
             actions: {},
+
             events: {
-                'click .expand-history':   'expandHistory',
-                'click .collapse-history': 'collapseHistory',
-                'click .expanded .AknGrid-bodyCell': 'toggleVersion'
+                'click .AknGrid-bodyCell': 'toggleVersion'
             },
 
             /**
              * {@inheritdoc}
              */
             configure: function () {
-                this.trigger('panel:register', {
+                this.trigger('tab:register', {
                     code: this.code,
                     label: _.__('pim_enrich.form.product.panel.history.title')
                 });
@@ -52,7 +55,7 @@ define(
              * {@inheritdoc}
              */
             render: function () {
-                if (!this.configured || this.code !== this.getParent().getCurrentPanelCode()) {
+                if (!this.configured || this.code !== this.getParent().getCurrentTab()) {
                     return this;
                 }
 
@@ -62,12 +65,11 @@ define(
                             this.$el.html(
                                 this.template({
                                     versions: versions,
-                                    expanded: this.getParent().getParent().isFullPanel(),
                                     hasAction: this.actions
                                 })
                             );
 
-                            if (this.getParent().getParent().isFullPanel() && this.actions) {
+                            if (this.actions) {
                                 _.each(this.$el.find('td.actions'), function (element) {
                                     _.each(this.actions, function (action) {
                                         $(element).append(action.clone(true));
@@ -80,7 +82,6 @@ define(
 
                             this.delegateEvents();
                         }.bind(this));
-
                 }
 
                 return this;
@@ -189,20 +190,6 @@ define(
              */
             addAction: function (code, element) {
                 this.actions[code] = element;
-            },
-
-            /**
-             * Expand the history
-             */
-            expandHistory: function () {
-                this.getParent().openFullPanel();
-            },
-
-            /**
-             * Collapse history
-             */
-            collapseHistory: function () {
-                this.getParent().closeFullPanel();
             },
 
             /**

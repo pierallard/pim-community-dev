@@ -244,12 +244,12 @@ extensions:
         aclResourceId: pim_enrich_product_comment
         position: 110
 
-#    pim-product-edit-form-history:
-#        module: pim/product-edit-form/panel/history
-#        parent: pim-product-edit-form-panels
-#        targetZone: panel-content
-#        aclResourceId: pim_enrich_product_history
-#        position: 120
+    pim-product-edit-form-history:
+        module: pim/product-edit-form/history
+        parent: pim-product-edit-form-column-tabs
+        targetZone: container
+        aclResourceId: pim_enrich_product_history
+        position: 120
 
     pim-product-edit-form-copy-scope-switcher:
         module: pim/product-edit-form/scope-switcher
