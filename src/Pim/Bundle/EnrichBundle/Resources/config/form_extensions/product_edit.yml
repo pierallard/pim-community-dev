@@ -236,14 +236,14 @@ extensions:
 #        parent: pim-product-edit-form-panels
 #        targetZone: panel-content
 #        position: 100
-#
-#    pim-product-edit-form-comments:
-#        module: pim/product-edit-form/panel/comments
-#        parent: pim-product-edit-form-panels
-#        targetZone: panel-content
-#        aclResourceId: pim_enrich_product_comment
-#        position: 110
-#
+
+    pim-product-edit-form-comments:
+        module: pim/product-edit-form/comments
+        parent: pim-product-edit-form-column-tabs
+        targetZone: container
+        aclResourceId: pim_enrich_product_comment
+        position: 110
+
 #    pim-product-edit-form-history:
 #        module: pim/product-edit-form/panel/history
 #        parent: pim-product-edit-form-panels
