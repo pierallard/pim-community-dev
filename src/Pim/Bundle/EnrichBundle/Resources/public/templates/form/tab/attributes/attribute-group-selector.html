@@ -1,4 +1,4 @@
-<a class="AknActionButton" data-toggle="dropdown" href="#">
+<a class="AknActionButton button" data-toggle="dropdown" href="#">
     Attribute group:
     <span class="AknActionButton-strong">
         <% _.each(elements, function (element) { %>
@@ -14,7 +14,7 @@
     <li class="AknDropdown-menuTitle">Attribute group</li>
     <% _.each(elements, function (element) { %>
         <li data-element="<%- element.code %>">
-            <a class="AknDropdown-menuLink <%- current === element.code ? 'AknDropdown-menuLink--active' : '' %>">
+            <a class="AknDropdown-menuLink <%- current === element.code ? 'AknDropdown-menuLink--active' : '' %> group">
                 <span class="group-label"><%- i18n.getLabel(element.labels, locale, element.code) %></span>
                 <span class="badge-elements-container">
                     <span class="AknBadge AknBadge--round AknBadge--highlight <%- !_.contains(toFillAttributeGroups, element.code) ? 'AknBadge--hidden' : '' %>"></span>

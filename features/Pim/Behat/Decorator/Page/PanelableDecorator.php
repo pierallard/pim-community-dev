@@ -2,7 +2,6 @@
 
 namespace Pim\Behat\Decorator\Page;
 
-use Behat\Mink\Exception\ElementNotFoundException;
 use Context\Spin\SpinCapableTrait;
 use Pim\Behat\Decorator\ElementDecorator;
 

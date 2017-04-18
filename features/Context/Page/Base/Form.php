@@ -36,8 +36,9 @@ class Form extends Base
             [
                 'Dialog'                          => ['css' => 'div.modal'],
                 'Associations list'               => ['css' => '.associations-list'],
+                'Attribute group selector'        => ['css' => '.attribute-group-selector .button'],
+                'Group'                           => ['css' => '.attribute-group-selector .group:contains("%s")'],
                 'Groups'                          => ['css' => '.tab-groups, .AknVerticalNavtab'],
-                'Group'                           => ['css' => '.AknVerticalNavtab-link:contains("%s")'],
                 'Validation errors'               => ['css' => '.validation-tooltip'],
                 'Available attributes form'       => ['css' => '#pim_available_attributes'],
                 'Available attributes button'     => ['css' => 'button:contains("Add attributes")'],
@@ -102,6 +103,8 @@ class Form extends Base
     /**
      * Close the specified panel
      *
+     * TODO Still used ???
+     *
      * @throws \Context\Spin\TimeoutException
      */
     public function closePanel()
@@ -115,6 +118,8 @@ class Form extends Base
 
     /**
      * Get the tabs in the current page
+     *
+     * TODO Still used ???
      *
      * @return NodeElement[]
      */
@@ -174,20 +179,23 @@ class Form extends Base
      */
     public function visitGroup($group)
     {
+        $this->spin(function () {
+            return $this->find('css', $this->elements['Attribute group selector']['css']);
+        }, 'Could not find attribute group selector')->click();
+
         $this->spin(function () use ($group) {
             $group = $this->findGroup($group);
-            if ($group->isVisible()) {
-                $group->click();
 
-                return true;
-            }
-        }, sprintf('Cannot click the group "%s".', $group));
+            return (null !== $group && $group->isVisible()) ? $group : null;
+        }, sprintf('Cannot click the group "%s".', $group))->click();
     }
 
     /**
      * Get the specified group
      *
      * @param string $group
+     *
+     * @return NodeElement
      */
     public function findGroup($group)
     {

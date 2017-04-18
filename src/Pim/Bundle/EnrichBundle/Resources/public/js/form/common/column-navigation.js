@@ -23,7 +23,7 @@ define(
             currentTab: null,
 
             events: {
-                'click .AknColumn-navigationLink': 'selectTab',
+                'click .column-navigation-link': 'selectTab',
                 'click .AknDropdown-menuLink': 'selectTab'
             },
 
