@@ -19,6 +19,8 @@ define(
 
             template: _.template(template),
 
+            currentTab: null,
+
             events: {
                 'click .AknColumn-navigationLink': 'selectTab'
             },
@@ -36,7 +38,7 @@ define(
                     .empty()
                     .html(this.template({
                         tabs: this.tabs,
-                        currentTab: 'TODO'
+                        currentTab: this.currentTab
                     }));
             },
 
@@ -47,11 +49,17 @@ define(
                     label: event.label
                 });
 
+                this.currentTab = event.currentTab;
+
                 this.render();
             },
 
             selectTab: function (event) {
                 this.getRoot().trigger('column-tab:select-tab', event);
+
+                this.currentTab = event.currentTarget.dataset.tab;
+
+                this.render();
             }
         });
     }

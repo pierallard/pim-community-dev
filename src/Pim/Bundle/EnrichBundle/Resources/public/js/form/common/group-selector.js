@@ -18,10 +18,15 @@ define(
     function ($, _, BaseForm, mediator, template) {
         return BaseForm.extend({
             tagName: 'ul',
+
             className: 'AknVerticalNavtab nav nav-tabs group-selector',
+
             template: _.template(template),
+
             elements: [],
+
             badges: {},
+
             events: {
                 'click li': 'change'
             },
