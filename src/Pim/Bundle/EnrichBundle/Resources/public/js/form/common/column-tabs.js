@@ -20,6 +20,9 @@ define(
 
             template: _.template(template),
 
+            /**
+             * {@inheritdoc}
+             */
             configure: function () {
                 this.listenTo(this.getRoot(), 'column-tab:select-tab', this.selectTab);
 

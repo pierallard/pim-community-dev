@@ -174,27 +174,6 @@ define(
             },
 
             /**
-             * Is the form-tabs in full panel mode ?
-             *
-             * @return {Boolean}
-             */
-            isFullPanel: function () {
-                return this.fullPanel;
-            },
-
-            /**
-             * Set the form tabs in full panel or not
-             *
-             * @param {Boolean} fullPanel
-             */
-            setFullPanel: function (fullPanel) {
-                if (this.fullPanel !== fullPanel) {
-                    this.fullPanel = fullPanel;
-                    this.render();
-                }
-            },
-
-            /**
              * Ensure default value for the current tab
              */
             ensureDefault: function () {

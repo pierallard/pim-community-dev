@@ -40,6 +40,9 @@ define(
 
             cache: {},
 
+            /**
+             * {@inheritdoc}
+             */
             initialize: function () {
                 this.state = new Backbone.Model();
 
@@ -48,6 +51,9 @@ define(
                 BaseForm.prototype.initialize.apply(this, arguments);
             },
 
+            /**
+             * {@inheritdoc}
+             */
             configure: function () {
                 this.trigger('tab:register', {
                     code: this.code,
@@ -58,6 +64,9 @@ define(
                 return BaseForm.prototype.configure.apply(this, arguments);
             },
 
+            /**
+             * {@inheritdoc}
+             */
             render: function () {
                 this.loadTrees().done(function (trees) {
                     var categoriesCount = {};

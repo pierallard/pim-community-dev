@@ -163,13 +163,6 @@ extensions:
         aclResourceId: pim_enrich_associations_view
         position: 110
 
-# TODO SET IT BACK
-#    pim-product-edit-form-panels:
-#        module: pim/product-edit-form/panel/panels
-#        parent: pim-product-edit-form-column-tabs
-#        targetZone: panels
-#        position: 100
-
     pim-product-edit-form-attribute-group-selector:
         module: pim/form/common/attributes/attribute-group-selector
         parent: pim-product-edit-form-attributes

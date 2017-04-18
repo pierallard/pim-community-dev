@@ -25,6 +25,9 @@ define(
                 'click .AknColumn-navigationLink': 'selectTab'
             },
 
+            /**
+             * {@inheritdoc}
+             */
             configure: function () {
                 this.tabs = [];
 
@@ -33,6 +36,9 @@ define(
                 return BaseForm.prototype.configure.apply(this, arguments);
             },
 
+            /**
+             * {@inheritdoc}
+             */
             render: function () {
                 this.$el
                     .empty()
@@ -42,6 +48,11 @@ define(
                     }));
             },
 
+            /**
+             * Registers a new tab
+             *
+             * @param event
+             */
             registerTab: function (event) {
                 this.tabs.push({
                     code: event.code,
@@ -54,6 +65,11 @@ define(
                 this.render();
             },
 
+            /**
+             * Displays another tab
+             *
+             * @param event
+             */
             selectTab: function (event) {
                 this.getRoot().trigger('column-tab:select-tab', event);
 
