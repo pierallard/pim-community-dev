@@ -190,5 +190,5 @@ Feature: Editing attribute values of a variant group also updates products
 
   Scenario: Successfully see a warning message on page exit
     When I add available attribute Handmade
-    And I click back to grid
+    And I click on the Akeneo logo
     Then I should see the text "You will lose changes to the Variant group if you leave the page"
