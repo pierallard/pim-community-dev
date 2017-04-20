@@ -16,6 +16,7 @@ class ComparisonPanelDecorator extends ElementDecorator
         'Change selection dropdown' => '.attribute-copy-actions .selection-dropdown *[data-toggle="dropdown"]',
         'Copy selected button'      => '.attribute-copy-actions .copy',
         'Copy source dropdown'      => '.attribute-copy-actions .source-switcher',
+        'Checked fields'            => '.copy-field-selector:checked',
     ];
 
     /**
@@ -43,6 +44,10 @@ class ComparisonPanelDecorator extends ElementDecorator
         $this->spin(function () {
             return $this->find('css', $this->selectors['Copy selected button']);
         }, 'Cannot find the "copy" button')->click();
+
+        $this->spin(function () {
+            return 0 === count($this->findAll('css', $this->selectors['Checked fields']));
+        }, 'The copy failed, there is remaining checked fields');
     }
 
     /**
