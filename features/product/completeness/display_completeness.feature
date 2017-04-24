@@ -24,7 +24,7 @@ Feature: Display the completeness of a product
 
   Scenario: Successfully display the completeness of the products
     Given I am on the "sneakers" product page
-    When I open the "Completeness" panel
+    When I visit the "Completeness" column tab
     Then I should see the "en_US" completeness in position 1
     And The completeness "fr_FR" should be closed
     And The completeness "en_US" should be opened
@@ -36,6 +36,7 @@ Feature: Display the completeness of a product
       | tablet  | fr_FR  | warning | Description, Side view | 78%   |
     When I am on the products page
     Then I am on the "sandals" product page
+    And I visit the "Attributes" column tab
     And the Name field should be highlighted
     And the Description field should be highlighted
     And the Manufacturer field should not be highlighted
@@ -45,11 +46,13 @@ Feature: Display the completeness of a product
     And the Sizes group should be highlighted
     And the Colors group should not be highlighted
     And the Media group should be highlighted
-    And I open the "Completeness" panel
+    And I visit the "Completeness" column tab
     Then I should see the "en_US" completeness in position 1
     And The completeness "fr_FR" should be closed
     And The completeness "en_US" should be opened
+    And I visit the "Attributes" column tab
     When I switch the locale to "fr_FR"
+    And I visit the "Completeness" column tab
     Then I should see the "fr_FR" completeness in position 1
     And The completeness "en_US" should be closed
     And The completeness "fr_FR" should be opened
@@ -64,7 +67,7 @@ Feature: Display the completeness of a product
   Scenario: Successfully display the completeness of the products with medias after a save
     Given I am on the "sneakers" product page
     And I save the product
-    When I open the "Completeness" panel
+    When I visit the "Completeness" column tab
     Then I should see the "en_US" completeness in position 1
     And The completeness "fr_FR" should be closed
     And The completeness "en_US" should be opened
@@ -76,7 +79,7 @@ Feature: Display the completeness of a product
       | tablet  | fr_FR  | warning | Description, Side view | 78%   |
     When I am on the "sandals" product page
     And I save the product
-    And I open the "Completeness" panel
+    And I visit the "Completeness" column tab
     Then I should see the "en_US" completeness in position 1
     And The completeness "fr_FR" should be closed
     And The completeness "en_US" should be opened
@@ -148,7 +151,7 @@ Feature: Display the completeness of a product
 
   Scenario: Don't display the completeness if the family is not defined
     Given I am on the "sneakers" product page
-    When I open the "Completeness" panel
+    When I visit the "Completeness" column tab
     Then I change the family of the product to ""
     And I should see the text "No family defined. Please define a family to calculate the completeness of this product."
     Then I change the family of the product to "Sneakers"
@@ -162,7 +165,7 @@ Feature: Display the completeness of a product
       | sku              |
       | my_nice_sneakers |
     And I am on the "my_nice_sneakers" product page
-    When I open the "Completeness" panel
+    When I visit the "Completeness" column tab
     Then I should see the text "No family defined. Please define a family to calculate the completeness of this product."
     Then I change the family of the product to "Sneakers"
     Then I should see the text "You just changed the family of the product. Please save it first to calculate the completeness for the new family."
@@ -171,6 +174,6 @@ Feature: Display the completeness of a product
 
   Scenario: Quickly jump to a field from completeness panel
     Given I am on the "sneakers" product page
-    When I open the "Completeness" panel
+    When I visit the "Completeness" column tab
     And I click on the missing "side_view" value for "en_US" locale and "tablet" channel
     Then I should be on the "Media" attribute group
