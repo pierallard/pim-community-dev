@@ -11,16 +11,19 @@ define(
     [
         'jquery',
         'underscore',
+        'oro/translator',
         'pim/form',
         'text!pim/template/product/panel/completeness',
         'pim/fetcher-registry',
         'pim/i18n',
         'pim/user-context'
     ],
-    function ($, _, BaseForm, template, FetcherRegistry, i18n, UserContext) {
+    function ($, _, __, BaseForm, template, FetcherRegistry, i18n, UserContext) {
         return BaseForm.extend({
             template: _.template(template),
+
             className: 'panel-pane completeness-panel',
+
             events: {
                 'click header': 'switchLocale',
                 'click .missing-attributes a': 'showAttribute'
@@ -30,9 +33,9 @@ define(
              * {@inheritdoc}
              */
             configure: function () {
-                this.trigger('panel:register', {
+                this.trigger('tab:register', {
                     code: this.code,
-                    label: _.__('pim_enrich.form.product.panel.completeness.title')
+                    label: __('pim_enrich.form.product.panel.completeness.title')
                 });
 
                 this.listenTo(this.getRoot(), 'pim_enrich:form:entity:post_fetch', this.render);
@@ -46,7 +49,7 @@ define(
              * {@inheritdoc}
              */
             render: function () {
-                if (!this.configured || this.code !== this.getParent().getCurrentPanelCode()) {
+                if (!this.configured || this.code !== this.getParent().getCurrentTab()) {
                     return this;
                 }
 
