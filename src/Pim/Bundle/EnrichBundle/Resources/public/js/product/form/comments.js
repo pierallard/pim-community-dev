@@ -15,7 +15,7 @@ define(
         'backbone',
         'pim/form',
         'pim/user-context',
-        'text!pim/template/product/panel/comments',
+        'text!pim/template/product/comments',
         'routing',
         'oro/messenger',
         'pim/dialog'
