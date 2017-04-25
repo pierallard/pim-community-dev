@@ -16,7 +16,7 @@ class ComparisonPanelDecorator extends ElementDecorator
         'Change selection dropdown' => '.attribute-copy-actions .selection-dropdown *[data-toggle="dropdown"]',
         'Copy selected button'      => '.attribute-copy-actions .copy',
         'Copy source dropdown'      => '.attribute-copy-actions .source-switcher',
-        'Checked fields'            => '.copy-field-selector:checked',
+        'Checkbox fields'           => '.copy-field-selector:checked',
     ];
 
     /**
@@ -26,14 +26,21 @@ class ComparisonPanelDecorator extends ElementDecorator
      */
     public function selectElements($mode)
     {
-        $dropdown = $this->spin(function () {
-            return $this->find('css', $this->selectors['Change selection dropdown']);
-        }, 'Cannot find the select element dropdown');
+        $this->spin(function () use ($mode) {
+            $dropdown = $this->find('css', $this->selectors['Change selection dropdown']);
+            if (null === $dropdown) {
+                return false;
+            }
+            $dropdown->click();
 
-        $dropdown->click();
+            $selector = $dropdown->getParent()->find('css', sprintf('a:contains("%s")', ucfirst($mode)));
+            if (null === $selector) {
+                return false;
+            }
+            $selector->click();
 
-        $selector = $dropdown->getParent()->find('css', sprintf('a:contains("%s")', ucfirst($mode)));
-        $selector->click();
+            return true;
+        }, sprintf('Can not select "%s" elements', $mode));
     }
 
     /**
@@ -42,11 +49,13 @@ class ComparisonPanelDecorator extends ElementDecorator
     public function copySelectedElements()
     {
         $this->spin(function () {
-            return $this->find('css', $this->selectors['Copy selected button']);
-        }, 'Cannot find the "copy" button')->click();
+            $copyButton = $this->find('css', $this->selectors['Copy selected button']);
+            if (null === $copyButton) {
+                return false;
+            }
+            $copyButton->click();
 
-        $this->spin(function () {
-            return 0 === count($this->findAll('css', $this->selectors['Checked fields']));
+            return 0 === $this->getSelectedFieldsCount();
         }, 'The copy failed, there is remaining checked fields');
     }
 
@@ -68,5 +77,18 @@ class ComparisonPanelDecorator extends ElementDecorator
             return $dropdown->find('css', sprintf('.AknDropdown-menuLink[data-source="%s"]', $source));
         }, sprintf('Could not find source "%s" in switcher', $source));
         $option->click();
+    }
+
+    /**
+     * @return int
+     */
+    protected function getSelectedFieldsCount()
+    {
+        $count = 0;
+        foreach ($this->getBody()->findAll('css', $this->selectors['Checkbox fields']) as $field) {
+            $count += $field->isChecked() ? 1 : 0;
+        }
+
+        return $count;
     }
 }
