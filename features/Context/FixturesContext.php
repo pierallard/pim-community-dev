@@ -1563,13 +1563,17 @@ class FixturesContext extends BaseFixturesContext
         $family    = $this->getFamily($familyCode);
         $channel   = $this->getChannel($channelCode);
 
-        return $repo->findOneBy(
+        $requirement = $repo->findOneBy(
             [
                 'attribute' => $attribute,
                 'family'    => $family,
                 'channel'   => $channel,
             ]
         );
+
+        $em->refresh($requirement);
+
+        return $requirement;
     }
 
     /**
