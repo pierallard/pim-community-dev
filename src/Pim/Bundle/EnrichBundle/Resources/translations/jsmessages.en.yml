@@ -377,6 +377,7 @@ pim_enrich:
                         load_more: Loading more results...
                 categories:
                     title: Categories
+                    catalog-switcher: Catalog
             panel:
                 completeness:
                     title: Completeness
