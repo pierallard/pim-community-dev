@@ -16,7 +16,7 @@ class ComparisonPanelDecorator extends ElementDecorator
         'Change selection dropdown' => '.attribute-copy-actions .selection-dropdown *[data-toggle="dropdown"]',
         'Copy selected button'      => '.attribute-copy-actions .copy',
         'Copy source dropdown'      => '.attribute-copy-actions .source-switcher',
-        'Checkbox fields'           => '.copy-field-selector:checked',
+        'Checkbox fields'           => '.copy-field-selector',
     ];
 
     /**

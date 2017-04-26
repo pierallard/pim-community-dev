@@ -63,7 +63,6 @@ Feature: Edit a family
   Scenario: Disable property fields when the user can't edit a family
     Given I am on the "Administrator" role page
     And I visit the "Permissions" tab
-    And I visit the "Families" group
     And I revoke rights to resources Edit properties of a family
     And I save the role
     Then I should not see the text "There are unsaved changes."
@@ -75,7 +74,6 @@ Feature: Edit a family
   Scenario: Fail switching attribute requirements when the user can't edit a family attributes
     Given I am on the "Administrator" role page
     And I visit the "Permissions" tab
-    And I visit the "Families" group
     And I revoke rights to resource Edit attributes of a family
     And I save the role
     Then I should not see the text "There are unsaved changes."
@@ -88,7 +86,6 @@ Feature: Edit a family
   Scenario: Fail removing attributes when the user can't edit family attributes
     Given I am on the "Administrator" role page
     And I visit the "Permissions" tab
-    And I visit the "Families" group
     And I revoke rights to resource Edit attributes of a family
     And I save the role
     Then I should not see the text "There are unsaved changes."
@@ -101,7 +98,6 @@ Feature: Edit a family
   Scenario: Fail adding attributes when the user can't edit family attributes
     Given I am on the "Administrator" role page
     And I visit the "Permissions" tab
-    And I visit the "Families" group
     And I revoke rights to resource Edit attributes of a family
     And I save the role
     Then I should not see the text "There are unsaved changes."
