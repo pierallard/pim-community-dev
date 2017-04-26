@@ -2219,7 +2219,6 @@ class WebUser extends RawMinkContext
      *
      * @return array
      *
-     *
      * @Given /^I should see the following product comments:$/
      */
     public function iShouldSeeTheFollowingProductComments(TableNode $table)
