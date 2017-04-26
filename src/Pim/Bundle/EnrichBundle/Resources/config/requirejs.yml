@@ -558,7 +558,7 @@ config:
         pim/template/family/tab/general/attribute-as-label:  pimenrich/templates/family/tab/general/attribute-as-label.html
 
         pim/template/product/tab/categories:                 pimenrich/templates/product/tab/categories.html
-        pim/template/product/tab/category-switcher:          pimenrich/templates/product/tab/category-switcher.html
+        pim/template/product/tab/catalog-switcher:           pimenrich/templates/product/tab/catalog-switcher.html
         pim/template/product/tab/attribute/validation-error: pimenrich/templates/product/tab/attributes/validation-error.html
         pim/template/product/tab/attribute/variant-group:    pimenrich/templates/product/tab/attributes/variant-group.html
         pim/template/product/tab/associations:               pimenrich/templates/product/tab/associations.html
