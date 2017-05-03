@@ -498,25 +498,6 @@ class Base extends Page
     }
 
     /**
-     * Get the tabs in the current page
-     *
-     * @return NodeElement[]
-     */
-    public function getTabs()
-    {
-        $tabs = $this->spin(function () {
-            return $this->find('css', $this->elements['Tabs']['css']);
-        }, sprintf('Cannot find "%s" tab', $this->elements['Tabs']['css']));
-
-        // Is this dead code?
-        if (null === $tabs) {
-            $tabs = $this->getElement('Oro tabs');
-        }
-
-        return $tabs->findAll('css', 'a');
-    }
-
-    /**
      * Get the form tab containg $tab text
      *
      * @param string $tab
@@ -536,16 +517,6 @@ class Base extends Page
         }
 
         return $node;
-    }
-
-    /**
-     * Get the specified tab
-     *
-     * @return NodeElement
-     */
-    public function getTab($tab)
-    {
-        return $this->find('css', sprintf('a:contains("%s")', $tab));
     }
 
     /**

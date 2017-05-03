@@ -37,15 +37,10 @@ Feature: Display the completeness of a product
     When I am on the products page
     Then I am on the "sandals" product page
     And I visit the "Attributes" column tab
-    And the Name field should be highlighted
-    And the Description field should be highlighted
-    And the Manufacturer field should not be highlighted
-    And the SKU field should not be highlighted
-    And the Product information group should be highlighted
-    And the Marketing group should be highlighted
-    And the Sizes group should be highlighted
+    And the Name, Description fields should be highlighted
+    And the Manufacturer, SKU fields should not be highlighted
+    And the Product information, Marketing, Sizes, Media groups should be highlighted
     And the Colors group should not be highlighted
-    And the Media group should be highlighted
     And I visit the "Completeness" column tab
     Then I should see the "en_US" completeness in position 1
     And The completeness "fr_FR" should be closed
@@ -176,4 +171,4 @@ Feature: Display the completeness of a product
     Given I am on the "sneakers" product page
     When I visit the "Completeness" column tab
     And I click on the missing "side_view" value for "en_US" locale and "tablet" channel
-    Then I should be on the "Media" attribute group
+    Then I should see the text "Attribute group: Media"

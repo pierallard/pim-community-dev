@@ -349,6 +349,7 @@ pim_enrich:
                         show_products: Show products
                         show_groups: Show groups
                         number_of_associations: "{{ productCount }} products and {{ groupCount }} groups"
+                    association_type_selector: Association type
                 attributes:
                     title: Attributes
                     btn:
@@ -360,8 +361,10 @@ pim_enrich:
                         attributes_selected: "{{ itemsCount }} attribute(s) selected"
                         no_match: No matches found
                         load_more: Loading more results...
+                    attribute_group_selector: Attribute group
                 categories:
                     title: Categories
+                    catalog_selector: Catalog
             panel:
                 completeness:
                     title: Completeness
