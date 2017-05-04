@@ -15,6 +15,7 @@
 - PIM-6288: Update flash messages design
 - PIM-6289: Update JSTree design
 - PIM-6294: Update switch design
+- PIM-6397: Enable Search filter on all grids
 
 ## BC breaks
 
