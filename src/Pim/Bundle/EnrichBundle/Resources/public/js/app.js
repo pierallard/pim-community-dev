@@ -33,10 +33,7 @@ define([
                 this.debug = !!options.debug;
 
                 FetcherRegistry.initialize().then(function () {
-                    messenger.setup({
-                        container: '#flash-messages .flash-messages-holder',
-                        template: _.template($.trim($('#message-item-template').html()))
-                    });
+                    messenger.showQueuedMessages();
 
                     init();
 
