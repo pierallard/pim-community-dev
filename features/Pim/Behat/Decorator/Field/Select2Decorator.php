@@ -71,7 +71,7 @@ class Select2Decorator extends ElementDecorator
         ));
         foreach ($elements as $element) {
             $closeElement = $element->find('css', '.select2-search-choice-close');
-            if ($closeElement->isVisible()) {
+            if (null !== $closeElement && $closeElement->isVisible()) {
                 $closeElement->click();
             }
         }
