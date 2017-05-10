@@ -38,7 +38,6 @@ class AttributeExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            'attribute_icon' => new \Twig_Function_Method($this, 'attributeIcon'),
             new \Twig_SimpleFunction(
                 'get_attribute_label_from_code',
                 [$this, 'getAttributeLabelFromCode'],
@@ -59,18 +58,6 @@ class AttributeExtension extends \Twig_Extension
         }
 
         return $code;
-    }
-
-    /**
-     * Get attribute icon
-     *
-     * @param string $type
-     *
-     * @return string
-     */
-    public function attributeIcon($type)
-    {
-        return isset($this->icons[$type]) ? $this->icons[$type] : '';
     }
 
     /**

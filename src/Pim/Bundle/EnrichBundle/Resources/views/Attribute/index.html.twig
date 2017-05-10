@@ -21,7 +21,6 @@
 
                 {% for code, label in attributeTypes|sort %}
                     <a class="AknButtonList-item AknButton attribute-choice" href="#{{ path('pim_enrich_attribute_create', { attribute_type: code }) }}">
-                        <!-- TODO REMOVE attribute_icon method -->
                         {{ label }}
                     </a>
                 {% endfor %}
