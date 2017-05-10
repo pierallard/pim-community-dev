@@ -28,6 +28,10 @@
 - Change the constructor of `Pim\Bundle\EnrichBundle\Twig\AttributeExtension` to remove `pim_enrich.attribute_icons`
 - Romved OroNotificationBundle
 
+### Methods
+
+- Remove `attributeIcon` method from `Pim\Bundle\EnrichBundle\Twig\AttributeExtension`
+
 ## Requirements
 
 - GITHUB-5937: Remove the need to have mcrypt installed
