@@ -21,8 +21,7 @@ define(
         template
     ) {
         return BaseForm.extend({
-            tagName: 'span',
-            className: 'AknHeader-logo',
+            className: 'AknHeader-menuItem',
             template: _.template(template),
             events: {
                 'click': 'backHome'
