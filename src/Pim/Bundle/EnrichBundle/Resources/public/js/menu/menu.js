@@ -22,7 +22,6 @@ define(
     ) {
         return BaseForm.extend({
             className: 'AknHeader',
-            current: null,
             template: _.template(template),
 
             /**
@@ -47,24 +46,17 @@ define(
 
             /**
              * Highlight tue current menu
+             *
+             * @param {Event} event
+             * @param {string[]} event.paths
+             * @param {Backbone.View} event.origin
              */
             highlight: function (event) {
-                var result = [];
+                var breadcrumbItems = _.reduce(this.extensions, function (p, extension) {
+                    return _.union(p, extension.setActive(event.paths));
+                }, []);
 
-                _.each(this.extensions, function (extension) {
-                    if (extension.code === event.paths[0]) {
-                        result.push({
-                            code: extension.code,
-                            route: extension.getRoute(),
-                            label: extension.getLabel()
-                        });
-                    }
-
-                    extension.setActive(event.paths[0]);
-                });
-
-                this.current = result;
-                event.origin.setBreadcrumbs(result);
+                event.origin.setBreadcrumbs(breadcrumbItems);
             }
         });
     });

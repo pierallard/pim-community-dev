@@ -80,12 +80,26 @@ define(
             },
 
             /**
-             * Set tab active or not
+             * Set tab active or not.
              *
-             * @param {Boolean} active
+             * @param {string[]} codes
              */
-            setActive: function (code) {
-                this.active = code === this.code;
+            setActive: function (codes) {
+                this.active = false;
+                var breadcrumbItems = [];
+
+                if (_.contains(codes, this.code)) {
+                    this.active = true;
+                    breadcrumbItems = [{
+                        code: this.code,
+                        route: this.getRoute(),
+                        label: this.getLabel()
+                    }];
+                }
+
+                this.render();
+
+                return breadcrumbItems;
             }
         });
     });

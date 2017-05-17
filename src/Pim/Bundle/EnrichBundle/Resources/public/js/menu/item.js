@@ -27,6 +27,7 @@ define(
             events: {
                 'click .navigation-item': 'redirect'
             },
+            active: false,
 
             /**
              * {@inheritdoc}
@@ -42,7 +43,8 @@ define(
              */
             render: function () {
                 this.$el.empty().append(this.template({
-                    title: __(this.config.title)
+                    title: this.getLabel(),
+                    active: this.active
                 }));
 
                 this.delegateEvents();
@@ -55,6 +57,47 @@ define(
              */
             redirect: function () {
                 router.redirectToRoute(this.config.to);
+            },
+
+            /**
+             * Returns the route of the tab.
+             *
+             * @returns {string|undefined}
+             */
+            getRoute: function () {
+                return this.config.to;
+            },
+
+            /**
+             * Returns the displayed label of the tab
+             *
+             * @returns {string}
+             */
+            getLabel: function () {
+                return __(this.config.title);
+            },
+
+            /**
+             * Set tab active or not.
+             *
+             * @param {string[]} codes
+             */
+            setActive: function (codes) {
+                this.active = false;
+                var breadcrumbItems = [];
+
+                if (_.contains(codes, this.code)) {
+                    this.active = true;
+                    breadcrumbItems = [{
+                        code: this.code,
+                        route: this.getRoute(),
+                        label: this.getLabel()
+                    }];
+                }
+
+                this.render();
+
+                return breadcrumbItems;
             }
         });
     });
