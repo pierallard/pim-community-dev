@@ -27,10 +27,18 @@ define(
                 }
             },
 
-            setActive: function (code) {
-                this.active = code === this.config.tab;
-
+            /**
+             * Set tab active or not.
+             *
+             * @param {string[]} codes
+             */
+            setActive: function (codes) {
+                this.active = _.contains(codes, this.config.tab);
                 this.render();
+
+                return _.reduce(this.extensions, function (p, extension) {
+                    return _.union(p, extension.setActive(codes));
+                }, []);
             }
         });
     });
