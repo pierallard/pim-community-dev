@@ -70,10 +70,16 @@ class Select2Decorator extends ElementDecorator
             'a.select2-choice'
         ));
         foreach ($elements as $element) {
-            $closeElement = $element->find('css', '.select2-search-choice-close');
-            if (null !== $closeElement && $closeElement->isVisible()) {
-                $closeElement->click();
-            }
+            $this->spin(function () use ($element) {
+                $closeElement = $element->find('css', '.select2-search-choice-close');
+                if (null !== $closeElement && $closeElement->isVisible()) {
+                    $closeElement->click();
+
+                    return false === $element->isValid() || !$closeElement->isVisible();
+                };
+
+                return true;
+            }, 'Element is unchanged after deletion');
         }
     }
 

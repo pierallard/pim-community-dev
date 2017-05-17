@@ -19,15 +19,6 @@ extensions:
         targetZone: title
         position: 100
 
-    pim-variant-group-edit-form-back-to-grid:
-        module: pim/form/common/back-to-grid
-        parent: pim-variant-group-edit-form
-        targetZone: back
-        aclResourceId: pim_enrich_variant_group_index
-        position: 80
-        config:
-            backUrl: pim_enrich_variant_group_index
-
     pim-variant-group-edit-form-secondary-actions:
         module: pim/form/common/secondary-actions
         parent: pim-variant-group-edit-form
@@ -67,24 +58,6 @@ extensions:
         position: 900
         config:
             entity: pim_enrich.entity.variant_group.title
-
-    pim-variant-group-edit-form-created:
-        module: pim/form/common/meta/created
-        parent: pim-variant-group-edit-form
-        targetZone: meta
-        position: 90
-        config:
-            label: pim_enrich.entity.variant_group.meta.created
-            labelBy: pim_enrich.entity.variant_group.meta.created_by
-
-    pim-variant-group-edit-form-updated:
-        module: pim/form/common/meta/updated
-        parent: pim-variant-group-edit-form
-        targetZone: meta
-        position: 100
-        config:
-            label: pim_enrich.entity.variant_group.meta.updated
-            labelBy: pim_enrich.entity.variant_group.meta.updated_by
 
     pim-variant-group-edit-form-product-count:
         module: pim/group-edit-form/meta/product-count

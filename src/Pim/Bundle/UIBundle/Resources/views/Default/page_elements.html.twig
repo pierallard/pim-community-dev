@@ -53,15 +53,6 @@
 {% endspaceless %}
 {% endmacro %}
 
-{% macro backLink(url, title) %}
-{% spaceless %}
-    {% set title = title|default('btn.to grid') %}
-    <a class="AknTitleContainer-backLink back-link" title="{{ title|trans|capitalize }}" href="#{{ url }}">
-        <i class="icon-chevron-left"></i>
-    </a>
-{% endspaceless %}
-{% endmacro %}
-
 {% macro deleteLinkAttributes(url, redirectUrl, message, successMessage, title) %}{% spaceless %}
     {% set message = message|default('confirmation.remove.item') %}
     {% set title = title|default('confirmation.delete'|trans) %}
@@ -88,44 +79,35 @@
 {% endspaceless %}
 {% endmacro %}
 
-{% macro page_header(title, buttons, titleButtons, meta, right, backButton, state) %}
+{# @note meta parameter is unused #}
+{% macro page_header(title, buttons, titleButtons, meta, right, backButton, state, image) %}
     <header class="AknTitleContainer navigation">
-        <div class="AknTitleContainer-backContainer" data-drop-zone="back">
-            {% if backButton is not empty %}
-                {{ backButton }}
-            {% endif %}
-        </div>
-        <div class="AknTitleContainer-contentContainer">
-            <div class="AknTitleContainer-mainLine">
-                <div class="AknTitleContainer-titleContainer" data-drop-zone="title">
-                    <h2 class="AknTitleContainer-title">
-                        {% block title %}
-                            {{ title }}
-                        {% endblock title %}
-                    </h2>
-                    {% if titleButtons is not empty %}
-                        <div class="AknTitleContainer-titleButtons AknButtonList" data-drop-zone="title-buttons">
-                            {{ titleButtons }}
-                        </div>
-                    {% endif %}
-                </div>
-                <div class="AknTitleContainer-rightButtons" data-drop-zone="buttons">
-                    {% block navButtons %}{% endblock navButtons %}
-                    {{ right }}
-                    {% if buttons is not empty %}
-                        <div class="AknButtonList AknButtonsList--right AknTitleContainer-rightButtons">
-                            {{ buttons }}
-                        </div>
-                    {% endif %}
-                </div>
+        <div class="AknTitleContainer-imageContainer">{% block image %}{{ image }}{% endblock image %}</div>
+        <div class="AknTitleContainer-mainContainer">
+            <div class="AknTitleContainer-breadcrumbs" data-drop-zone="breadcrumbs"></div>
+            <div class="AknTitleContainer-title" data-drop-zone="title">
+                {% block title %}
+                    {{ title }}
+                {% endblock title %}
             </div>
-            <div class="AknTitleContainer-metaLine">
-                <div class="AknTitleContainer-meta">
-                    {{ meta }}
-                </div>
-                <div class="AknTitleContainer-state">
-                    {{ state }}
-                </div>
+        </div>
+        <div class="AknTitleContainer-buttonsContainer">
+            <div class="AknTitleContainer-rightButtons" data-drop-zone="buttons">
+                {% block navButtons %}{% endblock navButtons %}
+                {{ right }}
+                {% if buttons is not empty %}
+                    <div class="AknButtonList AknButtonsList--right AknTitleContainer-rightButtons">
+                        {{ buttons }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="AknTitleContainer-titleButtons AknButtonList" data-drop-zone="title-buttons">
+                {% if titleButtons is not empty %}
+                    {{ titleButtons }}
+                {% endif %}
+            </div>
+            <div class="AknTitleContainer-state state" data-drop-zone="state">
+                {{ state }}
             </div>
         </div>
     </header>

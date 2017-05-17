@@ -379,7 +379,7 @@ class Base extends Page
     public function clickOnAkeneoLogo()
     {
         $this->spin(function () {
-            return $this->getElement('Navigation Bar')->find('css', '.AknHeader-logo a');
+            return $this->getElement('Navigation Bar')->find('css', '.AknHeader-logoImage');
         }, 'Can not find Akeneo logo')->click();
     }
 
