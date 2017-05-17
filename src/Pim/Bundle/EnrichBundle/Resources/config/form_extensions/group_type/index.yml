@@ -4,9 +4,9 @@ extensions:
         config:
             title: pim_enrich.index.grouptype.title
 
-    pim-group-type-edit-breadcrumbs:
+    pim-group-type-index-breadcrumbs:
         module: pim/common/breadcrumbs
-        parent: pim-group-type-edit-index
+        parent: pim-group-type-index
         targetZone: breadcrumbs
         config:
             path:

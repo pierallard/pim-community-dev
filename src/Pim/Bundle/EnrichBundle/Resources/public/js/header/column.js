@@ -33,12 +33,21 @@ define(
              * @param {string[]} codes
              */
             setActive: function (codes) {
-                this.active = _.contains(codes, this.config.tab);
+                this.active = _.contains(codes, this.getTab());
                 this.render();
 
                 return _.reduce(this.extensions, function (p, extension) {
                     return _.union(p, extension.setActive(codes));
                 }, []);
+            },
+
+            /**
+             * Returns the code of the attached tab
+             *
+             * @returns {string}
+             */
+            getTab: function () {
+                return this.config.tab;
             }
         });
     });

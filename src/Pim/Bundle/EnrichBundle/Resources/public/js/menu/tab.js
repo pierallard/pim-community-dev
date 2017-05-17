@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Base extension for menu
+ * Base extension for tab
  *
  * @author    Julien Sanchez <julien@akeneo.com>
  * @copyright 2017 Akeneo SAS (http://www.akeneo.com)
@@ -28,15 +28,27 @@ define(
                 'click': 'redirect'
             },
             active: false,
+            items: [],
 
             /**
              * {@inheritdoc}
              */
             initialize: function (config) {
                 this.config = config.config;
+                this.items = [];
 
                 BaseForm.prototype.initialize.apply(this, arguments);
             },
+
+            /**
+             * {@inheritdoc}
+             */
+            configure: function () {
+                this.listenTo(this.getRoot(), 'pim_menu:register_item', this.registerItem);
+
+                BaseForm.prototype.configure.apply(this, arguments);
+            },
+
 
             /**
              * {@inheritdoc}
@@ -67,7 +79,11 @@ define(
              * @returns {string|undefined}
              */
             getRoute: function () {
-                return this.config.to;
+                if (undefined !== this.config.to) {
+                    return this.config.to;
+                } else {
+                    return _.first(_.sortBy(this.items, 'position')).getRoute();
+                }
             },
 
             /**
@@ -100,6 +116,19 @@ define(
                 this.render();
 
                 return breadcrumbItems;
+            },
+
+            /**
+             * Registers a new item attached to this tab.
+             *
+             * @param {Event} event
+             * @param {string} event.target
+             * @param {Backbone.View} event.origin
+             */
+            registerItem: function (event) {
+                if (event.target === this.code) {
+                    this.items.push(event.origin);
+                }
             }
         });
     });

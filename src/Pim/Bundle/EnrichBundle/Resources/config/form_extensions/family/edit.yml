@@ -2,9 +2,9 @@ extensions:
     pim-family-edit-form:
         module: pim/form/common/edit-form
 
-    pim-family-breadcrumbs:
+    pim-family-edit-form-breadcrumbs:
         module: pim/common/breadcrumbs
-        parent: pim-family-index
+        parent: pim-family-edit-form
         targetZone: breadcrumbs
         config:
             path:

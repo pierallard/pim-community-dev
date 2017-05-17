@@ -4,7 +4,7 @@ extensions:
         config:
             title: pim_enrich.index.attribute.title
 
-    pim-association-index-breadcrumbs:
+    pim-attribute-index-breadcrumbs:
         module: pim/common/breadcrumbs
         parent: pim-attribute-index
         targetZone: breadcrumbs

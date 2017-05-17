@@ -8,8 +8,8 @@ extensions:
         targetZone: breadcrumbs
         config:
             path:
-                - pim-menu-system
-                - pim-menu-system-variant-group
+                - pim-menu-settings
+                - pim-menu-settings-variant-group
 
     pim-variant-group-edit-form-cache-invalidator:
         module: pim/cache-invalidator
