@@ -53,7 +53,7 @@ define(
              * {@inheritdoc}
              */
             render: function () {
-                this.$el.empty().html(this.template({
+                this.$el.empty().append(this.template({
                     breadcrumbs: this.breadcrumbs
                 }));
             },

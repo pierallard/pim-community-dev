@@ -11,15 +11,19 @@ define(
     [
         'underscore',
         'pim/form',
-        'oro/mediator'
+        'oro/mediator',
+        'text!pim/template/menu/menu'
     ],
     function (
         _,
         BaseForm,
-        mediator
+        mediator,
+        template
     ) {
         return BaseForm.extend({
+            className: 'AknHeader',
             current: null,
+            template: _.template(template),
 
             /**
              * {@inheritdoc}
@@ -31,26 +35,32 @@ define(
             },
 
             /**
+             * {@inheritdoc}
+             */
+            render: function () {
+                this.$el.empty().append(this.template({
+
+                }));
+
+                return BaseForm.prototype.render.apply(this, arguments);
+            },
+
+            /**
              * Highlight tue current menu
              */
             highlight: function (event) {
                 var result = [];
 
                 _.each(this.extensions, function (extension) {
-                    var active = false;
                     if (extension.code === event.paths[0]) {
                         result.push({
                             code: extension.code,
                             route: extension.getRoute(),
                             label: extension.getLabel()
                         });
-                        active = true;
                     }
 
-                    if (_.isFunction(extension.setActive)) {
-                        extension.setActive(active);
-                        extension.render();
-                    }
+                    extension.setActive(event.paths[0]);
                 });
 
                 this.current = result;

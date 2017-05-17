@@ -20,14 +20,17 @@ define(
     ) {
         return BaseForm.extend({
             tagName: 'header',
-            className: 'AknHeader',
+            // className: 'AknHeader',
             template: _.template(template),
 
             /**
              * {@inheritdoc}
              */
             render: function () {
-                this.$el.html(this.template({}));
+                this.$el.empty().append(this.template({}));
+
+                // TODO This module has to become "menu.js". Drop that shit after.
+                this.$el.css('height', '100%');
 
                 return BaseForm.prototype.render.apply(this, arguments);
             }

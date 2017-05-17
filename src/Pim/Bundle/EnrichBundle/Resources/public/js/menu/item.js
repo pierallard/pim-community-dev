@@ -13,7 +13,7 @@ define(
         'oro/translator',
         'pim/form',
         'pim/router',
-        'text!pim/template/menu/tab'
+        'text!pim/template/menu/item'
     ],
     function (
         _,
@@ -25,9 +25,8 @@ define(
         return BaseForm.extend({
             template: _.template(template),
             events: {
-                'click': 'redirect'
+                'click .navigation-item': 'redirect'
             },
-            active: false,
 
             /**
              * {@inheritdoc}
@@ -43,11 +42,10 @@ define(
              */
             render: function () {
                 this.$el.empty().append(this.template({
-                    active: this.active,
-                    title: this.getLabel(),
-                    icon: '/bundles/pimui/images/' + this.config.icon,
-                    iconHover: '/bundles/pimui/images/' + this.config.iconHover
+                    title: __(this.config.title)
                 }));
+
+                this.delegateEvents();
 
                 return BaseForm.prototype.render.apply(this, arguments);
             },
@@ -56,36 +54,7 @@ define(
              * Redirect the user to the config destination
              */
             redirect: function () {
-                if (undefined !== this.getRoute()) {
-                    router.redirectToRoute(this.getRoute());
-                }
-            },
-
-            /**
-             * Returns the route of the tab.
-             *
-             * @returns {string|undefined}
-             */
-            getRoute: function () {
-                return this.config.to;
-            },
-
-            /**
-             * Returns the displayed label of the tab
-             *
-             * @returns {string}
-             */
-            getLabel: function () {
-                return __(this.config.title);
-            },
-
-            /**
-             * Set tab active or not
-             *
-             * @param {Boolean} active
-             */
-            setActive: function (code) {
-                this.active = code === this.code;
+                router.redirectToRoute(this.config.to);
             }
         });
     });
