@@ -5,6 +5,11 @@ extensions:
         position: 110
         targetZone: left
 
+    pim-menu-logo:
+        module: pim/header/logo
+        parent: pim-menu
+        position: 10
+
     pim-menu-dashboard:
         module: pim/menu/tab
         parent: pim-menu

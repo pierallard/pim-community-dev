@@ -37,17 +37,20 @@ define(
                 var result = [];
 
                 _.each(this.extensions, function (extension) {
+                    var active = false;
                     if (extension.code === event.paths[0]) {
                         result.push({
                             code: extension.code,
                             route: extension.getRoute(),
                             label: extension.getLabel()
                         });
-                        extension.setActive(true);
-                    } else {
-                        extension.setActive(false);
+                        active = true;
                     }
-                    extension.render();
+
+                    if (_.isFunction(extension.setActive)) {
+                        extension.setActive(active);
+                        extension.render();
+                    }
                 });
 
                 this.current = result;
