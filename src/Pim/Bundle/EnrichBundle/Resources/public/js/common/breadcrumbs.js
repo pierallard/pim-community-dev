@@ -55,7 +55,7 @@ define(
             render: function () {
                 this.$el.empty().html(this.template({
                     breadcrumbs: this.breadcrumbs
-                }))
+                }));
             },
 
             /**
@@ -76,7 +76,9 @@ define(
             redirect: function (event) {
                 var code = event.currentTarget.dataset['code'];
                 var breadcrumb = _.findWhere(this.breadcrumbs, { code: code });
-                router.redirectToRoute(breadcrumb.route);
+                if (undefined !== breadcrumb.route) {
+                    router.redirectToRoute(breadcrumb.route);
+                }
             }
         });
     });

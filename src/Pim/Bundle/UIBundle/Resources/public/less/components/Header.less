@@ -31,7 +31,7 @@
       color @transitionDelay @transitionKeyframe,
       opacity @transitionDelay @transitionKeyframe;
 
-    &:hover {
+    &:hover, &--active {
       border-left-width: 4px;
       padding-right: 4px;
       color: @AknLightPurple;
@@ -50,11 +50,13 @@
     }
   }
 
-  &-menuItem:hover &-menuItemImage:first-child {
+  &-menuItem:hover &-menuItemImage:first-child,
+  &-menuItem--active &-menuItemImage:first-child {
     opacity: 0;
   }
 
-  &-menuItem:hover &-menuItemImage:not(:first-child) {
+  &-menuItem:hover &-menuItemImage:not(:first-child),
+  &-menuItem--active &-menuItemImage:not(:first-child) {
     opacity: 1;
   }
 }
