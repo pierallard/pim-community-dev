@@ -39,6 +39,20 @@ define(
             },
 
             /**
+             * On configure, this module triggers an event to register it to tabs.
+             *
+             * {@inheritdoc}
+             */
+            configure: function () {
+                this.getRoot().trigger('pim_menu:register_item', {
+                    target: this.getParent().getTab(),
+                    origin: this
+                });
+
+                BaseForm.prototype.configure.apply(this, arguments);
+            },
+
+            /**
              * {@inheritdoc}
              */
             render: function () {

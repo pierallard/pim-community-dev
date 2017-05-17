@@ -4,14 +4,14 @@ extensions:
         config:
             title: pim_enrich.index.variant_group.title
 
-    pim-variant-group-edit-form-breadcrumbs:
+    pim-variant-group-index-breadcrumbs:
         module: pim/common/breadcrumbs
-        parent: pim-variant-group-edit-form
+        parent: pim-variant-group-index
         targetZone: breadcrumbs
         config:
             path:
-                - pim-menu-system
-                - pim-menu-system-variant-group
+                - pim-menu-settings
+                - pim-menu-settings-variant-group
 
     pim-variant-group-index-grid:
         module: pim/form/common/index/grid
