@@ -10,13 +10,21 @@
   @scrollbarWidth: 16px;
 
   flex-basis: @width;
+  width: @width;
   position: relative;
   overflow: hidden;
-  transition: flex-basis @timing @transition;
+  transition:
+    flex-basis @timing @transition,
+    width @timing @transition;
   order: -1;
   background: @AknLightGray;
   border-right: 1px solid @AknBorderColor;
   flex-shrink: 0;
+  height: 100%;
+
+  &:empty {
+    display: none;
+  }
 
   &-inner {
     width: @width;
@@ -66,6 +74,7 @@
   }
 
   &-navigationLink {
+    display: block;
     font-size: 14px;
     padding: 8px 0;
     color: @AknDarkBlue;
@@ -117,6 +126,7 @@
 
   &--collapsed {
     flex-basis: @littleWidth;
+    width: @littleWidth;
   }
 
   &--collapsed &-navigation {

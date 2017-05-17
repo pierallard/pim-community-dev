@@ -770,9 +770,10 @@ config:
         pim/menu/tab:                                        pimenrich/js/menu/tab
         pim/menu/item:                                       pimenrich/js/menu/item
         pim/header/header:                                   pimenrich/js/header/header
+        # TODO Move logo extension
         pim/header/logo:                                     pimenrich/js/header/logo
         pim/header/user:                                     pimenrich/js/header/user
-
+        pim/header/column:                                   pimenrich/js/header/column
 
         # Fields
         pim/field:                  pimenrich/js/product/field/field
@@ -896,6 +897,7 @@ config:
         pim/template/error/error:                            pimenrich/templates/error/error.html
 
         pim/template/menu/tab:                               pimenrich/templates/menu/tab.html
+        pim/template/menu/menu:                              pimenrich/templates/menu/menu.html
         pim/template/menu/item:                              pimenrich/templates/menu/item.html
         pim/template/header/header:                          pimenrich/templates/header/header.html
         pim/template/header/logo:                            pimenrich/templates/header/logo.html

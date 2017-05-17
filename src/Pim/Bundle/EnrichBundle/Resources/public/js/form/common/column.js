@@ -42,7 +42,7 @@ define(
              * {@inheritdoc}
              */
             render: function () {
-                this.$el.html(this.template());
+                this.$el.empty().html(this.template());
                 if (this.isCollapsed()) {
                     this.setCollapsed(true);
                 }

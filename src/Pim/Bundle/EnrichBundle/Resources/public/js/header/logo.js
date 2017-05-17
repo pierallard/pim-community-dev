@@ -41,6 +41,10 @@ define(
              */
             backHome: function () {
                 router.redirectToRoute('oro_default');
+            },
+
+            setActive: function () {
+                return true;
             }
         });
     });
