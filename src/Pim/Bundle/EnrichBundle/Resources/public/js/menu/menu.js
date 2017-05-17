@@ -31,18 +31,6 @@ define(
             },
 
             /**
-             * {@inheritdoc}
-             */
-            render: function () {
-                // TODO Temporary, to delete.
-                this.$el.empty();
-
-                BaseForm.prototype.render.apply(this, arguments);
-
-                this.$el.prepend('Current highlight: ' + _.result(_.first(this.current), 'label', 'none'));
-            },
-
-            /**
              * Highlight tue current menu
              */
             highlight: function (event) {
@@ -55,11 +43,14 @@ define(
                             route: extension.getRoute(),
                             label: extension.getLabel()
                         });
+                        extension.setActive(true);
+                    } else {
+                        extension.setActive(false);
                     }
+                    extension.render();
                 });
 
                 this.current = result;
-                this.render();
                 event.origin.setBreadcrumbs(result);
             }
         });

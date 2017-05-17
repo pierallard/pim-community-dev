@@ -1,5 +1,7 @@
-<div>
-    <img class="AknHeader-menuItemImage" src="<%- icon %>" alt="<%- title %>"/>
-    <img class="AknHeader-menuItemImage" src="<%- iconHover %>" alt="<%- title %>"/>
+<div class="AknHeader-menuItem<% if (active) { %> AknHeader-menuItem--active <% } %>">
+    <div>
+        <img class="AknHeader-menuItemImage" src="<%- icon %>" alt="<%- title %>"/>
+        <img class="AknHeader-menuItemImage" src="<%- iconHover %>" alt="<%- title %>"/>
+    </div>
+    <%- title %>
 </div>
-<%- title %>

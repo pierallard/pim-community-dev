@@ -23,11 +23,11 @@ define(
         template
     ) {
         return BaseForm.extend({
-            className: 'AknHeader-menuItem',
             template: _.template(template),
             events: {
                 'click': 'redirect'
             },
+            active: false,
 
             /**
              * {@inheritdoc}
@@ -42,7 +42,8 @@ define(
              * {@inheritdoc}
              */
             render: function () {
-                this.$el.html(this.template({
+                this.$el.empty().html(this.template({
+                    active: this.active,
                     title: this.getLabel(),
                     icon: '/bundles/pimui/images/' + this.config.icon,
                     iconHover: '/bundles/pimui/images/' + this.config.iconHover
@@ -76,6 +77,15 @@ define(
              */
             getLabel: function () {
                 return __(this.config.title);
+            },
+
+            /**
+             * Set tab active or not
+             *
+             * @param {Boolean} active
+             */
+            setActive: function (active) {
+                this.active = active;
             }
         });
     });
