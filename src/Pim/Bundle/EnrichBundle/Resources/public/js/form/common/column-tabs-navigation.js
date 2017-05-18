@@ -12,7 +12,7 @@ define(
         'underscore',
         'oro/translator',
         'pim/form',
-        'text!pim/template/form/column-navigation'
+        'text!pim/template/form/column-tabs-navigation'
     ],
     function (
         $,
@@ -29,7 +29,7 @@ define(
             currentTab: null,
 
             events: {
-                'click .column-navigation-link': 'selectTab',
+                'click .column-tabs-navigation-link': 'selectTab',
                 'click .AknDropdown-menuLink': 'selectTab'
             },
 
