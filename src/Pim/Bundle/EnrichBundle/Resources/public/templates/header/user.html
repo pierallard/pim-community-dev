@@ -1,18 +1,14 @@
-<li class="AknBell AknDropdown dropdown notification"></li>
-<li class="AknDropdown dropdown">
-    <span class="AknHeader-userLink dropdown-toggle" data-toggle="dropdown">
-        <%- firstName %> <%- lastName %>
-        <i class="AknCaret AknCaret--inverse"></i>
-    </span>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-        <li>
-            <span class="AknDropdown-menuLink user-account"><%- userAccountLabel %></span>
-        </li>
-        <li class="divider">
-            <span></span>
-        </li>
-        <li>
-            <span class="AknDropdown-menuLink logout"><%- logoutLabel %></a>
-        </li>
-    </ul>
-</li>
+<div class="AknNotificationMenu AknDropdown dropdown notification"></div>
+
+<div class="AknDropdown">
+    <div class="AknTitleContainer-userIcon"
+        data-toggle="dropdown"
+        title="<%- firstName %> <%- lastName %>"
+        style="background-image:url('<%- !_.isEmpty(avatar) ? avatar : 'bundles/pimui/images/info-user.png' %>')"
+    ></div>
+    <div class="AknDropdown-menu AknDropdown-menu--right">
+        <div class="AknDropdown-menuTitle"><%- firstName %> <%- lastName %></div>
+        <div class="AknDropdown-menuLink user-account"><%- userAccountLabel %></div>
+        <div class="AknDropdown-menuLink logout"><%- logoutLabel %></div>
+    </div>
+</div>

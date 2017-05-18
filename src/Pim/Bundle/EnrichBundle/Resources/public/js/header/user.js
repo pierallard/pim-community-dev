@@ -27,7 +27,6 @@ define(
         template
     ) {
         return BaseForm.extend({
-            tagName: 'ul',
             className: 'AknHeader-userMenu',
             template: _.template(template),
             events: {
@@ -41,7 +40,6 @@ define(
             initialize: function (config) {
                 this.config = config.config;
 
-
                 BaseForm.prototype.initialize.apply(this, arguments);
             },
 
@@ -52,6 +50,7 @@ define(
                 this.$el.html(this.template({
                     firstName: UserContext.get('firstName'),
                     lastName: UserContext.get('lastName'),
+                    avatar: UserContext.get('avatar'),
                     logoutLabel: __(this.config.logout),
                     userAccountLabel: __(this.config.userAccount)
                 }));

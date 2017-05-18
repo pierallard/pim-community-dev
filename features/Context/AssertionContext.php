@@ -574,7 +574,7 @@ class AssertionContext extends RawMinkContext
     public function iShouldHaveNewNotification($count)
     {
         $this->spin(function () use ($count) {
-            $countContainer = $this->getCurrentPage()->find('css', '.AknBell-countContainer');
+            $countContainer = $this->getCurrentPage()->find('css', '.AknNotificationMenu-countContainer');
 
             if (!$countContainer) {
                 return false;

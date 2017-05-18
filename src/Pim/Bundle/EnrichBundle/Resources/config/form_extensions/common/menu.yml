@@ -4,12 +4,14 @@ extensions:
         parent: pim-header
         position: 110
 
+    # Logo
     pim-menu-logo:
         module: pim/header/logo
         parent: pim-menu
         position: 10
         targetZone: left
 
+    # Dashboard
     pim-menu-dashboard:
         module: pim/menu/tab
         parent: pim-menu
@@ -21,6 +23,7 @@ extensions:
             iconHover: icon-card-purple.svg
             to: pim_dashboard_index
 
+    # Imports
     pim-menu-imports:
         module: pim/menu/tab
         parent: pim-menu
@@ -33,15 +36,7 @@ extensions:
             iconHover: icon-upload-purple.svg
             to: pim_importexport_import_profile_index
 
-#    pim-menu-collect-import-execution:
-#        module: pim/menu/item
-#        parent: pim-menu-collect
-#        targetZone: item
-#        aclResourceId: pim_importexport_import_execution_index
-#        config:
-#            title: pim_menu.item.import_history
-#            to: pim_importexport_import_execution_index
-
+    # Products
     pim-menu-products:
         module: pim/menu/tab
         parent: pim-menu
@@ -54,6 +49,7 @@ extensions:
             iconHover: icon-product-purple.svg
             to: pim_enrich_product_index
 
+    # Exports
     pim-menu-exports:
         module: pim/menu/tab
         parent: pim-menu
@@ -66,15 +62,7 @@ extensions:
             iconHover: icon-download-purple.svg
             to: pim_importexport_export_profile_index
 
-#    pim-menu-spread-export-execution:
-#        module: pim/menu/item
-#        parent: pim-menu-spread
-#        targetZone: item
-#        aclResourceId: pim_importexport_export_execution_index
-#        config:
-#            title: pim_menu.item.export_history
-#            to: pim_importexport_export_execution_index
-
+    # Settings
     pim-menu-settings:
         module: pim/menu/tab
         parent: pim-menu
@@ -203,6 +191,7 @@ extensions:
             title: pim_menu.item.channel
             to: pim_enrich_channel_index
 
+    # System
     pim-menu-system:
         module: pim/menu/tab
         parent: pim-menu

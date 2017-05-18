@@ -1,0 +1,6 @@
+extensions:
+    pim-header-user:
+        module: pim/header/user
+        config:
+            userAccount: pim_header.user.user_account
+            logout: pim_header.user.logout
