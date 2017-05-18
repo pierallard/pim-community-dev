@@ -10,15 +10,20 @@
 define(
     [
         'underscore',
-        'pim/form/common/column'
+        'pim/form/common/column',
+        'pim/router'
     ],
     function (
         _,
-        Column
+        Column,
+        router
     ) {
         return Column.extend({
             active: false,
 
+            /**
+             * {@inheritdoc}
+             */
             render: function () {
                 if (this.active) {
                     return Column.prototype.render.apply(this, arguments);
@@ -48,6 +53,13 @@ define(
              */
             getTab: function () {
                 return this.config.tab;
+            },
+
+            /**
+             * @param {Event} event
+             */
+            redirect: function (event) {
+                router.redirectToRoute(event.currentTarget.dataset.tab);
             }
         });
     });

@@ -93,6 +93,7 @@ extensions:
         config:
             stateCode: pim-menu-settings
             tab: pim-menu-settings
+            navigationTitle: pim_menu.navigation.settings
 
     pim-menu-settings-attribute-group:
         module: pim/menu/item
@@ -224,6 +225,7 @@ extensions:
         config:
             stateCode: pim-menu-system
             tab: pim-menu-system
+            navigationTitle: pim_menu.navigation.system
 
     pim-menu-system-configuration:
         module: pim/menu/item

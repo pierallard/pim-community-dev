@@ -934,6 +934,10 @@ pim_menu:
         info: System information
         job_tracker: Process tracker
 
+    navigation:
+        system: System navigation
+        settings: Settings navigation
+
 pim_header:
     user:
         logout: Logout
