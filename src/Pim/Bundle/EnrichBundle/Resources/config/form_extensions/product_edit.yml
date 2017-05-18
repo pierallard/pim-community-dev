@@ -30,8 +30,8 @@ extensions:
         config:
           stateCode: product_edit_form
 
-    pim-product-edit-form-column-navigation:
-        module: pim/form/common/column-navigation
+    pim-product-edit-form-column-tabs-navigation:
+        module: pim/form/common/column-tabs-navigation
         parent: pim-product-edit-form-left-column
         targetZone: navigation
         position: 10
