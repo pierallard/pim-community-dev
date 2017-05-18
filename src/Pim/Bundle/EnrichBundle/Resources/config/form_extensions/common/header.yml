@@ -3,12 +3,3 @@ extensions:
         module: pim/header/header
         parent: pim-app
         targetZone: header
-
-#    pim-header-user:
-#        module: pim/header/user
-#        parent: pim-header
-#        targetZone: right
-#        position: 120
-#        config:
-#            userAccount: pim_header.user.user_account
-#            logout: pim_header.user.logout

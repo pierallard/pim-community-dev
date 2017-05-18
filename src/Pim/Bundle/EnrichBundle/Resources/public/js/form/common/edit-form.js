@@ -17,7 +17,8 @@ define(
         'pim/form',
         'oro/mediator',
         'pim/fetcher-registry',
-        'pim/field-manager'
+        'pim/field-manager',
+        'pim/form-builder'
     ],
     function (
         module,
@@ -28,7 +29,8 @@ define(
         BaseForm,
         mediator,
         FetcherRegistry,
-        FieldManager
+        FieldManager,
+        formBuilder
     ) {
         return BaseForm.extend({
             template: _.template(template),
@@ -63,6 +65,10 @@ define(
                 this.$el.html(this.template());
 
                 this.renderExtensions();
+
+                formBuilder.buildForm('pim-header-user').then(function (form) {
+                    form.setElement('.user-menu').render();
+                }.bind(this));
 
                 this.getRoot().trigger('pim_enrich:form:render:after');
             },
