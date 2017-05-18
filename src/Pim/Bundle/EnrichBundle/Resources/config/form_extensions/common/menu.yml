@@ -95,10 +95,16 @@ extensions:
             tab: pim-menu-settings
             navigationTitle: pim_menu.navigation.settings
 
-    pim-menu-settings-attribute-group:
-        module: pim/menu/item
+    pim-menu-settings-navigation-block:
+        module: pim/menu/navigation-block
         parent: pim-menu-settings-column
         targetZone: navigation
+        config:
+            title: pim_menu.navigation.settings
+
+    pim-menu-settings-attribute-group:
+        module: pim/menu/item
+        parent: pim-menu-settings-navigation-block
         aclResourceId: pim_enrich_attributegroup_index
         position: 100
         config:
@@ -107,8 +113,7 @@ extensions:
 
     pim-menu-settings-attribute:
         module: pim/menu/item
-        parent: pim-menu-settings-column
-        targetZone: navigation
+        parent: pim-menu-settings-navigation-block
         aclResourceId: pim_enrich_attribute_index
         # TODO Set this position back to origin when all the screens will be PEFized
         # position: 110
@@ -119,8 +124,7 @@ extensions:
 
     pim-menu-settings-product-category:
         module: pim/menu/item
-        parent: pim-menu-settings-column
-        targetZone: navigation
+        parent: pim-menu-settings-navigation-block
         aclResourceId: pim_enrich_product_category_list
         position: 120
         config:
@@ -129,8 +133,7 @@ extensions:
 
     pim-menu-settings-family:
         module: pim/menu/item
-        parent: pim-menu-settings-column
-        targetZone: navigation
+        parent: pim-menu-settings-navigation-block
         aclResourceId: pim_enrich_family_index
         position: 130
         config:
@@ -139,8 +142,7 @@ extensions:
 
     pim-menu-settings-group-type:
         module: pim/menu/item
-        parent: pim-menu-settings-column
-        targetZone: navigation
+        parent: pim-menu-settings-navigation-block
         aclResourceId: pim_enrich_grouptype_index
         position: 140
         config:
@@ -149,8 +151,7 @@ extensions:
 
     pim-menu-settings-group:
         module: pim/menu/item
-        parent: pim-menu-settings-column
-        targetZone: navigation
+        parent: pim-menu-settings-navigation-block
         aclResourceId: pim_enrich_group_index
         position: 150
         config:
@@ -159,8 +160,7 @@ extensions:
 
     pim-menu-settings-variant-group:
         module: pim/menu/item
-        parent: pim-menu-settings-column
-        targetZone: navigation
+        parent: pim-menu-settings-navigation-block
         aclResourceId: pim_enrich_variant_group_index
         position: 160
         config:
@@ -169,8 +169,7 @@ extensions:
 
     pim-menu-settings-association-type:
         module: pim/menu/item
-        parent: pim-menu-settings-column
-        targetZone: navigation
+        parent: pim-menu-settings-navigation-block
         aclResourceId: pim_enrich_associationtype_index
         position: 170
         config:
@@ -179,8 +178,7 @@ extensions:
 
     pim-menu-settings-currency:
         module: pim/menu/item
-        parent: pim-menu-settings-column
-        targetZone: navigation
+        parent: pim-menu-settings-navigation-block
         aclResourceId: pim_enrich_currency_index
         position: 180
         config:
@@ -189,8 +187,7 @@ extensions:
 
     pim-menu-settings-locale:
         module: pim/menu/item
-        parent: pim-menu-settings-column
-        targetZone: navigation
+        parent: pim-menu-settings-navigation-block
         aclResourceId: pim_enrich_locale_index
         position: 190
         config:
@@ -199,8 +196,7 @@ extensions:
 
     pim-menu-settings-channel:
         module: pim/menu/item
-        parent: pim-menu-settings-column
-        targetZone: navigation
+        parent: pim-menu-settings-navigation-block
         aclResourceId: pim_enrich_channel_index
         position: 200
         config:
@@ -227,10 +223,16 @@ extensions:
             tab: pim-menu-system
             navigationTitle: pim_menu.navigation.system
 
-    pim-menu-system-configuration:
-        module: pim/menu/item
+    pim-menu-system-navigation-block:
+        module: pim/menu/navigation-block
         parent: pim-menu-system-column
         targetZone: navigation
+        config:
+            title: pim_menu.navigation.system
+
+    pim-menu-system-configuration:
+        module: pim/menu/item
+        parent: pim-menu-system-navigation-block
         aclResourceId: oro_config_system
         position: 100
         config:
@@ -239,8 +241,7 @@ extensions:
 
     pim-menu-system-info:
         module: pim/menu/item
-        parent: pim-menu-system-column
-        targetZone: navigation
+        parent: pim-menu-system-navigation-block
         aclResourceId: pim_analytics_system_info_index
         position: 110
         config:
@@ -249,17 +250,22 @@ extensions:
 
     pim-menu-system-job-tracker:
         module: pim/menu/item
-        parent: pim-menu-system-column
-        targetZone: navigation
+        parent: pim-menu-system-navigation-block
         position: 0
         config:
             title: pim_menu.item.job_tracker
             to: pim_enrich_job_tracker_index
 
-    pim-menu-system-user-user:
-        module: pim/menu/item
+    pim-menu-user-navigation-block:
+        module: pim/menu/navigation-block
         parent: pim-menu-system-column
         targetZone: navigation
+        config:
+            title: pim_menu.navigation.user
+
+    pim-menu-system-user-user:
+        module: pim/menu/item
+        parent: pim-menu-user-navigation-block
         aclResourceId: pim_user_user_index
         position: 130
         config:
@@ -268,8 +274,7 @@ extensions:
 
     pim-menu-system-user-group:
         module: pim/menu/item
-        parent: pim-menu-system-column
-        targetZone: navigation
+        parent: pim-menu-user-navigation-block
         aclResourceId: pim_user_group_index
         position: 140
         config:
@@ -278,8 +283,7 @@ extensions:
 
     pim-menu-system-user-role:
         module: pim/menu/item
-        parent: pim-menu-system-column
-        targetZone: navigation
+        parent: pim-menu-user-navigation-block
         aclResourceId: pim_user_role_index
         position: 150
         config:

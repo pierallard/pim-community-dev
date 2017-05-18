@@ -47,8 +47,8 @@ define(
             /**
              * Highlight tue current menu
              *
-             * @param {Event} event
-             * @param {string[]} event.paths
+             * @param {Event}         event
+             * @param {string[]}      event.paths
              * @param {Backbone.View} event.origin
              */
             highlight: function (event) {
@@ -56,7 +56,7 @@ define(
                     return _.union(p, extension.setActive(event.paths));
                 }, []);
 
-                event.origin.setBreadcrumbs(breadcrumbItems);
+                event.origin.setBreadcrumbItems(breadcrumbItems);
             }
         });
     });
