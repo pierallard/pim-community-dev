@@ -1,5 +1,0 @@
-extensions:
-    pim-header:
-        module: pim/header/header
-        parent: pim-app
-        targetZone: header

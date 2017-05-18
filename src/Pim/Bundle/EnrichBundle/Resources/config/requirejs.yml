@@ -770,7 +770,6 @@ config:
         pim/menu/tab:                                        pimenrich/js/menu/tab
         pim/menu/item:                                       pimenrich/js/menu/item
         pim/menu/navigation-block:                           pimenrich/js/menu/navigation-block
-        pim/header/header:                                   pimenrich/js/header/header
         # TODO Move logo extension
         pim/header/logo:                                     pimenrich/js/header/logo
         pim/header/user:                                     pimenrich/js/header/user

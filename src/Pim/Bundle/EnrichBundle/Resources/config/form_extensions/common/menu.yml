@@ -1,8 +1,8 @@
 extensions:
     pim-menu:
         module: pim/menu/menu
-        parent: pim-header
-        position: 110
+        parent: pim-app
+        targetZone: menu
 
     # Logo
     pim-menu-logo:
