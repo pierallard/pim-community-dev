@@ -97,10 +97,11 @@
 
   &-navigation {
     position: fixed;
-    margin-top: -10px;
+    margin-top: 10px;
     left: @AknMainMenuWidth + (@littleWidth - @AknDefaultButtonSize) / 2;
     opacity: 0;
     transition: opacity @timing @transition;
+    z-index: 850;
   }
 
   &-collapseButton {

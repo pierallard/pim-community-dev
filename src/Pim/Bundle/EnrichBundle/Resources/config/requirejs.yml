@@ -839,6 +839,7 @@ config:
         pim/template/form/index/create-button:                    pimenrich/templates/form/index/create-button.html
         pim/template/form/index/confirm-button:                   pimenrich/templates/form/index/confirm-button.html
         pim/template/form/column:                                 pimenrich/templates/form/column.html
+        pim/template/form/column-navigation:                      pimenrich/templates/form/column-navigation.html
         pim/template/form/secondary-actions:                      pimenrich/templates/form/secondary-actions.html
         pim/template/form/column-tabs:                            pimenrich/templates/form/column-tabs.html
         pim/template/form/column-tabs-navigation:                      pimenrich/templates/form/column-tabs-navigation.html

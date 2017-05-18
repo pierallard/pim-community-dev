@@ -49,6 +49,11 @@ define(
                     origin: this
                 });
 
+                this.getColumn().trigger('pim_menu:column:register_navigation_item', {
+                    code: this.getRoute(),
+                    label: this.getLabel()
+                });
+
                 BaseForm.prototype.configure.apply(this, arguments);
             },
 
@@ -70,7 +75,7 @@ define(
              * Redirect the user to the config destination
              */
             redirect: function () {
-                router.redirectToRoute(this.config.to);
+                router.redirectToRoute(this.getRoute());
             },
 
             /**
@@ -89,6 +94,13 @@ define(
              */
             getLabel: function () {
                 return __(this.config.title);
+            },
+
+            /**
+             * @returns {Backbone.View}
+             */
+            getColumn: function () {
+                return this.getParent().getColumn();
             },
 
             /**
