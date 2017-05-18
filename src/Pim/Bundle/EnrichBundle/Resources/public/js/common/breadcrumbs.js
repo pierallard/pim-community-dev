@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Extension to display breadcrumbs on every page
+ * Extension to display breadcrumbItems on every page
  *
  * @author    Pierre Allard <pierre.allard@akeneo.com>
  * @copyright 2017 Akeneo SAS (http://www.akeneo.com)
@@ -25,9 +25,9 @@ define(
         return BaseForm.extend({
             className: 'AknBreadcrumb',
             template: _.template(template),
-            breadcrumbs: [],
+            breadcrumbItems: [],
             events: {
-                'click .breadcrumbs-item': 'redirect'
+                'click .breadcrumbItems-item': 'redirect'
             },
 
             /**
@@ -54,18 +54,18 @@ define(
              */
             render: function () {
                 this.$el.empty().append(this.template({
-                    breadcrumbs: this.breadcrumbs
+                    breadcrumbItems: this.breadcrumbItems
                 }));
             },
 
             /**
-             * Set the current breadcrumbs information.
+             * Set the current breadcrumbItems information.
              * Event breadcrumb item contains code, route and label.
              *
              * @param {Array} event
              */
-            setBreadcrumbs: function (event) {
-                this.breadcrumbs = event;
+            setBreadcrumbItems: function (event) {
+                this.breadcrumbItems = event;
             },
 
             /**
@@ -74,8 +74,8 @@ define(
              * @param {Event} event
              */
             redirect: function (event) {
-                var code = event.currentTarget.dataset['code'];
-                var breadcrumb = _.findWhere(this.breadcrumbs, { code: code });
+                var code = event.currentTarget.dataset.code;
+                var breadcrumb = _.findWhere(this.breadcrumbItems, { code: code });
                 if (undefined !== breadcrumb.route) {
                     router.redirectToRoute(breadcrumb.route);
                 }

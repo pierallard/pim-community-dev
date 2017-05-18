@@ -45,7 +45,7 @@ define(
              */
             configure: function () {
                 this.getRoot().trigger('pim_menu:register_item', {
-                    target: this.getParent().getTab(),
+                    target: this.getColumn().getTab(),
                     origin: this
                 });
 

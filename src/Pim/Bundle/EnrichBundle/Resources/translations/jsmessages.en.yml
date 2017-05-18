@@ -936,7 +936,9 @@ pim_menu:
 
     navigation:
         system: System navigation
+        user: Users management navigation
         settings: Settings navigation
+
 
 pim_header:
     user:
