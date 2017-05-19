@@ -37,23 +37,26 @@ define(
              * {@inheritdoc}
              */
             render: function () {
-                this.$el.empty().append(this.template({
-
-                }));
+                this.$el.empty().append(this.template());
 
                 return BaseForm.prototype.render.apply(this, arguments);
             },
 
             /**
-             * Highlight tue current menu
+             * This method will activate/deactivate the tabs and items from a list of routes. When elements are
+             * activated, it sends to the breadcrumbs extension the list of activated breadcrumb items.
              *
              * @param {Event}         event
-             * @param {string[]}      event.paths
+             * @param {string[]}      event.routes
              * @param {Backbone.View} event.origin
              */
             highlight: function (event) {
+                _.each(this.extensions, function (extension) {
+                    extension.setActive(event.routes);
+                });
+
                 var breadcrumbItems = _.reduce(this.extensions, function (p, extension) {
-                    return _.union(p, extension.setActive(event.paths));
+                    return _.union(p, extension.getBreadcrumbItems(event.routes));
                 }, []);
 
                 event.origin.setBreadcrumbItems(breadcrumbItems);

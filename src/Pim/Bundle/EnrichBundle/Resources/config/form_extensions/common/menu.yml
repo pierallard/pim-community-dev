@@ -215,6 +215,7 @@ extensions:
     pim-menu-system-navigation-block:
         module: pim/menu/navigation-block
         parent: pim-menu-system-column
+        position: 50
         targetZone: navigation
         config:
             title: pim_menu.navigation.system
@@ -248,6 +249,7 @@ extensions:
     pim-menu-user-navigation-block:
         module: pim/menu/navigation-block
         parent: pim-menu-system-column
+        position: 80
         targetZone: navigation
         config:
             title: pim_menu.navigation.user

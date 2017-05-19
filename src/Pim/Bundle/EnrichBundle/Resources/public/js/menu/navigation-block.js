@@ -49,17 +49,6 @@ define(
              */
             getColumn: function () {
                 return this.getParent().getColumn();
-            },
-
-            /**
-             * Set tab active or not.
-             *
-             * @param {string[]} codes
-             */
-            setActive: function (codes) {
-                return _.reduce(this.extensions, function (p, extension) {
-                    return _.union(p, extension.setActive(codes));
-                }, []);
             }
         })
     });

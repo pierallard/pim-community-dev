@@ -96,26 +96,43 @@ define(
             },
 
             /**
-             * Set tab active or not.
+             * Activate/deactivate the tab and the attached items
              *
              * @param {string[]} codes
              */
             setActive: function (codes) {
-                this.active = false;
-                var breadcrumbItems = [];
+                this.active = _.contains(codes, this.code);
 
-                if (_.contains(codes, this.code)) {
-                    this.active = true;
-                    breadcrumbItems = [{
-                        code: this.code,
-                        route: this.getRoute(),
-                        label: this.getLabel()
-                    }];
-                }
+                _.each(this.items, function (item) {
+                    item.setActive(codes);
+                });
 
                 this.render();
+            },
 
-                return breadcrumbItems;
+            /**
+             * Returns the active breadcrumb items from the tab
+             *
+             * @returns {Array}
+             */
+            getBreadcrumbItems: function () {
+                var activatedElements = [];
+                if (this.active) {
+                    activatedElements.push(this);
+                    _.each(this.items, function (item) {
+                        if (item.active) {
+                            activatedElements.push(item);
+                        }
+                    });
+                }
+
+                return _.map(activatedElements, function (element) {
+                    return {
+                        code: element.code,
+                        route: element.getRoute(),
+                        label: element.getLabel()
+                    };
+                });
             },
 
             /**

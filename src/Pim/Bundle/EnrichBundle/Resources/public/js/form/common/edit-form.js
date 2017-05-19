@@ -66,7 +66,7 @@ define(
 
                 this.renderExtensions();
 
-                formBuilder.buildForm('pim-header-user').then(function (form) {
+                formBuilder.buildForm('pim-menu-user-navigation').then(function (form) {
                     form.setElement('.user-menu').render();
                 }.bind(this));
 
