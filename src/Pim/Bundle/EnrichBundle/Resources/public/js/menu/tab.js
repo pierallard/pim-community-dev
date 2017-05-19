@@ -104,7 +104,7 @@ define(
                 this.active = _.contains(codes, this.code);
 
                 _.each(this.items, function (item) {
-                    item.setActive(codes);
+                    item.setActive(_.contains(codes, item.code))
                 });
 
                 this.render();
