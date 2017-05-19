@@ -1,7 +1,10 @@
 'use strict';
 
 /**
- * Base extension forheadermenu
+ * This extension will display the user navigation.
+ * The user navigation contains:
+ * - The link to display the user options
+ * - The notification menu
  *
  * @author    Julien Sanchez <julien@akeneo.com>
  * @copyright 2017 Akeneo SAS (http://www.akeneo.com)
@@ -15,7 +18,7 @@ define(
         'pim/router',
         'pim/user-context',
         'pim/notifications',
-        'text!pim/template/header/user'
+        'text!pim/template/menu/user-navigation'
     ],
     function (
         _,
