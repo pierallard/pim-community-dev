@@ -99,7 +99,7 @@ class WebUser extends RawMinkContext
         foreach ($pages->getHash() as $data) {
             $url = $this->getSession()->evaluateScript(sprintf('return Routing.generate("%s");', $data['page']));
             $this->getMainContext()->executeScript(
-                sprintf("require(['backbone'], function (Backbone) { Backbone.history.navigate('#%s'); } );", $url)
+                sprintf("Backbone.history.navigate('#%s');", $url)
             );
             $this->wait();
 
