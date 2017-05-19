@@ -32,7 +32,7 @@
         ) {
             $(function() {
                 FetcherRegistry.initialize().done(function () {
-                    FormBuilder.buildForm('pim-header-user').then(function (form) {
+                    FormBuilder.buildForm('pim-menu-user-navigation').then(function (form) {
                         form.setElement('#view-selector').render();
                     }.bind(this));
                 });

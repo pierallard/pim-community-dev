@@ -104,26 +104,13 @@ define(
             },
 
             /**
-             * Set tab active or not.
+             * Activate/deactivate the item
              *
              * @param {string[]} codes
              */
             setActive: function (codes) {
-                this.active = false;
-                var breadcrumbItems = [];
-
-                if (_.contains(codes, this.code)) {
-                    this.active = true;
-                    breadcrumbItems = [{
-                        code: this.code,
-                        route: this.getRoute(),
-                        label: this.getLabel()
-                    }];
-                }
-
+                this.active = _.contains(codes, this.code);
                 this.render();
-
-                return breadcrumbItems;
             }
         });
     });

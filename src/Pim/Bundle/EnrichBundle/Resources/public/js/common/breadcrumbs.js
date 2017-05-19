@@ -44,7 +44,7 @@ define(
              */
             configure: function () {
                 mediator.trigger('pim_menu:highlight', {
-                    paths: this.config.path,
+                    routes: this.config.path,
                     origin: this
                 });
             },
@@ -62,10 +62,10 @@ define(
              * Set the current breadcrumbItems information.
              * Event breadcrumb item contains code, route and label.
              *
-             * @param {Array} event
+             * @param {Array} breadcrumbItems
              */
-            setBreadcrumbItems: function (event) {
-                this.breadcrumbItems = event;
+            setBreadcrumbItems: function (breadcrumbItems) {
+                this.breadcrumbItems = breadcrumbItems;
             },
 
             /**

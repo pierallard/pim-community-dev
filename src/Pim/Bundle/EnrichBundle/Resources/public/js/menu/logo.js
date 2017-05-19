@@ -43,8 +43,21 @@ define(
                 router.redirectToRoute('oro_default');
             },
 
-            setActive: function () {
-                return true;
+            /**
+             * The logo is never active, so did nothing.
+             *
+             * @param {string[]} codes
+             */
+            setActive: function (codes) {
+            },
+
+            /**
+             * There is no attached breadcrumbs to menu, so did nothing.
+             *
+             * @returns {Array}
+             */
+            getBreadcrumbItems: function () {
+                return [];
             }
         });
     });

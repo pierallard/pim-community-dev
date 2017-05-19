@@ -33,17 +33,13 @@ define(
             },
 
             /**
-             * Set tab active or not.
+             * Activate/deactivate the column using the attached tab code
              *
              * @param {string[]} codes
              */
             setActive: function (codes) {
                 this.active = _.contains(codes, this.getTab());
                 this.render();
-
-                return _.reduce(this.extensions, function (p, extension) {
-                    return _.union(p, extension.setActive(codes));
-                }, []);
             },
 
             /**
@@ -60,6 +56,15 @@ define(
              */
             redirect: function (event) {
                 router.redirectToRoute(event.currentTarget.dataset.tab);
+            },
+
+            /**
+             * There is no attached breadcrumbs to column extension, so did nothing.
+             *
+             * @param {string[]} codes
+             */
+            getBreadcrumbItems: function (codes) {
+                return [];
             }
         });
     });
