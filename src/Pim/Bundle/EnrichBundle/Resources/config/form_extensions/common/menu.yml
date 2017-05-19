@@ -6,7 +6,7 @@ extensions:
 
     # Logo
     pim-menu-logo:
-        module: pim/header/logo
+        module: pim/menu/logo
         parent: pim-menu
         position: 10
         targetZone: left
@@ -74,7 +74,7 @@ extensions:
             iconHover: icon-settings-purple.svg
 
     pim-menu-settings-column:
-        module: pim/header/column
+        module: pim/menu/column
         parent: pim-menu
         position: 500
         targetZone: column
@@ -203,7 +203,7 @@ extensions:
             iconHover: icon-system-purple.svg
 
     pim-menu-system-column:
-        module: pim/header/column
+        module: pim/menu/column
         parent: pim-menu
         position: 500
         targetZone: column

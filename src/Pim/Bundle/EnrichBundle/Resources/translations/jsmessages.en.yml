@@ -939,8 +939,6 @@ pim_menu:
         user: Users management navigation
         settings: Settings navigation
 
-
-pim_header:
     user:
         logout: Logout
         user_account: My Account
