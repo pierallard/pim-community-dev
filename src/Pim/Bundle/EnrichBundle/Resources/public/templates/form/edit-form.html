@@ -33,7 +33,7 @@
             $(function() {
                 FetcherRegistry.initialize().done(function () {
                     FormBuilder.buildForm('pim-menu-user-navigation').then(function (form) {
-                        form.setElement('#view-selector').render();
+                        form.setElement('.user-menu').render();
                     }.bind(this));
                 });
             });

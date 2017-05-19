@@ -106,10 +106,10 @@ define(
             /**
              * Activate/deactivate the item
              *
-             * @param {string[]} codes
+             * @param {Boolean} active
              */
-            setActive: function (codes) {
-                this.active = _.contains(codes, this.code);
+            setActive: function (active) {
+                this.active = active;
                 this.render();
             }
         });

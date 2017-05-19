@@ -40,7 +40,7 @@ class Base extends Page
         'Oro tabs'               => ['css' => '.navbar.scrollspy-nav, .AknHorizontalNavtab'],
         'Form tabs'              => ['css' => '.nav-tabs.form-tabs'],
         'Active tab'             => ['css' => '.form-horizontal .tab-pane.active'],
-        'Column navigation link' => ['css' => '.column-tabs-navigation-link'],
+        'Column navigation link' => ['css' => '.column-navigation-link'],
         'Current column link'    => ['css' => '.AknColumn-navigationLink--active'],
         'Secondary actions'      => ['css' => '.secondary-actions', 'decorators' => [DropdownMenuDecorator::class]],
     ];
