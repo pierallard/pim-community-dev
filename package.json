@@ -12,7 +12,7 @@
     "grunt-recess": "~1.0.1",
     "grunt-template-jasmine-requirejs": "~0.2.3",
     "time-grunt": "~1.1.0",
-    "webpack": "^2.4.1",
+    "webpack": "2.4.1",
     "yamljs": "^0.2.10"
   },
   "scripts": {
