@@ -5,7 +5,7 @@ define([
         'oro/translator',
         'jquery',
         'pim/form',
-        'text!pim/template/system/tab/loading-message',
+        'pim/template/system/tab/loading-message',
         'bootstrap.bootstrapswitch'
     ],
     function (

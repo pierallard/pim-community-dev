@@ -11,8 +11,8 @@ define(
         'underscore',
         'oro/translator',
         'pim/form',
-        'text!pim/template/form/column',
-        'text!pim/template/form/column-navigation'
+        'pim/template/form/column',
+        'pim/template/form/column-navigation'
     ],
     function (
         _,

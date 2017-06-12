@@ -3,16 +3,14 @@
 define([
         'oro/translator',
         'backbone',
-        'module',
         'oro/mediator',
         'pim/form',
         'pim/fetcher-registry',
-        'text!pim/template/form/index/index'
+        'pim/template/form/index/index'
     ],
     function(
         __,
         Backbone,
-        module,
         mediator,
         BaseForm,
         FetcherRegistry,
@@ -36,8 +34,8 @@ define([
             configure: function () {
                 Backbone.Router.prototype.once('route', this.unbindEvents);
 
-                if (_.has(module.config(), 'forwarded-events')) {
-                    this.forwardMediatorEvents(module.config()['forwarded-events']);
+                if (_.has(__moduleConfig, 'forwarded-events')) {
+                    this.forwardMediatorEvents(__moduleConfig['forwarded-events']);
                 }
 
                 return BaseForm.prototype.configure.apply(this, arguments);

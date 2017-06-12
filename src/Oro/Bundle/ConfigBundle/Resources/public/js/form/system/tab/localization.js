@@ -7,7 +7,7 @@ define(
         'pim/form',
         'pim/fetcher-registry',
         'oro/loading-mask',
-        'text!oro/template/system/tab/localization',
+        'oro/template/system/tab/localization',
         'pim/initselect2'
     ],
     function(

@@ -797,7 +797,7 @@ class Form extends Base
         $field = $this->findPriceField($label->labelContent, $label->subLabelContent);
         $field->setValue($value);
     }
-    
+
     /**
      * @param string $type
      *
@@ -830,7 +830,7 @@ class Form extends Base
         $button = $this->spin(function () {
             return $this->find('css', $this->elements['Available attributes button']['css']);
         }, 'Cannot find available attribute button');
-        
+
         return !$this->getClosest($button, 'select2-container')->hasClass('select2-container-disabled');
     }
 }

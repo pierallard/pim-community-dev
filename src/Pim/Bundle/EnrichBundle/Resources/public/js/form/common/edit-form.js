@@ -9,19 +9,18 @@
  */
 define(
     [
-        'module',
         'underscore',
         'oro/translator',
         'backbone',
-        'text!pim/template/form/edit-form',
+        'pim/template/form/edit-form',
         'pim/form',
         'oro/mediator',
         'pim/fetcher-registry',
         'pim/field-manager',
-        'pim/form-builder'
+        'pim/form-builder',
+        'oro/messenger'
     ],
     function (
-        module,
         _,
         __,
         Backbone,
@@ -30,7 +29,8 @@ define(
         mediator,
         FetcherRegistry,
         FieldManager,
-        formBuilder
+        formBuilder,
+        messenger
     ) {
         return BaseForm.extend({
             template: _.template(template),
@@ -42,9 +42,11 @@ define(
                 mediator.clear('pim_enrich:form');
                 Backbone.Router.prototype.once('route', this.unbindEvents);
 
-                if (_.has(module.config(), 'forwarded-events')) {
-                    this.forwardMediatorEvents(module.config()['forwarded-events']);
+                if (_.has(__moduleConfig, 'forwarded-events')) {
+                    this.forwardMediatorEvents(__moduleConfig['forwarded-events']);
                 }
+
+                this.listenTo(this.getRoot(), 'pim_enrich:form:entity:bad_request', this.displayError.bind(this));
 
                 this.onExtensions('save-buttons:register-button', function (button) {
                     this.getExtension('save-buttons').trigger('save-buttons:add-button', button);
@@ -87,6 +89,19 @@ define(
                 FetcherRegistry.clearAll();
                 FieldManager.clearFields();
                 this.render();
+            },
+
+            /**
+             * Display validation error as flash message
+             *
+             * @param {Event} event
+             */
+            displayError: function (event) {
+                _.each(event.response, function (error) {
+                    if (error.global) {
+                        messenger.notify('error', error.message);
+                    }
+                })
             }
         });
     }

@@ -13,7 +13,7 @@ define(
         'underscore',
         'oro/translator',
         'pim/form',
-        'text!pim/template/product/completeness',
+        'pim/template/product/completeness',
         'pim/fetcher-registry',
         'pim/i18n',
         'pim/user-context'
@@ -21,12 +21,20 @@ define(
     function ($, _, __, BaseForm, template, FetcherRegistry, i18n, UserContext) {
         return BaseForm.extend({
             template: _.template(template),
-
             className: 'panel-pane completeness-panel',
-
+            initialFamily: null,
             events: {
                 'click header': 'switchLocale',
                 'click .missing-attributes a': 'showAttribute'
+            },
+
+            /**
+             * {@inheritdoc}
+             */
+            initialize: function () {
+                this.initialFamily = null;
+
+                BaseForm.prototype.initialize.apply(this, arguments);
             },
 
             /**
@@ -55,15 +63,23 @@ define(
 
                 if (this.getFormData().meta) {
                     $.when(
+                        FetcherRegistry.getFetcher('channel').fetchAll(),
                         FetcherRegistry.getFetcher('locale').fetchActivated()
-                    ).then(function (locales) {
+                    ).then(function (channels, locales) {
+                        if (null === this.initialFamily) {
+                            this.initialFamily = this.getFormData().family;
+                        }
+
                         this.$el.html(
                             this.template({
                                 hasFamily: this.getFormData().family !== null,
                                 completenesses: this.sortCompleteness(this.getFormData().meta.completenesses),
                                 i18n: i18n,
+                                channels: channels,
                                 locales: locales,
-                                catalogLocale: UserContext.get('catalogLocale')
+                                uiLocale: UserContext.get('uiLocale'),
+                                catalogLocale: UserContext.get('catalogLocale'),
+                                hasFamilyChanged: this.getFormData().family !== this.initialFamily
                             })
                         );
                         this.delegateEvents();
@@ -123,11 +139,13 @@ define(
              * On family change listener
              */
             onChangeFamily: function () {
-                var data = this.getFormData();
-                data.meta.completenesses = [];
-                this.setData(data);
+                if (!_.isEmpty(this.getRoot().model._previousAttributes)) {
+                    var data = this.getFormData();
+                    data.meta.completenesses = [];
+                    this.setData(data);
 
-                this.render();
+                    this.render();
+                }
             }
         });
     }

@@ -4,7 +4,7 @@ define([
     'underscore',
         'oro/translator',
         'pim/form',
-        'text!oro/template/system/tab/notification',
+        'oro/template/system/tab/notification',
         'bootstrap.bootstrapswitch'
     ],
     function(

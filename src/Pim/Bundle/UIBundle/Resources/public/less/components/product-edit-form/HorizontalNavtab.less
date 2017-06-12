@@ -43,6 +43,14 @@
   };
 
   &-item:not(&-item--active) &-link:not(&-link--active):hover,
+  &-item--active {
+    width: 100%;
+  }
+
+  &-item:not(&-item--active) &-link:not(&-link--active):hover {
+    background: @AknDefaultHoverBackground;
+  }
+
   &-item--active &-link,
   &-link--active {
     background: none;

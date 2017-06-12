@@ -28,9 +28,9 @@ Feature: Display the completeness of a product
     Then I should see the completeness:
       | channel | locale | state   | missing_values         | ratio |
       | mobile  | en_US  | success |                        | 100%  |
-      | tablet  | en_US  | warning | Side view              | 89%   |
+      | tablet  | en_US  | warning | Side view              | 88%   |
       | mobile  | fr_FR  | success |                        | 100%  |
-      | tablet  | fr_FR  | warning | Description, Side view | 78%   |
+      | tablet  | fr_FR  | warning | Description, Side view | 77%   |
     When I visit the "Attributes" column tab
     And I visit the "Media" group
     And I attach file "SNKRS-1C-s.png" to "Side view"
@@ -67,3 +67,4 @@ Feature: Display the completeness of a product
       | tablet  | en_US  | warning | Name, Description, Price, Rating, Side view, Size | 25%   |
       | mobile  | fr_FR  | warning | Price, Size                                       | 60%   |
       | tablet  | fr_FR  | warning | Price, Rating, Side view, Size                    | 50%   |
+      | tablet  | fr_FR  | warning | Description    | 88%   |

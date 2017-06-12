@@ -163,6 +163,26 @@ class RootEndpointIntegration extends ApiTestCase
             "pim_api_attribute_group_get": {
                 "route": "/api/rest/v1/attribute-groups/{code}",
                 "methods": ["GET"]
+            },
+            "pim_api_attribute_group_create": {
+                "route": "/api/rest/v1/attribute-groups",
+                "methods": ["POST"]
+            },
+            "pim_api_attribute_group_partial_update": {
+                "route": "/api/rest/v1/attribute-groups/{code}",
+                "methods": ["PATCH"]
+            },
+            "pim_api_attribute_group_partial_update_list": {
+                "route": "/api/rest/v1/attribute-groups",
+                "methods": ["PATCH"]
+            },
+            "pim_api_currency_get": {
+                "route": "/api/rest/v1/currencies/{code}",
+                "methods": ["GET"]
+            },
+            "pim_api_currency_list": {
+                "route": "/api/rest/v1/currencies",
+                "methods": ["GET"]
             }
         }
     }
@@ -178,9 +198,6 @@ JSON;
      */
     protected function getConfiguration()
     {
-        return new Configuration(
-            [Configuration::getTechnicalCatalogPath()],
-            false
-        );
+        return new Configuration([Configuration::getTechnicalCatalogPath()]);
     }
 }

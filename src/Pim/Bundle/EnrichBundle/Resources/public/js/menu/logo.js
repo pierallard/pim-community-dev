@@ -12,7 +12,7 @@ define(
         'underscore',
         'pim/form',
         'pim/router',
-        'text!pim/template/menu/logo'
+        'pim/template/menu/logo'
     ],
     function (
         _,

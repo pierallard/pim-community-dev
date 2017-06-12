@@ -43,7 +43,8 @@ Feature: Add products to a variant group
     And I visit the "History" column tab
     And I should see history in panel:
       | version | author                                        | property | value           |
-      | 4       | Julia Stark                                   | groups   |                 |
+      | 5       | Julia Stark                                   | groups   |                 |
+      | 4       | Julia Stark (Comes from variant group SANDAL) | Comment  | New comment     |
       | 3       | Julia Stark (Comes from variant group SANDAL) | groups   | SANDAL          |
       | 2       | John Doe                                      | Color    | white           |
       | 1       | John Doe                                      | SKU      | sandal-white-37 |

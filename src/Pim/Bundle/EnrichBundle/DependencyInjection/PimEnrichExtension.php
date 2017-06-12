@@ -56,6 +56,7 @@ class PimEnrichExtension extends Extension
         $loader->load('mass_actions.yml');
         $loader->load('normalizers.yml');
         $loader->load('providers.yml');
+        $loader->load('query_builders.yml');
         $loader->load('removers.yml');
         $loader->load('repositories.yml');
         $loader->load('resolvers.yml');
@@ -65,9 +66,7 @@ class PimEnrichExtension extends Extension
         $loader->load('twig.yml');
         $loader->load('view_elements.yml');
         $loader->load('view_elements/attribute.yml');
-        $loader->load('view_elements/attribute_group.yml');
         $loader->load('view_elements/category.yml');
-        $loader->load('view_elements/group.yml');
         $loader->load('view_elements/group_type.yml');
         $loader->load('view_elements/mass_edit.yml');
 
